@@ -17,9 +17,9 @@ function init_vim {
   ln -s $HOME/.mydotfiles/vim $HOME/.vim
 }
 
-if [ -f $HOME/.vim/env ]; then
-    . $HOME/.vim/env
-fi
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
 
 #
 # MJM_HOST has been defined and exported by .bash_profile
@@ -28,5 +28,9 @@ if [ -f $HOME/bashenv/rc.$MJM_HOST ]; then
     . $HOME/bashenv/rc.$MJM_HOST
 elif [ -f $HOME/bashenv/rc.default ]; then
     . $HOME/bashenv/rc.default
+fi
+
+if [ -f $HOME/.vim/env ]; then
+    . $HOME/.vim/env
 fi
 
