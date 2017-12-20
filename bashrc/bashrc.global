@@ -1,0 +1,32 @@
+# Source global definitions
+
+function functions {
+  typeset -F
+}
+
+function init_dots {
+  (cd $HOME/.mydotfiles; git pull)
+}
+
+function update_dots {
+  (cd $HOME/.mydotfiles; git pull)
+}
+
+function init_vim {
+  rm -rf $HOME/.vim
+  ln -s $HOME/.mydotfiles/vim $HOME/.vim
+}
+
+if [ -f $HOME/.vim/env ]; then
+    . $HOME/.vim/env
+fi
+
+#
+# MJM_HOST has been defined and exported by .bash_profile
+#
+if [ -f $HOME/bashenv/rc.$MJM_HOST ]; then
+    . $HOME/bashenv/rc.$MJM_HOST
+elif [ -f $HOME/bashenv/rc.default ]; then
+    . $HOME/bashenv/rc.default
+fi
+
