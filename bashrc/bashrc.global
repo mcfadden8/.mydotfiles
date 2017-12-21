@@ -34,3 +34,4 @@ if [ -f $HOME/.vim/env ]; then
     . $HOME/.vim/env
 fi
 
+export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}\007"'
