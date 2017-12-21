@@ -32,9 +32,16 @@ fi
 
 force_color_prompt=yes
 alias a=alias
-alias d="ls -sF --color"
-alias la="ls -al --color"
-alias lt="ls -lt --color"
+
+if [ "`uname -s`" = "Darwin" ]; then
+  alias d="ls -sFG"
+  alias la="ls -alG"
+  alias lt="ls -ltG"
+else
+  alias d="ls -sF --color"
+  alias la="ls -al --color"
+  alias lt="ls -lt --color"
+fi
 alias C=clear
 alias f=pushd
 alias b=popd
