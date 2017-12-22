@@ -1,0 +1,25 @@
+PS3='Please enter session choice: '
+options=("umpire" "ompd")
+select opt in "${options[@]}"
+do
+  case $opt in
+      "ompd")
+          export MJM_SESSION=$opt
+          break
+          ;;
+      "umpire")
+          export MJM_SESSION=$opt
+          . /usr/gapps/ares/bin/ares.bashrc
+          break
+          ;;
+      *)
+          export MJM_SESSION="umpire"
+          . /usr/gapps/ares/bin/ares.bashrc
+          break
+          ;;
+  esac
+done
+
+export INSTALLDIR=$HOME/$MJM_SESSION/install/$MJM_ARCH
+export BUILDDIR=$HOME/$MJM_SESSION/build/$MJM_ARCH
+export SRCDIR=$HOME/$MJM_SESSION/src

@@ -1,0 +1,64 @@
+#
+# Set up our global environment variables
+#
+export MJM_HOST=`hostname -s | sed -e "s/[0-9]*$//"`
+
+if [[ $MJM_HOST == "rz"* ]]; then
+    export MJM_WS=/usr/workspace/wsrzd/martymcf
+else
+    export MJM_WS=/usr/workspace/wsb/martymcf
+fi
+
+if [ ! -d $HOME/.arch_cache ]; then
+  mkdir -p $HOME/.arch_cache
+fi
+
+if [ ! -f $HOME/.arch_cache/$MJM_HOST ]; then
+  if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
+    $HOME/spack.$MJM_HOST/bin/spack arch > $HOME/.arch_cache/$MJM_HOST
+  elif [ -f $HOME/spack/bin/spack ]; then
+    $HOME/spack/bin/spack arch > $HOME/.arch_cache/$MJM_HOST
+  else
+    uname -m > $HOME/.arch_cache/$MJM_HOST
+  fi
+fi
+
+export MJM_ARCH=`cat $HOME/.arch_cache/$MJM_HOST`
+
+if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
+  export PATH=$HOME/spack.$MJM_HOST/bin:$PATH
+elif [ -f $HOME/spack/bin/spack ]; then
+  export PATH=$HOME/spack/bin:$PATH
+fi
+
+if [ -f /etc/toss-release ]; then
+    MJM_TOSSVERSION=`cat /etc/toss-release`
+    MJM_TOSSVERSION=${MJM_TOSSVERSION#*-}
+    MJM_TOSSVERSION=${MJM_TOSSVERSION#*-}
+    export MJM_TOSSVERSION=${MJM_TOSSVERSION%%.*}
+else
+    export MJM_TOSSVERSION=0
+fi
+
+if [ -d /nfs/tmp2/martymcf ]; then
+  export TMP=/nfs/tmp2/martymcf
+else
+  export TMP=/tmp
+fi
+
+export TMPDIR=$TMP
+export SSH_ASKPASS=""
+export EDITOR=vim
+
+#
+# INSTALLDIR, BUILDDIR, and SRCDIR will be reset by project specific RCs below
+export INSTALLDIR=$TMPDIR
+export BUILDDIR=$TMPDIR
+export SRCDIR=$TMPDIR
+if [ -f $HOME/.mydotfiles/bashenv/project.$MJM_HOST ]; then
+    . $HOME/.mydotfiles/bashenv/project.$MJM_HOST
+elif [ -f $HOME/.mydotfiles/bashenv/project.default ]; then
+    . $HOME/.mydotfiles/bashenv/project.default
+else
+  export MJM_SESSION=$TMPDIR
+fi

@@ -20,10 +20,10 @@ function init_vim {
 #
 # MJM_HOST has been defined and exported by .bash_profile
 #
-if [ -f $HOME/bashenv/rc.$MJM_HOST ]; then
-    . $HOME/bashenv/rc.$MJM_HOST
-elif [ -f $HOME/bashenv/rc.default ]; then
-    . $HOME/bashenv/rc.default
+if [ -f $HOME/.mydotfiles/bashenv/rc.$MJM_HOST ]; then
+    . $HOME/.mydotfiles/bashenv/rc.$MJM_HOST
+elif [ -f $HOME/.mydotfiles/bashenv/rc.default ]; then
+    . $HOME/.mydotfiles/bashenv/rc.default
 fi
 
 if [ -f $HOME/.vim/env ]; then

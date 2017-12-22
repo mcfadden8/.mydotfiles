@@ -1,0 +1,10 @@
+# module load clang/coral-2017.11.30 cuda/9.0.176 cmake/3.9.2
+module load clang cuda cmake
+
+export LIBELF_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libelf
+export LIBFFI_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libffi
+
+export CUDAPATH=/usr/tce/packages/cuda/cuda-9.0.176
+export CUDALIB=/usr/tce/packages/cuda/cuda-9.0.176/lib64
+export CUDABIN=/usr/tce/packages/cuda/cuda-9.0.176/bin
+export LIBRARY_PATH=/usr/tce/packages/cuda/cuda-9.0.176/lib64:$LIBRARY_PATH

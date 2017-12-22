@@ -1,0 +1,18 @@
+#
+# Default RC file for bash on hosts which do not have a rc.hostname created
+#
+if [ -f /etc/genders ]; then
+    alias sa1="salloc -N 1 -t 1:00:00 -ppbatch"
+    alias sa8="salloc -N 1 -t 8:00:00 -ppbatch"
+    alias sa9="salloc -N 1 -t 9:00:00 -ppbatch"
+
+    if nodeattr -Q login; then
+        NODE="@LOGIN"
+    else
+        NODE="@COMPUTE"
+    fi
+else
+    NODE="@HOME"
+fi
+
+HH=`hostname -s`
