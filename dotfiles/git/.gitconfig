@@ -1,0 +1,19 @@
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[user]
+	name = Marty McFadden
+	email = mcfadden8@llnl.gov
+[core]
+	editor = vim
+[sendemail]
+	smtpserver = smtp.llnl.gov
+	smtpserverport = 25
+[color]
+	ui = true
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool]
+  prompt = false
