@@ -1,17 +1,17 @@
 stty erase 
 
-if [ -e $HOME/bashenv/bash_globals ]; then
-    . $HOME/bashenv/bash_globals
+if [ -e $HOME/.mydotfiles/bashenv/bash_globals ]; then
+    . $HOME/.mydotfiles/bashenv/bash_globals
 fi
 
 if [ -e $HOME/.bashrc ]; then
 	. $HOME/.bashrc
 fi
 
-if [ -e $HOME/bashenv/modules.$MJM_HOST ]; then
-    . $HOME/bashenv/modules.$MJM_HOST
-elif [ -e $HOME/bashenv/modules.default ]; then
-    . $HOME/bashenv/modules.default
+if [ -e $HOME/.mydotfiles/bashenv/modules.$MJM_HOST ]; then
+    . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
+elif [ -e $HOME/.mydotfiles/bashenv/modules.default ]; then
+    . $HOME/.mydotfiles/bashenv/modules.default
 fi
 
 if [ ! -d $INSTALLDIR ]; then
