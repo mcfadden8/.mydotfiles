@@ -2,10 +2,6 @@ function functions {
   typeset -F
 }
 
-function init_dots {
-  (cd $HOME/.mydotfiles; git pull)
-}
-
 function update_dots {
   (cd $HOME/.mydotfiles; git pull)
 }
@@ -61,7 +57,9 @@ alias cztoss="ssh -Y quartz"
 # RZTrona(Intel), 2688 nodes, B654, Serial
 alias rztoss="ssh -Y rztrona"
 
-# shopt -s histappend                       # append history file
+export HISTSIZE=5000
+export HISTFILESIZE=20000
+shopt -s histappend                       # append history file
 # export PROMPT_COMMAND="history -a"        # update histfile after every command
 #
 
@@ -92,7 +90,9 @@ prompt_command () {
     export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${CYAN}[ ${BCYAN}\u${GREEN}@${BCYAN}\
 \h${DKGRAY}(${LOAD}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
 \w\n${GREEN}${BRANCH}${DEFAULT}$ "
-
+    history -a
+    history -c
+    history -r
 }
 PROMPT_COMMAND=prompt_command
 
