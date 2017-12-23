@@ -14,21 +14,15 @@ elif [ -e $HOME/.mydotfiles/bashenv/modules.default ]; then
     . $HOME/.mydotfiles/bashenv/modules.default
 fi
 
-if [ ! -d $INSTALLDIR ]; then
-  mkdir -p $INSTALLDIR
-fi
-if [ ! -d $BUILDDIR ]; then
-  mkdir -p $BUILDDIR
-fi
-if [ ! -d $SRCDIR ]; then
-  mkdir -p $SRCDIR
-fi
-if [ ! -d $HOME/.bin/$MJM_ARCH ]; then
-  mkdir -p $HOME/.bin/$MJM_ARCH
-fi
+for d in $INSTALLDIR $INSTALLDIR2 $BUILDDIR $SRCDIR $HOME/.bin/$MJM_ARCH; do
+  if [ ! -d $d ]; then
+    mkdir -p $d
+  fi
+done
 
-export LD_LIBRARY_PATH=$INSTALLDIR/lib:$LD_LIBRARY_PATH
-export PATH=$INSTALLDIR/bin:$HOME/.bin/$MJM_ARCH:$PATH
+export LD_LIBRARY_PATH=$INSTALLDIR/lib:$INSTALLDIR2/lib:$LD_LIBRARY_PATH
+export PATH=$INSTALLDIR/lib:$INSTALLDIR2/bin:$HOME/.bin/$MJM_ARCH:$PATH
 
 ulimit -c unlimited
 set -u
+

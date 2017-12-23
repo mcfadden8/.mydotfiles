@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 # Set up our global environment variables
 #
 export MJM_HOST=`hostname -s | sed -e "s/[0-9]*$//"`
@@ -53,6 +53,7 @@ export EDITOR=vim
 #
 # INSTALLDIR, BUILDDIR, and SRCDIR will be reset by project specific RCs below
 export INSTALLDIR=$TMPDIR
+export INSTALLDIR2=$INSTALLDIR".2"
 export BUILDDIR=$TMPDIR
 export SRCDIR=$TMPDIR
 if [ -f $HOME/.mydotfiles/bashenv/project.$MJM_HOST ]; then

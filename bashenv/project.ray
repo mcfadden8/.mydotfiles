@@ -1,3 +1,4 @@
+#!/bin/bash
 PS3='Please enter session choice: '
 options=("umpire" "ompd")
 select opt in "${options[@]}"
@@ -21,5 +22,6 @@ do
 done
 
 export INSTALLDIR=$HOME/$MJM_SESSION/install/$MJM_ARCH
+export INSTALLDIR2=$INSTALLDIR".2"
 export BUILDDIR=$HOME/$MJM_SESSION/build/$MJM_ARCH
 export SRCDIR=$HOME/$MJM_SESSION/src
