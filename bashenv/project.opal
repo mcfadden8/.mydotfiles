@@ -19,8 +19,7 @@ if [ -f /etc/genders ]; then
               ;;
       esac
     done
-    export INSTALLDIR=$HOME/$MJM_SESSION/install/$MJM_ARCH
-    export INSTALLDIR2=$INSTALLDIR".2"
+    export INSTALLDIR=$HOME/$MJM_SESSION/install/$MJM_ARCH/install
     export BUILDDIR=$HOME/$MJM_SESSION/build/$MJM_ARCH
     export SRCDIR=$HOME/$MJM_SESSION/src
 else

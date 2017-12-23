@@ -52,10 +52,9 @@ export EDITOR=vim
 
 #
 # INSTALLDIR, BUILDDIR, and SRCDIR will be reset by project specific RCs below
-export INSTALLDIR=$HOME/tmpinstalls
-export INSTALLDIR2=$INSTALLDIR".2"
-export BUILDDIR=$TMPDIR
-export SRCDIR=$TMPDIR
+export INSTALLDIR=$TMPDIR/install
+export BUILDDIR=$TMPDIR/build
+export SRCDIR=$TMPDIR/src
 if [ -f $HOME/.mydotfiles/bashenv/project.$MJM_HOST ]; then
     . $HOME/.mydotfiles/bashenv/project.$MJM_HOST
 elif [ -f $HOME/.mydotfiles/bashenv/project.default ]; then
@@ -63,3 +62,4 @@ elif [ -f $HOME/.mydotfiles/bashenv/project.default ]; then
 else
   export MJM_SESSION=$TMPDIR
 fi
+export INSTALLDIR2=$INSTALLDIR".2"
