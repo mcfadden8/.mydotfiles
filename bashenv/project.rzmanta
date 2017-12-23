@@ -19,8 +19,4 @@ do
   esac
 done
 
-export INSTALLDIR=$HOME/$MJM_SESSION/install/$MJM_ARCH/install
-export BUILDDIR=$HOME/$MJM_SESSION/build/$MJM_ARCH
-export SRCDIR=$HOME/$MJM_SESSION/src
-
 . /usr/gapps/ares/bin/ares.bashrc

@@ -1,5 +1,2 @@
 #!/bin/bash
 export MJM_SESSION="umap"
-export INSTALLDIR=$TMPDIR/install
-export BUILDDIR=$TMPDIR/build
-export SRCDIR=$HOME/dsthome/src

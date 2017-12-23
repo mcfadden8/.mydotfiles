@@ -50,16 +50,15 @@ export TMPDIR=$TMP
 export SSH_ASKPASS=""
 export EDITOR=vim
 
-#
-# INSTALLDIR, BUILDDIR, and SRCDIR will be reset by project specific RCs below
-export INSTALLDIR=$TMPDIR/install
-export BUILDDIR=$TMPDIR/build
-export SRCDIR=$TMPDIR/src
 if [ -f $HOME/.mydotfiles/bashenv/project.$MJM_HOST ]; then
     . $HOME/.mydotfiles/bashenv/project.$MJM_HOST
 elif [ -f $HOME/.mydotfiles/bashenv/project.default ]; then
     . $HOME/.mydotfiles/bashenv/project.default
 else
-  export MJM_SESSION=$TMPDIR
+  export MJM_SESSION=work
 fi
+
+export INSTALLDIR=$HOME/$MJM_SESSION/install/$MJM_ARCH/install
 export INSTALLDIR2=$INSTALLDIR".2"
+export BUILDDIR=$HOME/$MJM_SESSION/build/$MJM_ARCH
+export SRCDIR=$HOME/$MJM_SESSION/src
