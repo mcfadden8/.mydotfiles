@@ -1,5 +1,5 @@
 # Source global definitions
-if [ -f $HOME/.mydotfiles/bashrc/bashrc.global ]; then
+if [ -f $HOME/.mydotfiles/bashrc/.bashrc.global ]; then
     . $HOME/.mydotfiles/bashrc/.bashrc.global
 fi
 
