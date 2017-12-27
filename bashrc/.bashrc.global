@@ -86,9 +86,10 @@ prompt_command () {
     local DEFAULT="\[\033[0;39m\]"
     # set the titlebar to the last 2 fields of pwd
     local TITLEBAR='\[\e]2;`pwdtail`\a'
+    local NODE_TYPE=`node_prompt`
     local TABNAME="\033]0;${HOSTNAME%%.*}\007"
     export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${CYAN}[ ${BCYAN}\u${GREEN}@${BCYAN}\
-\h${DKGRAY}(${LOAD}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
+\h${DKGRAY}(${NODE_TYPE}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
 \w\n${GREEN}${BRANCH}${DEFAULT}$ "
     history -a
     history -c
@@ -117,4 +118,25 @@ chkload () { #gets the current 1m avg CPU load
         local OUTP="UNKNOWN"
     fi
     echo $CURRLOAD
+}
+
+function node_prompt
+{
+  if is_compute_node ; then
+    echo "COMPUTE"
+  else
+    echo "LOGIN"
+  fi
+}
+
+function is_compute_node
+{
+  if [ -x "$(command -v nodeattr)" ]; then
+    local _node=`hostname -s`
+    _node=${_node:-`hostname -s`}
+    nodeattr -Q $_node compute
+    return $?
+  fi
+
+  return 0
 }
