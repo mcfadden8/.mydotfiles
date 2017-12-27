@@ -9,21 +9,21 @@ else
     export MJM_WS=/usr/workspace/wsb/martymcf
 fi
 
-if [ ! -d $HOME/.arch_cache ]; then
-  mkdir -p $HOME/.arch_cache
+if [ ! -d $HOME/.mydotfiles/.arch_cache ]; then
+  mkdir -p $HOME/.mydotfiles/.arch_cache
 fi
 
-if [ ! -f $HOME/.arch_cache/$MJM_HOST ]; then
+if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
   if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
-    $HOME/spack.$MJM_HOST/bin/spack arch > $HOME/.arch_cache/$MJM_HOST
+    $HOME/spack.$MJM_HOST/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
   elif [ -f $HOME/spack/bin/spack ]; then
-    $HOME/spack/bin/spack arch > $HOME/.arch_cache/$MJM_HOST
+    $HOME/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
   else
-    uname -m > $HOME/.arch_cache/$MJM_HOST
+    uname -m > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
   fi
 fi
 
-export MJM_ARCH=`cat $HOME/.arch_cache/$MJM_HOST`
+export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
 
 if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
   export PATH=$HOME/spack.$MJM_HOST/bin:$PATH
