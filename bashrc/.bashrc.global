@@ -122,21 +122,14 @@ chkload () { #gets the current 1m avg CPU load
 
 function node_prompt
 {
-  if is_compute_node ; then
-    echo "COMPUTE"
+  if [ -x "$(command -v nodeattr)" ]; then
+    nodeattr -Q `hostname -s` compute
+    if [ "$?" = "1" ]; then
+      echo "LOGIN"
+    else
+      echo "COMPUTE"
+    fi
   else
     echo "LOGIN"
   fi
-}
-
-function is_compute_node
-{
-  if [ -x "$(command -v nodeattr)" ]; then
-    local _node=`hostname -s`
-    _node=${_node:-`hostname -s`}
-    nodeattr -Q $_node compute
-    return $?
-  fi
-
-  return 0
 }
