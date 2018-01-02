@@ -16,7 +16,9 @@ fi
 
 for d in $INSTALLDIR $INSTALLDIR2 $BUILDDIR $SRCDIR $HOME/.bin/$MJM_ARCH; do
   if [ ! -d $d ]; then
-    mkdir -p $d
+    if [ ! -h $d ]; then
+      mkdir -p $d
+    fi
   fi
 done
 
