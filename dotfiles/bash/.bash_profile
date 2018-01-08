@@ -26,5 +26,4 @@ export LD_LIBRARY_PATH=$INSTALLDIR/lib:$INSTALLDIR2/lib:$LD_LIBRARY_PATH
 export PATH=$INSTALLDIR/bin:$INSTALLDIR2/bin:$HOME/.bin/$MJM_ARCH:$PATH
 
 ulimit -c unlimited
-set -u
 
