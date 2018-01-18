@@ -29,13 +29,15 @@ set noincsearch		                  " no incremental searching
 nnoremap ,<space> :nohlsearch<CR>
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap ,f :NERDTreeToggle<CR>
 nnoremap <silent> ,v :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+" let NERDTreeQuitOnOpen=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+let NERDTreeQuitOnOpen=0
 
 set noruler		                      " don't show the cursor position all the time
 set cursorline                      " highlight current line
