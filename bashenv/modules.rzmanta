@@ -6,7 +6,7 @@ module list
 export LIBELF_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libelf
 export LIBFFI_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libffi
 
-export CUDAPATH=/usr/tce/packages/cuda/cuda-9.1.85
-export CUDALIB=/usr/tce/packages/cuda/cuda-9.1.85/lib64
-export CUDABIN=/usr/tce/packages/cuda/cuda-9.1.85/bin
-export LIBRARY_PATH=/usr/tce/packages/cuda/cuda-9.1.85/lib64:$LIBRARY_PATH
+# export CUDAPATH=/usr/tce/packages/cuda/cuda-9.1.85
+# export CUDALIB=/usr/tce/packages/cuda/cuda-9.1.85/lib64
+# export CUDABIN=/usr/tce/packages/cuda/cuda-9.1.85/bin
+# export LIBRARY_PATH=/usr/tce/packages/cuda/cuda-9.1.85/lib64:$LIBRARY_PATH
