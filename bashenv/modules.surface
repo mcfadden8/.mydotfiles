@@ -1,0 +1,4 @@
+module purge
+module use /opt/modules/modulefiles
+module load cudatoolkit/9.1 gnu/4.9.2
+module list
