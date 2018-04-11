@@ -1,2 +1,2 @@
 #!/bin/bash
-export MJM_SESSION="umpire"
+export MJM_SESSION="ompd"

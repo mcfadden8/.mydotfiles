@@ -23,10 +23,11 @@ for d in $INSTALLDIR $INSTALLDIR2 $BUILDDIR $SRCDIR $HOME/.bin/$MJM_ARCH; do
 done
 
 export LD_LIBRARY_PATH=$INSTALLDIR/lib:$INSTALLDIR2/lib:$LD_LIBRARY_PATH
-export PATH=$INSTALLDIR/bin:$INSTALLDIR2/bin:$MJM_BIN:$PATH
+export PATH=$INSTALLDIR/bin:$INSTALLDIR2/bin:$MJM_BIN:$PATH:/usr/tcetmp/bin
 
 export LIBELF_ROOT_DIR=$MJM_BIN/libelf
 export LIBFFI_ROOT_DIR=$MJM_BIN/libffi
 
 ulimit -c unlimited
+shopt -s direxpand
 
