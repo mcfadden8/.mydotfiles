@@ -4,11 +4,11 @@ options=("lriot" "umpire")
 select opt in "${options[@]}"
 do
   case $opt in
-      "lriot")
+      "umpire")
           export MJM_SESSION=$opt
           break
           ;;
-      "umpire")
+      "lriot")
           export MJM_SESSION=$opt
           break
           ;;
