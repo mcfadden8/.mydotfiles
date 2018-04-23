@@ -1,9 +1,13 @@
 #!/bin/bash
 PS3='Please enter session choice: '
-options=("umpire" "ompd")
+options=("ares" "umpire" "ompd")
 select opt in "${options[@]}"
 do
   case $opt in
+      "ares")
+          export MJM_SESSION=$opt
+          break
+          ;;
       "ompd")
           export MJM_SESSION=$opt
           break
@@ -18,5 +22,3 @@ do
           ;;
   esac
 done
-
-. /usr/gapps/ares/bin/ares.bashrc

@@ -1,15 +1,19 @@
 # module load clang/coral-2017.11.30 cuda/9.0.176 cmake/3.9.2
 module purge
-module load cuda cmake clang spectrum-mpi/2017.04.03
+module load python cuda cmake clang spectrum-mpi/2017.04.03
 
 # module load clang/4.0.0 cuda/9.1.85 cmake
 # module load cuda cmake clang
 module list
 
-. /usr/gapps/ares/bin/ares.bashrc
+if [[ $MJM_SESSION == "ares" ]]; then
+  . /usr/gapps/ares/bin/ares.bashrc
+fi
 
-export LIBELF_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libelf
-export LIBFFI_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libffi
+if [[ $MJM_SESSION == "ompd" ]]; then
+  export LIBELF_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libelf
+  export LIBFFI_ROOT_DIR=~/.bin/linux-rhel7-ppc64le/libffi
+fi
 
 # export CUDAPATH=/usr/tce/packages/cuda/cuda-9.0.176
 # export CUDALIB=/usr/tce/packages/cuda/cuda-9.0.176/lib64
