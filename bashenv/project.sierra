@@ -1,6 +1,6 @@
 #!/bin/bash
 PS3='Please enter session choice: '
-options=("lriot" "umpire")
+options=("ompd" "lriot" "umpire")
 select opt in "${options[@]}"
 do
   case $opt in
@@ -9,6 +9,10 @@ do
           break
           ;;
       "lriot")
+          export MJM_SESSION=$opt
+          break
+          ;;
+      "ompd")
           export MJM_SESSION=$opt
           break
           ;;

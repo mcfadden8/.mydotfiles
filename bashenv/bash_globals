@@ -4,9 +4,15 @@
 export MJM_HOST=`hostname -s | sed -e "s/[0-9]*$//"`
 
 if [[ $MJM_HOST == "rz"* ]]; then
-    export MJM_WS=/usr/workspace/wsrzd/martymcf
+  export MJM_WS=/usr/workspace/wsrzd/martymcf
+elif [[ $MJM_HOST == "cztb" ]]; then
+  export MJM_WS=/home/martymcf
 else
+  if [ -d /usr/workspace/wsb/martymcf ]; then
     export MJM_WS=/usr/workspace/wsb/martymcf
+  else
+    export MJM_WS=$HOME
+  fi
 fi
 
 if [ ! -d $HOME/.mydotfiles/.arch_cache ]; then
@@ -52,15 +58,20 @@ export TMPDIR=$TMP
 export SSH_ASKPASS=""
 export EDITOR=vim
 
-if [ -f $HOME/.mydotfiles/bashenv/project.$MJM_HOST ]; then
-    . $HOME/.mydotfiles/bashenv/project.$MJM_HOST
-elif [ -f $HOME/.mydotfiles/bashenv/project.default ]; then
-    . $HOME/.mydotfiles/bashenv/project.default
-else
-  export MJM_SESSION=work
-fi
+export MJM_SESSION="No Project"
 
-export INSTALLDIR=$HOME/$MJM_SESSION/install/$MJM_ARCH/install
+export INSTALLDIR=$HOME/sessionlink/install/$MJM_ARCH/install
 export INSTALLDIR2=$INSTALLDIR".2"
-export BUILDDIR=$HOME/$MJM_SESSION/build/$MJM_ARCH
-export SRCDIR=$HOME/$MJM_SESSION/src
+export BUILDDIR=$HOME/sessionlink/build/$MJM_ARCH
+export SRCDIR=$HOME/sessionlink/src
+
+function project {
+  if [ -z ${1+x} ]; then 
+    echo "Current Project is: " $MJM_SESSION
+  else
+    rm -f $HOME/.session
+    mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
+    ln -s $MJM_WS/$1 $HOME/.session
+    export MJM_SESSION=$1
+  fi
+}
