@@ -60,10 +60,10 @@ export EDITOR=vim
 
 export MJM_SESSION="No Project"
 
-export INSTALLDIR=$HOME/sessionlink/install/$MJM_ARCH/install
+export INSTALLDIR=$HOME/.session/install/$MJM_ARCH/install
 export INSTALLDIR2=$INSTALLDIR".2"
-export BUILDDIR=$HOME/sessionlink/build/$MJM_ARCH
-export SRCDIR=$HOME/sessionlink/src
+export BUILDDIR=$HOME/.session/build/$MJM_ARCH
+export SRCDIR=$HOME/.session/src
 
 function project {
   if [ -z ${1+x} ]; then 
