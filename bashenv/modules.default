@@ -1,5 +1,5 @@
 if [ "$MJM_TOSSVERSION" = "3" ]; then
     module purge
-    module use /opt/modules/modulefiles
-    module load cudatoolkit/8.0 clang/4.0.0
+    module load cudatoolkit clang
+    module list
 fi

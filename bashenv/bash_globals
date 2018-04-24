@@ -73,5 +73,8 @@ function project {
     mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
     ln -s $MJM_WS/$1 $HOME/.session
     export MJM_SESSION=$1
+    if [[ "$MJM_SESSION" == "ares" ]]; then
+      . /usr/gapps/ares/bin/ares.bashrc
+    fi
   fi
 }

@@ -4,6 +4,10 @@ if [ -e $HOME/.mydotfiles/bashenv/bash_globals ]; then
     . $HOME/.mydotfiles/bashenv/bash_globals
 fi
 
+if [ -e $HOME/.mydotfiles/bashenv/modules.$MJM_HOST ]; then
+    . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
+fi
+
 if [ -e $HOME/.bashrc ]; then
 	. $HOME/.bashrc
 fi
