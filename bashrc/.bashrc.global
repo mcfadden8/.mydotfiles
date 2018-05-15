@@ -90,7 +90,7 @@ prompt_command () {
     local TABNAME="\033]0;${HOSTNAME%%.*}\007"
     printf "\033k${HOSTNAME%%.*} - ${NODE_TYPE}\033\\"
     export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${CYAN}[ ${BCYAN}\u${GREEN}@${BCYAN}\
-\h${DKGRAY}(${NODE_TYPE} - ${MJM_SESSION}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
+\h${GRAY}(${NODE_TYPE} - ${MJM_SESSION}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
 \w\n${GREEN}${BRANCH}${DEFAULT}$ "
     history -a
     history -c
