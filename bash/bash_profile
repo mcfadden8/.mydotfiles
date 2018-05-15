@@ -49,11 +49,11 @@ else
     export MJM_TOSSVERSION=0
 fi
 
-if [ -d /nfs/tmp2/martymcf ]; then
-  export TMP=/nfs/tmp2/martymcf
-else
+# if [ -d /nfs/tmp2/martymcf ]; then
+  # export TMP=/nfs/tmp2/martymcf
+# else
   export TMP=/tmp
-fi
+# fi
 
 export TMPDIR=$TMP
 export SSH_ASKPASS=""
