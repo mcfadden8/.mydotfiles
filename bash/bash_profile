@@ -66,20 +66,6 @@ export INSTALLDIR2=$INSTALLDIR".2"
 export BUILDDIR=$HOME/.session.$MJM_HOST/build/$MJM_ARCH
 export SRCDIR=$HOME/.session.$MJM_HOST/src
 
-function project {
-  if [ -z ${1+x} ]; then 
-    echo "Current Project is: " $MJM_SESSION
-  else
-    rm -f $HOME/.session.$MJM_HOST $HOME/.session
-    mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
-    ln -s $MJM_WS/$1 $HOME/.session.$MJM_HOST
-    export MJM_SESSION=$1
-    if [[ "$MJM_SESSION" == "ares" ]]; then
-      . /usr/gapps/ares/bin/ares.bashrc
-    fi
-  fi
-}
-
 if [ -e $HOME/.mydotfiles/bashenv/modules.$MJM_HOST ]; then
     . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
 fi

@@ -2,6 +2,20 @@ function functions {
   typeset -F
 }
 
+function project {
+  if [ -z ${1+x} ]; then 
+    echo "Current Project is: " $MJM_SESSION
+  else
+    rm -f $HOME/.session.$MJM_HOST $HOME/.session
+    mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
+    ln -s $MJM_WS/$1 $HOME/.session.$MJM_HOST
+    export MJM_SESSION=$1
+    if [[ "$MJM_SESSION" == "ares" ]]; then
+      . /usr/gapps/ares/bin/ares.bashrc
+    fi
+  fi
+}
+
 function update_dots {
   (cd $HOME/.mydotfiles; git pull)
 }
@@ -85,13 +99,14 @@ prompt_command () {
     # return color to Terminal setting for text color
     local DEFAULT="\[\033[0;39m\]"
     # set the titlebar to the last 2 fields of pwd
+    local MYPWD=`pwdtail`
     local TITLEBAR='\[\e]2;`pwdtail`\a'
     local NODE_TYPE=`node_prompt`
     local TABNAME="\033]0;${HOSTNAME%%.*}\007"
     printf "\033k${HOSTNAME%%.*} - ${NODE_TYPE}\033\\"
     export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${CYAN}[ ${BCYAN}\u${GREEN}@${BCYAN}\
 \h${GRAY}(${NODE_TYPE} - ${MJM_SESSION}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
-\w\n${GREEN}${BRANCH}${DEFAULT}$ "
+${MYPWD}\n${GREEN}${BRANCH}${DEFAULT}$ "
     history -a
     history -c
     history -r
@@ -107,7 +122,7 @@ fmt_time () { #format time just the way I likes it
     date +"%l:%M:%S$meridiem"|sed 's/ //g'
 }
 pwdtail () { #returns the last 2 fields of the working directory
-    pwd|awk -F/ '{nlast = NF -1;print $nlast"/"$NF}'
+    pwd -P
 }
 chkload () { #gets the current 1m avg CPU load
     local CURRLOAD=`uptime|awk '{print $8}'`
