@@ -49,12 +49,7 @@ else
     export MJM_TOSSVERSION=0
 fi
 
-# if [ -d /nfs/tmp2/martymcf ]; then
-  # export TMP=/nfs/tmp2/martymcf
-# else
-  export TMP=/tmp
-# fi
-
+export TMP=/tmp
 export TMPDIR=$TMP
 export SSH_ASKPASS=""
 export EDITOR=vim
@@ -89,6 +84,9 @@ export LIBELF_ROOT_DIR=$MJM_BIN/libelf
 export LIBFFI_ROOT_DIR=$MJM_BIN/libffi
 
 ulimit -c unlimited
-shopt -s direxpand
+
+if shopt | grep -q direxpand ; then 
+  shopt -s direxpand
+fi
 
 
