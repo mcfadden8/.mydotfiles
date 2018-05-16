@@ -1,9 +1,13 @@
 Host *
+  ForwardX11 yes
   ControlMaster auto
   ControlPath /tmp/%r@%h:%p
   ControlPersist 12h
 
-Host rzgw tbgw1
+Host github* cz-bitbucket* rz-bitbucket*
+  ForwardX11 no
+
+Host rzgw 
   User     martymcf
   HostName %h.llnl.gov
 
@@ -16,8 +20,13 @@ Host rzgenie rzhasgpu rztopaz rztrona
   HostName     %h.llnl.gov
   ProxyCommand ssh -Y rzgw nc %h 622
 
-Host opal ray surface quartz
+Host tt-fey
+  User         martymcf
+  HostName     %h.lanl.gov
+  ProxyCommand ssh -Y czgw nc %h 622
+
+Host borax cab catalyst opal pascal quartz ray surface syrah tbgw1 tossdev ulna vulcan
   User     martymcf
-  HostName %h.llnl.gov
+  #HostName %h.llnl.gov
   ProxyCommand ssh -Y czgw nc %h 622
 
