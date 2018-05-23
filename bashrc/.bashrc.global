@@ -74,8 +74,6 @@ alias rztoss="ssh -Y rztrona"
 export HISTSIZE=5000
 export HISTFILESIZE=20000
 shopt -s histappend                       # append history file
-# export PROMPT_COMMAND="history -a"        # update histfile after every command
-#
 
 prompt_command () {
     if [ $? -eq 0 ]; then # set an error string for the prompt, if applicable
@@ -149,3 +147,6 @@ function node_prompt
     echo "LOGIN"
   fi
 }
+
+export HISTSIZE=50000
+export HISTFILESIZE=100000
