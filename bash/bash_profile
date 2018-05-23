@@ -32,7 +32,11 @@ fi
 
 export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
 
-export MJM_BIN=$HOME/.bin/$MJM_ARCH
+if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
+  export MJM_BIN=$HOME/.bin/$MJM_ARCH.$MJM_HOST
+else
+  export MJM_BIN=$HOME/.bin/$MJM_ARCH
+fi
 
 if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
   export PATH=$HOME/spack.$MJM_HOST/bin:$PATH
