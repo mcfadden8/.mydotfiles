@@ -66,6 +66,7 @@ alias b=popd
 alias h=history
 alias J="jobs -l"
 alias vi=vim
+alias vim="vim --startuptime ~/vim.log"
 
 # TOSS3 Clusters on CZ
 # Borax(Intel), 48 nodes, B654, Serial
