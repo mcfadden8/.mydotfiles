@@ -2,15 +2,23 @@ function functions {
   typeset -F
 }
 
+function current_project {
+    if x=`readlink $HOME/.session.$MJM_HOST`; then
+      basename $x
+    else
+      echo "No Project"
+    fi
+}
+
 function project {
+  local myproject=`current_project`
   if [ -z ${1+x} ]; then 
-    echo "Current Project is: " $MJM_SESSION
+    echo "Current Project is: " $myproject
   else
     rm -f $HOME/.session.$MJM_HOST $HOME/.session
     mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
     ln -s $MJM_WS/$1 $HOME/.session.$MJM_HOST
-    export MJM_SESSION=$1
-    if [[ "$MJM_SESSION" == "ares" ]]; then
+    if [[ "$myproject" == "ares" ]]; then
       . /usr/gapps/ares/bin/ares.bashrc
     fi
   fi
@@ -84,6 +92,7 @@ prompt_command () {
     if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
         BRANCH="\$(__git_ps1 '[ %s ] ')"
     fi
+    local myproject=`current_project`
     local TIME=`fmt_time` # format time for prompt string
     local LOAD=`uptime|awk '{min=NF-2;print $min}'`
     #local COLOR_GREEN="\[\033[0;32m\]"
@@ -119,7 +128,7 @@ prompt_command () {
     local NODE_TYPE=`node_prompt`
     local TABNAME="\033]0;${HOSTNAME%%.*}\007"
     printf "\033k${HOSTNAME%%.*} - ${NODE_TYPE}\033\\"
-    export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${COLOR_WHITE}${TIME} ${COLOR_BLUE}[ \u@\h (${NODE_TYPE} - ${MJM_SESSION}) ]${COLOR_RED}$ERRPROMPT${COLOR_NC}${MYPWD} ${COLOR_GREEN}${BRANCH}\n${COLOR_DEFAULT}$ "
+    export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${COLOR_WHITE}${TIME} ${COLOR_BLUE}[ \u@\h (${NODE_TYPE} - ${myproject}) ]${COLOR_RED}$ERRPROMPT${COLOR_NC}${MYPWD} ${COLOR_GREEN}${BRANCH}\n${COLOR_DEFAULT}$ "
     history -a
     history -c
     history -r
