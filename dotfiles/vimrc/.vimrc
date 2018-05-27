@@ -31,9 +31,9 @@ nnoremap ,<space> :nohlsearch<CR>
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " autocmd VimEnter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Jump to the main window.
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 nnoremap ,f :NERDTreeToggle<CR>
 nnoremap <silent> ,v :NERDTreeFind<CR>
 " let NERDTreeQuitOnOpen = 1
