@@ -17,6 +17,12 @@ syntax enable                       " enable syntax processing
 filetype plugin indent on
 set expandtab ts=2 sw=2 ai
 
+" set different tab stops
+nnoremap ,2 :set expandtab ts=2 sw=2 ai<CR>
+nnoremap ,3 :set expandtab ts=3 sw=3 ai<CR>
+nnoremap ,4 :set expandtab ts=4 sw=4 ai<CR>
+nnoremap ,8 :set expandtab ts=8 sw=8 ai<CR>
+
 set nowrap                          " No wrapping of lines, let them go across one row
 set number                          " Show line number in first column
 set backspace=indent,eol,start      " allow backspacing over everything in insert mode
