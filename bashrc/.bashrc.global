@@ -15,9 +15,9 @@ function project {
   if [ -z ${1+x} ]; then 
     echo "Current Project is: " $myproject
   else
-    rm -f $HOME/.session.$MJM_HOST $HOME/.session
+    rm -f $HOME/.sessions/$MJM_HOST
     mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
-    ln -s $MJM_WS/$1 $HOME/.session.$MJM_HOST
+    ln -s $MJM_WS/$1 $HOME/.sessions/$MJM_HOST
     if [[ "$myproject" == "ares" ]]; then
       . /usr/gapps/ares/bin/ares.bashrc
     fi
