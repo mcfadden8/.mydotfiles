@@ -22,7 +22,6 @@ for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch
 do
   if [[ -d /p/$scratchdir/martymcf ]]; then
     export MJM_SCRATCH=/p/$scratchdir/martymcf
-    echo MJM_SCRATCH set to $MJM_SCRATCH
     break
   fi
 done

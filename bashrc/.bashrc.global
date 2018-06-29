@@ -16,9 +16,19 @@ function project {
     echo "Current Project is: " $myproject
   else
     rm -f $HOME/.sessions/$MJM_HOST
-    mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
-    ln -s $MJM_WS/$1 $HOME/.sessions/$MJM_HOST
-    if [[ "$myproject" == "ares" ]]; then
+
+    # mkdir -p $MJM_WS/$1/src $MJM_WS/$1/build/$MJM_ARCH $MJM_WS/$1/install/$MJM_ARCH/install $MJM_WS/$1/install/$MJM_ARCH/install2
+    mkdir -p $MJM_WS/projects/$1/src $MJM_SCRATCH/projects/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$1/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$1/install/$MJM_ARCH/install2
+
+    if [ "$MJM_WS" != "$MJM_SCRATCH" ]
+    then
+      rm -f $MJM_WS/projects/$1/install $MJM_WS/projects/$1/build
+      ln -s $MJM_SCRATCH/projects/$1/build $MJM_WS/projects/$1/build 
+      ln -s $MJM_SCRATCH/projects/$1/install $MJM_WS/projects/$1/install 
+    fi
+
+    ln -s $MJM_WS/projects/$1 $HOME/.sessions/$MJM_HOST
+    if [ "$myproject" == "ares" ]; then
       . /usr/gapps/ares/bin/ares.bashrc
     fi
   fi
