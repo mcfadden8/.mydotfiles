@@ -18,7 +18,7 @@ fi
 
 export MJM_SCRATCH=$MJM_WS
 
-for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr
+for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9
 do
   if [[ -d /p/$scratchdir/martymcf ]]; then
     export MJM_SCRATCH=/p/$scratchdir/martymcf
