@@ -7,3 +7,10 @@ if [ -f $HOME/.mydotfiles/bashenv/rc.$MJM_ARCH ]; then
     . $HOME/.mydotfiles/bashenv/rc.$MJM_ARCH
 fi
 
+bmake() {
+  bsub -Is -n 1 -R "span[ptile=1]" make $@
+}
+
+bcmd() {
+  bsub -Is -n 1 -R "span[ptile=1]" $@
+}

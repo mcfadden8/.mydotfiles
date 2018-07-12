@@ -28,7 +28,7 @@ set number                          " Show line number in first column
 set backspace=indent,eol,start      " allow backspacing over everything in insert mode
 
 set hlsearch                        " search highlighting
-set ignorecase                      " case insensitive search
+" set ignorecase                      " case insensitive search
 set noincsearch		                  " no incremental searching
 
 " toggle search highlight
