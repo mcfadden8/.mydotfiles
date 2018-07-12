@@ -30,17 +30,16 @@ if [ ! -d $HOME/.mydotfiles/.arch_cache ]; then
   mkdir -p $HOME/.mydotfiles/.arch_cache
 fi
 
+export PATH=$MJM_SCRATCH/spack/bin:$PATH
+
 if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
-  if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
-    $HOME/spack.$MJM_HOST/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
-  elif [ -f $HOME/spack/bin/spack ]; then
-    $HOME/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+  if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
+    $MJM_SCRATCH/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+    export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
   else
-    uname -m > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+    export MJM_ARCH=`uname -m`
   fi
 fi
-
-export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
 
 if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
   export MJM_BIN=$HOME/.bin/$MJM_ARCH.$MJM_HOST
