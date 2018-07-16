@@ -41,6 +41,12 @@ if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
   fi
 fi
 
+if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
+  export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+else
+  export MJM_ARCH=`uname -m`
+fi
+
 if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
   export MJM_BIN=$HOME/.bin/$MJM_ARCH.$MJM_HOST
 else
