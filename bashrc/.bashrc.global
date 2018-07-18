@@ -12,6 +12,11 @@ function current_project {
 
 function project {
   local myproject=`current_project`
+
+  if [ ! -d $HOME/.sessions ]; then
+    mkdir -p $HOME/.sessions
+  fi
+
   if [ -z ${1+x} ]; then 
     echo "Current Project is: " $myproject
   else
@@ -26,10 +31,14 @@ function project {
       ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/install 
     fi
 
+    rm -f $MJM_WS/projects/$MJM_HOST/$1/src 
     ln -s $MJM_WS/projects/src/$1 $MJM_WS/projects/$MJM_HOST/$1/src 
+    rm -f $HOME/.sessions/$MJM_HOST
     ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
     if [ "$myproject" == "ares" ]; then
-      . /usr/gapps/ares/bin/ares.bashrc
+      if [ -f /usr/gapps/ares/bin/ares.bashrc ]; then
+        . /usr/gapps/ares/bin/ares.bashrc
+      fi
     fi
   fi
 }
