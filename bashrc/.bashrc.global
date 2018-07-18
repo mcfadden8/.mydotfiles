@@ -23,10 +23,10 @@ function project {
     then
       rm -f $MJM_WS/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/build
       ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/build $MJM_WS/projects/$MJM_HOST/$1/build 
-      ln -s $MJM_WS/projects/src/$1 $MJM_WS/projects/$MJM_HOST/$1/src 
       ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/install 
     fi
 
+    ln -s $MJM_WS/projects/src/$1 $MJM_WS/projects/$MJM_HOST/$1/src 
     ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
     if [ "$myproject" == "ares" ]; then
       . /usr/gapps/ares/bin/ares.bashrc
