@@ -26,6 +26,14 @@ do
   fi
 done
 
+for scratchdir in lscratchh lscratchd lscratche lscratchf
+do
+  if [[ -d /p/$scratchdir/martymcf ]]; then
+    export MJM_SCRATCH2=/p/$scratchdir/martymcf
+    break
+  fi
+done
+
 if [ ! -d $HOME/.mydotfiles/.arch_cache ]; then
   mkdir -p $HOME/.mydotfiles/.arch_cache
 fi
@@ -127,3 +135,8 @@ function start_agent {
 # else
     # start_agent;
 # fi
+
+# Cause ctest to always produce output when/if
+# ctest tests fail.
+#
+export CTEST_OUTPUT_ON_FAILURE=TRUE
