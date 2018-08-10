@@ -14,3 +14,7 @@ bmake() {
 bcmd() {
   bsub -Is -n 1 -R "span[ptile=1]" $@
 }
+
+if [ -f $HOME/.mydotfiles/hacks/bsub_path_hack.$MJM_HOST ]; then
+  . $HOME/hacks/bsub_path_hack.$MJM_HOST
+fi
