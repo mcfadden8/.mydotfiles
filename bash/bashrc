@@ -16,5 +16,5 @@ bcmd() {
 }
 
 if [ -f $HOME/.mydotfiles/hacks/bsub_path_hack.$MJM_HOST ]; then
-  . $HOME/hacks/bsub_path_hack.$MJM_HOST
+  . $HOME/.mydotfiles/hacks/bsub_path_hack.$MJM_HOST
 fi
