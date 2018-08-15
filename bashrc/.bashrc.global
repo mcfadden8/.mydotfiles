@@ -91,13 +91,13 @@ alias vim="vim --startuptime ~/vim.log"
 # Borax(Intel), 48 nodes, B654, Serial
 # Opal, 192 nodes, B451, Serial (LC Testing)
 # Quartz(Intel), 2688 nodes, B654, Serial
-alias cztoss="ssh quartz"
+alias cztoss="ssh -Y quartz"
 
 # TOSS3 Clusters on RZ
 # RZGenie(Intel), 48 nodes, B451, Serial
 # RZTopaz(Intel), 768 nodes, B654, Serial (LC Testing)
 # RZTrona(Intel), 2688 nodes, B654, Serial
-alias rztoss="ssh rztrona"
+alias rztoss="ssh -Y rzgenie"
 
 export HISTSIZE=5000
 export HISTFILESIZE=20000
