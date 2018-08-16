@@ -56,9 +56,11 @@ else
 fi
 
 if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
-  export MJM_BIN=$HOME/.bin/$MJM_ARCH.$MJM_HOST/bin
+  export MJM_SPACK=$HOME/.bin/$MJM_ARCH.$MJM_HOST
+  export MJM_BIN=$MJM_SPACK/bin
 else
-  export MJM_BIN=$HOME/.bin/$MJM_ARCH/bin
+  export MJM_SPACK=$HOME/.bin/$MJM_ARCH
+  export MJM_BIN=$MJM_SPACK/bin
 fi
 
 if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
