@@ -40,19 +40,17 @@ fi
 
 export PATH=$MJM_SCRATCH/spack/bin:$PATH
 
-if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
-  if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
-    $MJM_SCRATCH/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
-    export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
-  else
-    export MJM_ARCH=`uname -m`
+if [ -z ${SYS_TYPE+x} ]; then 
+  if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
+    if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
+      $MJM_SCRATCH/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+      export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+    else
+      export MJM_ARCH=`uname -m`
+    fi
   fi
-fi
-
-if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
-  export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
 else
-  export MJM_ARCH=`uname -m`
+  export MJM_ARCH=$SYS_TYPE
 fi
 
 if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
@@ -78,8 +76,6 @@ else
     export MJM_TOSSVERSION=0
 fi
 
-export TMP=/tmp
-export TMPDIR=$TMP
 export SSH_ASKPASS=""
 export EDITOR=vim
 
@@ -88,12 +84,13 @@ export INSTALLDIR2=$INSTALLDIR".2"
 export BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
 export SRCDIR=$HOME/.sessions/$MJM_HOST/src
 
+##
 if [ -e $HOME/.mydotfiles/bashenv/modules.$MJM_HOST ]; then
     . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
 fi
 
 if [ -e $HOME/.bashrc ]; then
-	. $HOME/.bashrc
+  . $HOME/.bashrc
 fi
 
 for d in $HOME/.bin/$MJM_ARCH; do
@@ -118,18 +115,9 @@ fi
 
 SSH_ENV="$HOME/.ssh/environment"
 
-function start_agent {
-    echo "Initialising new SSH agent..."
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add;
-}
-
 # Cause ctest to always produce output when/if
 # ctest tests fail.
 #
 export CTEST_OUTPUT_ON_FAILURE=TRUE
 
-if [ -z ${SYS_TYPE+x} ]; then echo "None-TOSS System"; else echo "SYS_TYPE='$SYS_TYPE'"; fi
+if [ -z ${SYS_TYPE+x} ]; then echo "Not a TOSS System"; else echo "SYS_TYPE='$SYS_TYPE'"; fi
