@@ -48,6 +48,8 @@ if [ -z ${SYS_TYPE+x} ]; then
     else
       export MJM_ARCH=`uname -m`
     fi
+  else
+    export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
   fi
 else
   export MJM_ARCH=$SYS_TYPE
