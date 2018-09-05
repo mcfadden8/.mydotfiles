@@ -1,3 +1,2 @@
-module purge
 module load cuda cmake clang 
 module list
