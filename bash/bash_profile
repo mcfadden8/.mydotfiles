@@ -2,124 +2,124 @@
 
 stty erase 
 
-export MJM_HOST=`hostname -s | sed -e "s/[0-9]*$//"`
+export MJM_EXIT_EARLY="no"
+if [[ $MJM_EXIT_EARLY == "no" ]]; then
+  export MJM_HOST=`hostname -s | sed -e "s/[0-9]*$//"`
 
-if [[ $MJM_HOST == "rz"* ]]; then
-  export MJM_WS=/usr/workspace/wsrzd/martymcf
-elif [[ $MJM_HOST == "cztb" ]]; then
-  export MJM_WS=/home/martymcf
-else
-  if [ -d /usr/workspace/wsb/martymcf ]; then
-    export MJM_WS=/usr/workspace/wsb/martymcf
+  if [[ $MJM_HOST == "rz"* ]]; then
+    export MJM_WS=/usr/workspace/wsrzd/martymcf
+  elif [[ $MJM_HOST == "cztb" ]]; then
+    export MJM_WS=/home/martymcf
   else
-    export MJM_WS=$HOME
-  fi
-fi
-
-export MJM_SCRATCH=$MJM_WS
-
-for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1
-do
-  if [[ -d /p/$scratchdir/martymcf ]]; then
-    export MJM_SCRATCH=/p/$scratchdir/martymcf
-    break
-  fi
-done
-
-for scratchdir in lscratchh lscratchd lscratche lscratchf
-do
-  if [[ -d /p/$scratchdir/martymcf ]]; then
-    export MJM_SCRATCH2=/p/$scratchdir/martymcf
-    break
-  fi
-done
-
-if [ ! -d $HOME/.mydotfiles/.arch_cache ]; then
-  mkdir -p $HOME/.mydotfiles/.arch_cache
-fi
-
-export PATH=$MJM_SCRATCH/spack/bin:$PATH
-
-if [ -z ${SYS_TYPE+x} ]; then 
-  if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
-    if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
-      $MJM_SCRATCH/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
-      export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+    if [ -d /usr/workspace/wsb/martymcf ]; then
+      export MJM_WS=/usr/workspace/wsb/martymcf
     else
-      export MJM_ARCH=`uname -m`
+      export MJM_WS=$HOME
+    fi
+  fi
+
+  export MJM_SCRATCH=$MJM_WS
+
+  for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1
+  do
+    if [[ -d /p/$scratchdir/martymcf ]]; then
+      export MJM_SCRATCH=/p/$scratchdir/martymcf
+      break
+    fi
+  done
+
+  for scratchdir in lscratchh lscratchd lscratche lscratchf
+  do
+    if [[ -d /p/$scratchdir/martymcf ]]; then
+      export MJM_SCRATCH2=/p/$scratchdir/martymcf
+      break
+    fi
+  done
+
+  if [ ! -d $HOME/.mydotfiles/.arch_cache ]; then
+    mkdir -p $HOME/.mydotfiles/.arch_cache
+  fi
+
+  export PATH=$MJM_SCRATCH/spack/bin:$PATH
+
+  if [ -z ${SYS_TYPE+x} ]; then 
+    if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
+      if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
+        $MJM_SCRATCH/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+        export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+      else
+        export MJM_ARCH=`uname -m`
+      fi
+    else
+      export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
     fi
   else
-    export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+    export MJM_ARCH=$SYS_TYPE
   fi
-else
-  export MJM_ARCH=$SYS_TYPE
-fi
 
-if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
-  export MJM_SPACK=$HOME/.bin/$MJM_ARCH.$MJM_HOST
-  export MJM_BIN=$MJM_SPACK/bin
-else
-  export MJM_SPACK=$HOME/.bin/$MJM_ARCH
-  export MJM_BIN=$MJM_SPACK/bin
-fi
+  if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
+    export MJM_SPACK=$HOME/.bin/$MJM_ARCH.$MJM_HOST
+    export MJM_BIN=$MJM_SPACK/bin
+  else
+    export MJM_SPACK=$HOME/.bin/$MJM_ARCH
+    export MJM_BIN=$MJM_SPACK/bin
+  fi
 
-if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
-  export PATH=$HOME/spack.$MJM_HOST/bin:$PATH
-elif [ -f $HOME/spack/bin/spack ]; then
-  export PATH=$HOME/spack/bin:$PATH
-fi
+  if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
+    export PATH=$HOME/spack.$MJM_HOST/bin:$PATH
+  elif [ -f $HOME/spack/bin/spack ]; then
+    export PATH=$HOME/spack/bin:$PATH
+  fi
 
-if [ -f /etc/toss-release ]; then
-    MJM_TOSSVERSION=`cat /etc/toss-release`
-    MJM_TOSSVERSION=${MJM_TOSSVERSION#*-}
-    MJM_TOSSVERSION=${MJM_TOSSVERSION#*-}
-    export MJM_TOSSVERSION=${MJM_TOSSVERSION%%.*}
-else
-    export MJM_TOSSVERSION=0
-fi
+  if [ -f /etc/toss-release ]; then
+      MJM_TOSSVERSION=`cat /etc/toss-release`
+      MJM_TOSSVERSION=${MJM_TOSSVERSION#*-}
+      MJM_TOSSVERSION=${MJM_TOSSVERSION#*-}
+      export MJM_TOSSVERSION=${MJM_TOSSVERSION%%.*}
+  else
+      export MJM_TOSSVERSION=0
+  fi
 
-export SSH_ASKPASS=""
-export EDITOR=vim
+  export SSH_ASKPASS=""
+  export EDITOR=vim
 
-export INSTALLDIR=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install
-export INSTALLDIR2=$INSTALLDIR".2"
-export BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
-export SRCDIR=$HOME/.sessions/$MJM_HOST/src
+  export INSTALLDIR=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install
+  export INSTALLDIR2=$INSTALLDIR".2"
+  export BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
+  export SRCDIR=$HOME/.sessions/$MJM_HOST/src
 
-##
-if [ -e $HOME/.mydotfiles/bashenv/modules.$MJM_HOST ]; then
-    . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
-fi
+  ##
+  if [ -e $HOME/.mydotfiles/bashenv/modules.$MJM_HOST ]; then
+      . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
+  fi
 
-if [ -e $HOME/.bashrc ]; then
-  . $HOME/.bashrc
-fi
+  if [ -e $HOME/.bashrc ]; then
+    . $HOME/.bashrc
+  fi
 
-for d in $HOME/.bin/$MJM_ARCH; do
-  if [ ! -d $d ]; then
-    if [ ! -h $d ]; then
-      mkdir -p $d
+  for d in $HOME/.bin/$MJM_ARCH; do
+    if [ ! -d $d ]; then
+      if [ ! -h $d ]; then
+        mkdir -p $d
+      fi
     fi
+  done
+
+  export LD_LIBRARY_PATH=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install/lib:$LD_LIBRARY_PATH
+  export PATH=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install/bin:$MJM_BIN:$PATH
+
+  ulimit -c unlimited
+
+  if shopt | grep -q direxpand ; then 
+    shopt -s direxpand
   fi
-done
 
-export LD_LIBRARY_PATH=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install/lib:$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install2/lib:$LD_LIBRARY_PATH
-export PATH=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install/bin:$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install2/bin:$MJM_BIN:$PATH:/usr/tcetmp/bin
+  SSH_ENV="$HOME/.ssh/environment"
 
-export LIBELF_ROOT_DIR=$MJM_BIN/libelf
-export LIBFFI_ROOT_DIR=$MJM_BIN/libffi
+  # Cause ctest to always produce output when/if
+  # ctest tests fail.
+  #
+  export CTEST_OUTPUT_ON_FAILURE=TRUE
 
-ulimit -c unlimited
-
-if shopt | grep -q direxpand ; then 
-  shopt -s direxpand
+  if [ -z ${SYS_TYPE+x} ]; then echo "Not a TOSS System"; else echo "SYS_TYPE='$SYS_TYPE'"; fi
 fi
-
-SSH_ENV="$HOME/.ssh/environment"
-
-# Cause ctest to always produce output when/if
-# ctest tests fail.
-#
-export CTEST_OUTPUT_ON_FAILURE=TRUE
-
-if [ -z ${SYS_TYPE+x} ]; then echo "Not a TOSS System"; else echo "SYS_TYPE='$SYS_TYPE'"; fi

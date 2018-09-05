@@ -22,7 +22,7 @@ function project {
   else
     rm -f $HOME/.sessions/$MJM_HOST
 
-    mkdir -p $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install2
+    mkdir -p $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install
 
     if [ "$MJM_WS" != "$MJM_SCRATCH" ]
     then
