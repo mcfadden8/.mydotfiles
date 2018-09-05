@@ -57,7 +57,9 @@ function init_vim {
 #
 # MJM_HOST has been defined and exported by .bash_profile
 #
-if [ -f $HOME/.mydotfiles/bashenv/rc.$MJM_HOST ]; then
+if [ -f $HOME/.mydotfiles/bashenv/rc.$SYS_TYPE ]; then
+    . $HOME/.mydotfiles/bashenv/rc.$SYS_TYPE
+elif [ -f $HOME/.mydotfiles/bashenv/rc.$MJM_HOST ]; then
     . $HOME/.mydotfiles/bashenv/rc.$MJM_HOST
 elif [ -f $HOME/.mydotfiles/bashenv/rc.default ]; then
     . $HOME/.mydotfiles/bashenv/rc.default

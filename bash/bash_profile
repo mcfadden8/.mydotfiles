@@ -93,6 +93,10 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
       . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
   fi
 
+  if [ -e $HOME/.mydotfiles/bashenv/modules.$SYS_TYPE ]; then
+      . $HOME/.mydotfiles/bashenv/modules.$SYS_TYPE
+  fi
+
   if [ -e $HOME/.bashrc ]; then
     . $HOME/.bashrc
   fi
