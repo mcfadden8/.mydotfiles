@@ -1,2 +1,0 @@
-module load clang git cmake
-module list
