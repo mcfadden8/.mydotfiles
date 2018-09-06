@@ -1,2 +1,2 @@
-module load cuda cmake clang git
+module load cmake clang git
 module list
