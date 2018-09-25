@@ -23,13 +23,15 @@ nnoremap ,3 :set expandtab ts=3 sw=3 ai<CR>
 nnoremap ,4 :set expandtab ts=4 sw=4 ai<CR>
 nnoremap ,8 :set expandtab ts=8 sw=8 ai<CR>
 
-set nowrap                          " No wrapping of lines, let them go across one row
-set number                          " Show line number in first column
-set backspace=indent,eol,start      " allow backspacing over everything in insert mode
+set nowrap                      " No wrapping of lines, let them go across
+                                " one row
+set number                      " Show line number in first column
+set backspace=indent,eol,start  " allow backspacing over everything in
+                                " insert mode
 
-set hlsearch                        " search highlighting
-" set ignorecase                      " case insensitive search
-set noincsearch		                  " no incremental searching
+set hlsearch                    " search highlighting
+" set ignorecase                " case insensitive search
+set noincsearch                 " no incremental searching
 
 " toggle search highlight
 nnoremap ,<space> :nohlsearch<CR>
@@ -47,26 +49,33 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen=0
 
-set noruler		                      " don't show the cursor position all the time
-set cursorline                      " highlight current line
-set wildmenu                        " visual autocomplete for command menu
-set showmatch                       " highlight matching [{()}]
+set noruler                " don't show the cursor position all the time
+set cursorline             " highlight current line
+set wildmenu               " visual autocomplete for command menu
+set showmatch              " highlight matching [{()}]
 
-set foldenable                      " enable folding
-set foldlevelstart=10               " open most folds by default
-set foldnestmax=10                  " 10 nested fold max
-set foldmethod=syntax               " fold based on indent level
+set foldenable             " enable folding
+set foldlevelstart=10      " open most folds by default
+set foldnestmax=10         " 10 nested fold max
+set foldmethod=syntax      " fold based on indent level
 " space open/closes folds
 " nnoremap <space> za
 
 let c_comment_strings=1
 
-" set backup		" keep a backup file (restore to previous version)
-" set undofile		" keep an undo file (undo changes after closing)
-set history=50		" keep 50 lines of command line history
-set showcmd		    " display incomplete commands
+" set backup  " keep a backup file (restore to previous version)
+" set undofile " keep an undo file (undo changes after closing)
+set history=50 " keep 50 lines of command line history
+set showcmd     " display incomplete commands
 
 if has('mouse')
   set mouse=a
 endif
 
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+highlight ColorColumn ctermbg=10
+set colorcolumn=80
+
+" Prevent vim from clearing the screen on exit
+set t_te=
