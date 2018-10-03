@@ -72,8 +72,8 @@ if has('mouse')
   set mouse=a
 endif
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 highlight ColorColumn ctermbg=10
 set colorcolumn=80
 
