@@ -147,11 +147,11 @@ prompt_command () {
     local COLOR_DEFAULT="\[\033[0;39m\]"
     # set the titlebar to the last 2 fields of pwd
     local MYPWD=`pwdtail`
-    local TITLEBAR='\[\e]2;`pwdtail`\a'
     local NODE_TYPE=`node_prompt`
+    local TITLEBAR='\[\e]2;NODE(`node_prompt`) DIR($HOSTNAME:`pwdtail`) PROJECT(`current_project`)\a'
     local TABNAME="\033]0;${HOSTNAME%%.*}\007"
     printf "\033k${HOSTNAME%%.*} - ${NODE_TYPE}\033\\"
-    export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${COLOR_WHITE}${TIME} ${COLOR_BLUE}[ \u@\h (${NODE_TYPE} - ${myproject}) ]${COLOR_RED}$ERRPROMPT${COLOR_NC}${MYPWD} ${COLOR_GREEN}${BRANCH}\n${COLOR_DEFAULT}$ "
+    export PS1="\[${TABNAME}\]\[${TITLEBAR}\]${COLOR_WHITE}${TIME}${COLOR_RED}$ERRPROMPT${COLOR_NC}${COLOR_GREEN}${BRANCH}${COLOR_DEFAULT}$ "
     history -a
     history -c
     history -r
