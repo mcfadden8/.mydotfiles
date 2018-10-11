@@ -1,2 +1,2 @@
-module load cmake clang git
+module load cmake gcc git
 module list
