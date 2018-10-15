@@ -126,4 +126,6 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
   export CTEST_OUTPUT_ON_FAILURE=TRUE
 
   if [ -z ${SYS_TYPE+x} ]; then echo "Not a TOSS System"; else echo "SYS_TYPE='$SYS_TYPE'"; fi
+
+  if [ ! -z ${SRCDIR+x} ]; then cd ${MJM_SCRATCH}; pushd ${MJM_WS}; pushd ${BUILDDIR}; pushd ${SRCDIR}; fi
 fi
