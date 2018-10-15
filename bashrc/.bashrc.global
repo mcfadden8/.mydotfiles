@@ -146,7 +146,7 @@ prompt_command () {
     local NODE_TYPE=`node_prompt`
     # local TITLEBAR='\[\e]2;${HOSTNAME%%.*} NODE(`node_prompt`)\a'
     local TABNAME="\033]0;${HOSTNAME%%.*}\007"
-    export PS1="\[${TABNAME}\]${COLOR_CYAN}\u@\h${COLOR_NC}[${COLOR_BLUE}${NODE_TYPE}${COLOR_LIGHT_BLUE}(${myproject})${COLOR_NC} - ${COLOR_GREEN}${MYPWD}${COLOR_NC}]${COLOR_RED}$ERRPROMPT${COLOR_NC}${COLOR_GREEN}${BRANCH}${COLOR_DEFAULT}$ "
+    export PS1="\[${TABNAME}\]${COLOR_CYAN}\u@\h${COLOR_NC}[${COLOR_BLUE}${NODE_TYPE}${COLOR_LIGHT_BLUE}(${myproject})${COLOR_NC} - ${COLOR_GREEN}${MYPWD}${COLOR_NC}]${COLOR_RED}$ERRPROMPT${COLOR_NC}${COLOR_GREEN}${BRANCH}${COLOR_DEFAULT}\n$ "
     history -a
     history -c
     history -r
