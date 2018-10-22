@@ -133,7 +133,7 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
     do
       if [ -d $d ]; then 
         pushd $d
-        if [ -d $mproject ]; then cd $myproject; fi
+        if [ -d $myproject ]; then cd $myproject; fi
       fi
     done
   fi
