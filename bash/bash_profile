@@ -127,5 +127,14 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
 
   if [ -z ${SYS_TYPE+x} ]; then echo "Not a TOSS System"; else echo "SYS_TYPE='$SYS_TYPE'"; fi
 
-  if [ ! -z ${SRCDIR+x} ]; then cd ${MJM_SCRATCH}; pushd ${MJM_WS}; pushd ${BUILDDIR}; pushd ${SRCDIR}; fi
+  myproject=`current_project`
+  if [ "$myproject" != "NoProject" ]; then
+    for d in ${BUILDDIR} ${SRCDIR}
+    do
+      if [ -d $d ]; then 
+        pushd $d
+        if [ -d $mproject ]; then cd $myproject; fi
+      fi
+    done
+  fi
 fi

@@ -6,7 +6,7 @@ function current_project {
     if x=`readlink $HOME/.sessions/$MJM_HOST`; then
       basename $x
     else
-      echo "No Project"
+      echo "NoProject"
     fi
 }
 
