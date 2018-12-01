@@ -87,7 +87,7 @@ alias b=popd
 alias h=history
 alias J="jobs -l"
 alias vi=vim
-alias vim="vim --startuptime ~/vim.log"
+# alias vim="vim --startuptime ~/vim.log"
 alias less="less -X"
 
 # TOSS3 Clusters on CZ

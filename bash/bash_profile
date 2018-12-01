@@ -40,7 +40,10 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
     mkdir -p $HOME/.mydotfiles/.arch_cache
   fi
 
-  export PATH=$MJM_SCRATCH/spack/bin:$PATH
+  if [ -d $MJM_SCRATCH/spack/bin ]; then
+    . $MJM_SCRATCH/spack/share/spack/setup-env.sh
+    export PATH=$MJM_SCRATCH/spack/bin:$PATH
+  fi
 
   if [ -z ${SYS_TYPE+x} ]; then 
     if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
@@ -63,12 +66,6 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
   else
     export MJM_SPACK=$HOME/.bin/$MJM_ARCH
     export MJM_BIN=$MJM_SPACK/bin
-  fi
-
-  if [ -f $HOME/spack.$MJM_HOST/bin/spack ]; then
-    export PATH=$HOME/spack.$MJM_HOST/bin:$PATH
-  elif [ -f $HOME/spack/bin/spack ]; then
-    export PATH=$HOME/spack/bin:$PATH
   fi
 
   if [ -f /etc/toss-release ]; then
