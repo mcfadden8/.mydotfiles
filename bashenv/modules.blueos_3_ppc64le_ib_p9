@@ -1,4 +1,4 @@
-module load clang git cmake/3.9.2
+module load clang
 spack load ninja
 spack load vim
 spack load cmake
