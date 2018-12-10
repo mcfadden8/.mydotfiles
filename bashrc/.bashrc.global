@@ -1,11 +1,11 @@
 function pushd {
   builtin pushd $1 > /dev/null
-  dirs
+  dirs -p
 }
 
 function popd {
   builtin popd > /dev/null
-  dirs
+  dirs -p
 }
 
 function functions {
