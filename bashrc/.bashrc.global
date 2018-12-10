@@ -1,3 +1,13 @@
+function pushd {
+  builtin pushd $1 > /dev/null
+  dirs
+}
+
+function popd {
+  builtin popd > /dev/null
+  dirs
+}
+
 function functions {
   typeset -F
 }
