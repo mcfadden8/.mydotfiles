@@ -79,3 +79,34 @@ set colorcolumn=80
 
 " Prevent vim from clearing the screen on exit
 set t_te=
+
+function! MarkWindowSwap()
+    let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+    "Mark destination
+    let curNum = winnr()
+    let curBuf = bufnr( "%" )
+    exe g:markedWinNum . "wincmd w"
+    "Switch to source and shuffle dest->source
+    let markedBuf = bufnr( "%" )
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' curBuf
+    "Switch to dest and shuffle source->dest
+    exe curNum . "wincmd w"
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' markedBuf
+endfunction
+
+nmap <silent> ,mw :call MarkWindowSwap()<CR>
+nmap <silent> ,pw :call DoWindowSwap()<CR>
+
+" To use (assuming your mapleader is set to \) you would:
+" 
+"     Move to the window to mark for the swap via ctrl-w movement
+"     Type \mw
+"     Move to the window you want to swap
+"     Type \pw
+" 
+" Voila! Swapped buffers without screwing up your window layout!
