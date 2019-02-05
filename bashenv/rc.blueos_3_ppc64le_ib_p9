@@ -4,7 +4,7 @@ alias jbash8="bsub -W 8:00 -Is bash"
 alias jbash="bsub -W 4:00 -Is bash"
 
 export SQUEUE_FORMAT="%.7i %.9P %.8j %.8u %.8a %.2t %.10M %.10l %.6D %.8q %8Q %R"
-export LSB_DEFAULT_USERGROUP=lcstaff
+# export LSB_DEFAULT_USERGROUP=lcstaff
 alias bs1='bsub -Is -nnodes 1 -G guests'
 alias bs2='bsub -Is -nnodes 2 -G guests'
 alias bs4='bsub -Is -nnodes 4 -G guests'
