@@ -5,4 +5,5 @@ spack load cmake
 spack load git
 spack load tmux
 spack load cscope
+spack load cfitsio
 module list
