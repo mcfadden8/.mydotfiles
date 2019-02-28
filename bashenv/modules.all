@@ -1,4 +1,4 @@
-module load cmake clang
+module load clang
 spack load ninja
 spack load vim
 spack load cmake
