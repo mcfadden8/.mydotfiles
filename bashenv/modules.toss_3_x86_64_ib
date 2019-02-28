@@ -1,2 +1,2 @@
-. modules.all
+. $HOME/.mydotfiles/bashenv/modules.all
 module list
