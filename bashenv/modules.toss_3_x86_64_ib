@@ -1,2 +1,2 @@
-module load cmake gcc git
+. $HOME/.mydotfiles/bashenv/modules.all
 module list
