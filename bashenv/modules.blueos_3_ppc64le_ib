@@ -1,8 +1,2 @@
-module load clang
-spack load ninja
-spack load vim
-spack load cmake
-spack load git
-spack load tmux
-spack load cscope
+. modules.all
 module list

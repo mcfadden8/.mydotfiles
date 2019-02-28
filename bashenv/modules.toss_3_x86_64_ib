@@ -1,2 +1,2 @@
-module load cmake gcc git
+. modules.all
 module list
