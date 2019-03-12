@@ -40,15 +40,15 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
     mkdir -p $HOME/.mydotfiles/.arch_cache
   fi
 
-  if [ -d $MJM_SCRATCH/spack/bin ]; then
-    . $MJM_SCRATCH/spack/share/spack/setup-env.sh
-    export PATH=$MJM_SCRATCH/spack/bin:$PATH
+  if [ -d $MJM_WS/spack/bin ]; then
+    . $MJM_WS/spack/share/spack/setup-env.sh
+    export PATH=$MJM_WS/spack/bin:$PATH
   fi
 
   if [ -z ${SYS_TYPE+x} ]; then 
     if [ ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]; then
-      if [ -f $MJM_SCRATCH/spack/bin/spack ]; then
-        $MJM_SCRATCH/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+      if [ -f $MJM_WS/spack/bin/spack ]; then
+        $MJM_WS/spack/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
         export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
       else
         export MJM_ARCH=`uname -m`
