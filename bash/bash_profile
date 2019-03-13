@@ -2,6 +2,7 @@
 
 stty erase 
 
+date; echo "bash_profile entered"
 export MJM_EXIT_EARLY="no"
 if [[ $MJM_EXIT_EARLY == "no" ]]; then
   export MJM_HOST=`hostname -s | sed -e "s/[0-9]*$//"`
@@ -28,6 +29,7 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
     fi
   done
 
+  date; echo "MJM_SCRATCH=$MJM_WS"
   for scratchdir in lscratchh lscratchd lscratche lscratchf
   do
     if [[ -d /p/$scratchdir/martymcf ]]; then
@@ -59,6 +61,7 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
   else
     export MJM_ARCH=$SYS_TYPE
   fi
+  date; echo "MJM_ARCH=$MJM_ARCH"
 
   if [ -d $HOME/.bin/$MJM_ARCH.$MJM_HOST ]; then
     export MJM_SPACK=$HOME/.bin/$MJM_ARCH.$MJM_HOST
@@ -87,14 +90,17 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
 
   ##
   if [ -e $HOME/.mydotfiles/bashenv/modules.$MJM_HOST ]; then
+      date; echo "Adding Modules for $MJM_HOST"
       . $HOME/.mydotfiles/bashenv/modules.$MJM_HOST
   fi
 
   if [ -e $HOME/.mydotfiles/bashenv/modules.$SYS_TYPE ]; then
+      date; echo "Adding Modules for $SYS_TYPE"
       . $HOME/.mydotfiles/bashenv/modules.$SYS_TYPE
   fi
 
   if [ -e $HOME/.bashrc ]; then
+      date; echo "Doing RC"
     . $HOME/.bashrc
   fi
 
@@ -124,5 +130,6 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
 
   if [ -z ${SYS_TYPE+x} ]; then echo "Not a TOSS System"; else echo "SYS_TYPE='$SYS_TYPE'"; fi
 
+  date; echo "Setting my project"
   myproject=`current_project`
 fi
