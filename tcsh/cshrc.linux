@@ -64,3 +64,4 @@ alias J jobs -l
 alias vi vim
 alias less less -X
 alias dirs dirs -p
+alias project 'source $HOME/.mydotfiles/tcsh/sources/project'

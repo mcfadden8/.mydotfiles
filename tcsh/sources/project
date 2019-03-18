@@ -1,0 +1,50 @@
+#!/bin/tcsh
+switch ( $#argv )
+  case 0:
+    echo $MJM_PROJECT
+    breaksw
+  case 1:
+    set X=`spack arch`
+    spack load ninja arch=$X
+    spack load vim arch=$X
+    spack load cmake arch=$X
+    spack load git arch=$X
+    spack load ncdu arch=$X
+    module load clang
+    module list
+
+    setenv MJM_PROJECT $1
+    echo "Project set to: $MJM_PROJECT"
+
+    if ( ! -d $HOME/.sessions ) then
+      mkdir -p $HOME/.sessions
+    endif
+
+    mkdir -p $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install
+
+    if ( "$MJM_WS" != "$MJM_SCRATCH" ) then
+      rm -f $MJM_WS/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/build
+      ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/build $MJM_WS/projects/$MJM_HOST/$1/build 
+      ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/install 
+    endif
+
+    rm -f $MJM_WS/projects/$MJM_HOST/$1/src 
+    ln -s $MJM_WS/projects/src/$1 $MJM_WS/projects/$MJM_HOST/$1/src 
+    rm -f $HOME/.sessions/$MJM_HOST
+    ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
+
+    if ( "$MJM_PROJECT" == "ares" ) then
+      if ( -f /usr/gapps/ares/bin/ares.bashrc ) then
+        . /usr/gapps/ares/bin/ares.bashrc
+      endif
+    endif
+
+    setenv INSTALLDIR $HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install
+    setenv BUILDDIR $HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
+    setenv SRCDIR $HOME/.sessions/$MJM_HOST/src
+
+    breaksw
+  default:
+    echo "Usage: project <project_name>"
+    breaksw
+  endsw

@@ -84,4 +84,19 @@ if ( -d $SPACK_ROOT/bin ) then
   set path = ( $SPACK_ROOT/bin $path )
 endif
 
+if (! $?SYS_TYPE) then 
+  if ( ! -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ) then
+    if ( -d $SPACK_ROOT/bin ) then
+      $SPACK_ROOT/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+      setenv MJM_ARCH `cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+    else
+      setenv MJM_ARCH `uname -m`
+    endif
+  else
+    setenv MJM_ARCH `cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+  endif
+else
+  setenv MJM_ARCH $SYS_TYPE
+endif
+
 set path=($HOME/.mydotfiles/tcsh/bin $path .)
