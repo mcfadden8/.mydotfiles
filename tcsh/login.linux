@@ -51,5 +51,37 @@ setenv EDITOR /bin/vi
 setenv MAIL /usr/spool/mail/$USER
 
 # Set up the default search paths.  Add customizations after $path below:
-set path=($HOME/.mydotfiles/tcsh/bin $path .)
 
+setenv MJM_HOST `hostname -s | sed -e 's/[0-9]*$//'`
+switch ( "$MJM_HOST" )
+  case "rz*":
+    setenv MJM_WS /usr/workspace/wsrzd/martymcf
+    breaksw
+  case "cztb":
+    setenv MJM_WS /home/martymcf
+    breaksw
+  default:
+    if ( -d /usr/workspace/wsb/martymcf ) then
+      export MJM_WS /usr/workspace/wsb/martymcf
+    else
+      export MJM_WS $HOME
+    endif
+    breaksw
+  endsw
+
+setenv MJM_SCRATCH $MJM_WS
+
+foreach scratchdir ( gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1 )
+  if ( -d /p/$scratchdir/martymcf ) then
+    setenv MJM_SCRATCH /p/$scratchdir/martymcf
+    break
+  endif
+end
+
+set SPACK_ROOT = $MJM_WS/spack
+if ( -d $SPACK_ROOT/bin ) then
+  source $SPACK_ROOT/share/spack/setup-env.csh
+  set path = ( $SPACK_ROOT/bin $path )
+endif
+
+set path=($HOME/.mydotfiles/tcsh/bin $path .)

@@ -44,3 +44,23 @@ alias pwd           'echo $cwd'
  
 # Add here any additional aliases or other .cshrc customizations 
 # that you want on THIS system.
+
+if ( $OSTYPE == darwin ) then
+  alias d ls -sFG
+  alias la ls -alG
+  alias lt ls -ltG
+  alias ph lph
+else
+  alias d ls -sF --color
+  alias la ls -al --color
+  alias lt ls -lt --color
+endif
+
+alias C clear
+alias f pushd
+alias b popd
+alias h history
+alias J jobs -l
+alias vi vim
+alias less less -X
+alias dirs dirs -p
