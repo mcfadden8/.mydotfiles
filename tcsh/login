@@ -1,0 +1,100 @@
+# $Id: login,v 1.0 2015/08/03 20:59:39 py Exp $
+# $Source: /usr/global/admin/nas/skel/RCS/login,v $
+#
+# .login file 1.3 jmw
+#
+# WARNING:
+# THIS .LOGIN FILE IS FOR ALL HOSTS USING THE COMMON HOME DIRECTORY STRUCTURE.
+# **  DO NOT COPY OVER IT WITH A HOST-SPECIFIC .LOGIN FILE.  ** 
+
+# (But if you do, this file can be re-copied back from /gadmin/etc/skel/.login)
+
+# This is the master .login file read in after the global system login.
+# It is not read for subsequent shells.  It is for setting up terminal
+# and global environment characteristics.
+#
+# This .login file will determine current host (HOST_GRP) and platform 
+# type (SYS_TYPE) and will source correct additional .login files. 
+# HOST_GRP is the current host name or the name of a group of hosts such as:
+#
+#        HOSTS:                        HOST_GRP
+#      OCF Compaqs: Tera,GPS,Tc2k        compaq 
+#      SCF Compaqs: SC cluster           forest
+#      OCF ASCI IBMs:                    blue
+#      SCF ASCI IBMs: Sky nodes          sky
+#                     White, ice         white
+#      OCF/SCF SGI viz servers           irix_desktop
+#      OCF/SCF Linux systems             linux
+#      OCF/SCF Solaris desktop servers   sol_desktop
+#                      (Lucy & Denali)
+#
+# THE USER'S HOST-SPECIFIC .LOGIN ENTRIES BELONG IN $HOME/.login.<HOST_GRP>
+#
+# EDIT THIS FILE ONLY TO ADD YOUR CUSTOMIZATIONS WHICH APPLY TO ALL HOSTS
+# AND ALL PLATFORMS USING COMMON HOME DIRECTORIES.  ADD HOST AND PLATFORM
+# SPECIFIC CUSTOMIZATIONS TO $HOME/.login.<HOST_GRP> or $HOME/.login.<platform>.
+
+# Define system type if not already done in global login file
+if ( ! $?SYS_TYPE ) then
+   if ( -r /etc/home.config ) then
+     setenv SYS_TYPE `grep SYS_TYPE /etc/home.config | cut -d" " -f2`
+   else
+     echo ""
+     echo ".login WARNING:  SYS_TYPE is not defined.  See system administrator to verify" 
+     echo that system is set up properly for use of common home directory structure.
+     echo User login files not executed.
+     echo ""
+     exit
+   endif
+endif
+
+# Check that HOST_GRP name is defined (and not full network name)
+if ( ! $?HOST_GRP ) then
+   if ( -r /etc/home.config ) then
+     setenv HOST_GRP  `grep HOST_GRP /etc/home.config | cut -d" " -f2`
+   else
+     echo .login WARNING:  HOST_GRP not defined.  See system administrator to verify
+     echo system is set up properly for use of common home directory structure.
+     echo User login files not executed.
+     echo ""
+
+     exit
+   endif
+endif
+
+# Set variable to show that login has been executed (for MacX usage)
+setenv GLOGIN 1
+
+
+# If ENVIRONMENT has not been set assume its value is INTERACTIVE
+
+if ( ! $?ENVIRONMENT ) then
+  setenv ENVIRONMENT INTERACTIVE
+endif
+
+# source host-specific files
+ 
+# HERE IS WHERE THE USER`S HOST-SPECIFIC FILE IS EXECUTED:
+if ( -f $HOME/.login.${HOST_GRP} ) then
+  source $HOME/.login.${HOST_GRP}
+endif
+ 
+# Source user platform-specific file if it exists:
+if ( -f $HOME/.login.${SYS_TYPE} ) then
+  source $HOME/.login.${SYS_TYPE}
+endif
+ 
+
+
+# NON-HOST SPECIFIC, NON-PLATFORM SPECIFIC CUSTOMIZATIONS GO HERE:
+# USER GENERIC CUSTOMIZATION:
+
+#EXAMPLE USER CUSTOMIZATIONS TO APPLY ACROSS ALL COMMON HOME SYSTEMS
+
+# path already has global and user host-specific values added
+# set path = ( $path ~ . )
+
+# setenv EDITOR vi
+# setenv LPDEST <enter_your_printer_name> 
+# setenv PRINTER <enter_your_printer_name> 
+# setenv DISPLAY desktop.llnl.gov:0.0

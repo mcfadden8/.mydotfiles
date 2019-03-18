@@ -7,6 +7,7 @@ export MJM_EXIT_EARLY="no"
 if [[ $MJM_EXIT_EARLY == "no" ]]; then
   export MJM_HOST=`hostname -s | sed -e "s/[0-9]*$//"`
 
+  date; echo "MJM_HOST is: $MJM_HOST"
   if [[ $MJM_HOST == "rz"* ]]; then
     export MJM_WS=/usr/workspace/wsrzd/martymcf
   elif [[ $MJM_HOST == "cztb" ]]; then
@@ -18,25 +19,31 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
       export MJM_WS=$HOME
     fi
   fi
+  date; echo "MJM_WS is: $MJM_WS"
 
   export MJM_SCRATCH=$MJM_WS
 
-  for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1
-  do
-    if [[ -d /p/$scratchdir/martymcf ]]; then
-      export MJM_SCRATCH=/p/$scratchdir/martymcf
-      break
-    fi
-  done
+  if [[ $MJM_HOST == "rz"* ]]; then
+    for scratchdir in gscratchrzm gpfs1
+    do
+      date; echo "Checking MJM_SCRATCH candidate: /p/$scratchdir/martymcf"
+      if [[ -d /p/$scratchdir/martymcf ]]; then
+        export MJM_SCRATCH=/p/$scratchdir/martymcf
+        break
+      fi
+    done
+  elif [[ $MJM_HOST == "cz"* ]]; then
+    for scratchdir in gscratchr gpfs1
+    do
+      date; echo "Checking MJM_SCRATCH candidate: /p/$scratchdir/martymcf"
+      if [[ -d /p/$scratchdir/martymcf ]]; then
+        export MJM_SCRATCH=/p/$scratchdir/martymcf
+        break
+      fi
+    done
+  fi
 
-  date; echo "MJM_SCRATCH=$MJM_WS"
-  for scratchdir in lscratchh lscratchd lscratche lscratchf
-  do
-    if [[ -d /p/$scratchdir/martymcf ]]; then
-      export MJM_SCRATCH2=/p/$scratchdir/martymcf
-      break
-    fi
-  done
+  date; echo "MJM_SCRATCH=$MJM_SCRATCH"
 
   if [ ! -d $HOME/.mydotfiles/.arch_cache ]; then
     mkdir -p $HOME/.mydotfiles/.arch_cache

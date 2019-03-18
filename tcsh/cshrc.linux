@@ -1,0 +1,46 @@
+# $Id: cshrc.linux,v 1.0 2015/08/03 20:59:39 py Exp $
+# $Source: /usr/global/admin/nas/skel/RCS/cshrc.linux,v $
+#
+################################################################
+#
+#         .cshrc file  1.1 jmw
+#
+#         initial setup file for both interactive and noninteractive
+#         C-Shells
+#
+#################################################################
+
+#         skip remaining setup if not an interactive shell
+
+if ( $?ENVIRONMENT ) then
+     if ( $ENVIRONMENT == BATCH ) then 
+        exit
+     endif
+endif
+
+#          settings  for interactive shells
+
+set noclobber
+set ignoreeof   # must type "exit" or "logout" to get out of a shell
+set history=50
+set savehist=20
+set prompt="`hostname`{$LOGNAME}\!: "
+
+
+#         aliases
+
+#alias mail	     mailx
+alias   h           'history -r'
+alias rs            'eval `resize`'
+alias cd            'cd \!*;echo $cwd'
+alias cp            'cp -i'
+alias mv            'mv -i'
+alias rm            'rm -i'
+
+alias pwd           'echo $cwd'
+
+
+# YOUR CUSTOMIZATIONS:
+ 
+# Add here any additional aliases or other .cshrc customizations 
+# that you want on THIS system.
