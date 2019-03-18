@@ -1,0 +1,55 @@
+# $Id: login.linux,v 1.0 2015/08/03 20:59:39 py Exp $
+# $Source: /usr/global/admin/nas/skel/RCS/login.linux,v $
+#
+# user .login
+##################################################################
+#
+#         .login file  1.1 jmw
+#
+#         Read in after the .cshrc file when you log in.
+#         Not read in for subsequent shells.  For setting up
+#         terminal and global environment characteristics.
+#
+##################################################################
+
+umask 077       # inhibit group and world access for security
+
+# Skip terminal related commands if ENVIRONMENT is BATCH
+
+if ( $?ENVIRONMENT ) then
+  if ( $ENVIRONMENT == INTERACTIVE ) then
+
+    #         terminal characteristics for remote terminals:
+
+    #for NCD X terminals : use stty intr '^C' erase '^H' kill '^U' echoe
+    #stty intr '^C' erase '^H' kill '^U' echoe
+
+    #for HDS X terminals : use stty intr '^C' erase '^?' kill '^U' echoe   
+    #stty intr '^C' erase '^?' kill '^U' echoe   
+
+    tset -QI
+    #   For some platforms stty erase key should be "^?" in place of "^H"
+    stty erase "^H" kill "^U" intr "^C" eof "^D" susp "^Z" hupcl ixon ixoff -istrip echoe echoke tabs
+
+    if ( "$TERM" == "xterm"  || "$TERM" == vt100 ) then
+      set noglob; eval `resize`; unset noglob
+    endif
+  endif
+endif
+ 
+# YOUR CUSTOMIZATIONS:
+ 
+# Add here any customizations that should be done on each startup
+# on THIS system:
+
+# Change preferred EDITOR here:
+setenv EDITOR /bin/vi
+ 
+# Define preferred printer here:
+# setenv PRINTER    
+ 
+setenv MAIL /usr/spool/mail/$USER
+
+# Set up the default search paths.  Add customizations after $path below:
+set path=($path .)
+
