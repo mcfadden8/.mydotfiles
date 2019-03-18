@@ -23,14 +23,14 @@ switch ( $#argv )
     mkdir -p $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install
 
     if ( "$MJM_WS" != "$MJM_SCRATCH" ) then
-      rm -f $MJM_WS/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/build
+      /bin/rm -f $MJM_WS/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/build
       ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/build $MJM_WS/projects/$MJM_HOST/$1/build 
       ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/install 
     endif
 
-    rm -f $MJM_WS/projects/$MJM_HOST/$1/src 
+    /bin/rm -f $MJM_WS/projects/$MJM_HOST/$1/src 
     ln -s $MJM_WS/projects/src/$1 $MJM_WS/projects/$MJM_HOST/$1/src 
-    rm -f $HOME/.sessions/$MJM_HOST
+    /bin/rm -f $HOME/.sessions/$MJM_HOST
     ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
 
     if ( "$MJM_PROJECT" == "ares" ) then

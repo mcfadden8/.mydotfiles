@@ -56,6 +56,7 @@ else
   alias lt ls -lt --color
 endif
 
+alias a alias
 alias C clear
 alias f pushd
 alias b popd
@@ -65,3 +66,4 @@ alias vi vim
 alias less less -X
 alias dirs dirs -p
 alias project 'source $HOME/.mydotfiles/tcsh/sources/project'
+alias precmd "source ~/.mydotfiles/tcsh/sources/gitprompt.csh"
