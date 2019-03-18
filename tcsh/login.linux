@@ -29,7 +29,7 @@ if ( $?ENVIRONMENT ) then
 
     tset -QI
     #   For some platforms stty erase key should be "^?" in place of "^H"
-    stty erase "^H" kill "^U" intr "^C" eof "^D" susp "^Z" hupcl ixon ixoff -istrip echoe echoke tabs
+    stty erase "^?" kill "^U" intr "^C" eof "^D" susp "^Z" hupcl ixon ixoff -istrip echoe echoke tabs
 
     if ( "$TERM" == "xterm"  || "$TERM" == vt100 ) then
       set noglob; eval `resize`; unset noglob
@@ -51,5 +51,5 @@ setenv EDITOR /bin/vi
 setenv MAIL /usr/spool/mail/$USER
 
 # Set up the default search paths.  Add customizations after $path below:
-set path=($path .)
+set path=($HOME/.mydotfiles/tcsh/bin $path .)
 
