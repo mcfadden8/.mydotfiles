@@ -63,6 +63,9 @@ alias b popd
 alias h history
 alias J jobs -l
 alias vi vim
+alias jbash1 "lalloc 1 -W `dc -e '1 60 * p'`"
+alias jbash4 "lalloc 1 -W `dc -e '4 60 * p'`"
+alias jbash8 "lalloc 1 -W `dc -e '8 60 * p'`"
 alias less less -X
 alias dirs dirs -p
 alias project 'source $HOME/.mydotfiles/tcsh/sources/project'

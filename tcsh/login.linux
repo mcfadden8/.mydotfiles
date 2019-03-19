@@ -43,12 +43,11 @@ endif
 # on THIS system:
 
 # Change preferred EDITOR here:
-setenv EDITOR /bin/vi
+setenv EDITOR vim
  
 # Define preferred printer here:
 # setenv PRINTER    
- 
-setenv MAIL /usr/spool/mail/$USER
+# setenv MAIL /usr/spool/mail/$USER
 
 # Set up the default search paths.  Add customizations after $path below:
 
