@@ -22,8 +22,8 @@ endif
 
 set noclobber
 set ignoreeof   # must type "exit" or "logout" to get out of a shell
-set history=50
-set savehist=20
+set history=100000
+set savehist=(100000 merge)
 set prompt="`hostname`{$LOGNAME}\!: "
 
 
