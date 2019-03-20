@@ -61,21 +61,23 @@ switch ( "$MJM_HOST" )
     breaksw
   default:
     if ( -d /usr/workspace/wsb/martymcf ) then
-      export MJM_WS /usr/workspace/wsb/martymcf
+      setenv MJM_WS /usr/workspace/wsb/martymcf
     else
-      export MJM_WS $HOME
+      setenv MJM_WS $HOME
     endif
     breaksw
   endsw
 
 setenv MJM_SCRATCH $MJM_WS
 
-foreach scratchdir ( gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1 )
-  if ( -d /p/$scratchdir/martymcf ) then
-    setenv MJM_SCRATCH /p/$scratchdir/martymcf
-    break
-  endif
-end
+if ( "$MJM_HOST" != cztb ) then
+  foreach scratchdir ( gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1 )
+    if ( -d /p/$scratchdir/martymcf ) then
+      setenv MJM_SCRATCH /p/$scratchdir/martymcf
+      break
+    endif
+  end
+endif
 
 set SPACK_ROOT = $MJM_WS/spack
 if ( -d $SPACK_ROOT/bin ) then
