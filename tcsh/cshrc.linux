@@ -30,14 +30,12 @@ set prompt="`hostname`{$LOGNAME}\!: "
 #         aliases
 
 #alias mail	     mailx
-alias   h           'history -r'
-alias rs            'eval `resize`'
-alias cd            'cd \!*;echo $cwd'
-alias cp            'cp -i'
-alias mv            'mv -i'
-alias rm            'rm -i'
+alias rs          'eval `resize`'
+alias cp          'cp -i'
+alias mv          'mv -i'
+alias rm          'rm -i'
 
-alias pwd           'echo $cwd'
+alias pwd         'echo $cwd'
 
 
 # YOUR CUSTOMIZATIONS:
@@ -56,17 +54,18 @@ else
   alias lt ls -lt --color
 endif
 
-alias a alias
-alias C clear
-alias f pushd
-alias b popd
-alias h history
-alias J jobs -l
-alias vi vim
-alias jbash1 "lalloc 1 -W `dc -e '1 60 * p'`"
-alias jbash4 "lalloc 1 -W `dc -e '4 60 * p'`"
-alias jbash8 "lalloc 1 -W `dc -e '8 60 * p'`"
-alias less less -X
-alias dirs dirs -p
+alias a       'alias \!*'
+alias C       clear
+alias cd      'cd \!*;pwd;d'
+alias f       'pushd \!*;pwd;d'
+alias b       'popd \!*;pwd;d'
+alias h       'history'
+alias J       'jobs -l'
+alias vi      vim
+alias jbash1  "lalloc 1 -W `dc -e '1 60 * p'`"
+alias jbash4  "lalloc 1 -W `dc -e '4 60 * p'`"
+alias jbash8  "lalloc 1 -W `dc -e '8 60 * p'`"
+alias less    less -X
+alias dirs    dirs -p
 alias project 'source $HOME/.mydotfiles/tcsh/sources/project'
-alias precmd "source ~/.mydotfiles/tcsh/sources/gitprompt.csh"
+alias precmd  "source ~/.mydotfiles/tcsh/sources/gitprompt.csh"
