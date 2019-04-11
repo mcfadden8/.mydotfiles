@@ -26,17 +26,17 @@ set history=100000
 set savehist=(100000 merge)
 set prompt="`hostname`{$LOGNAME}\!: "
 
-
 #         aliases
 
-#alias mail	     mailx
-alias rs          'eval `resize`'
-alias cp          'cp -i'
-alias mv          'mv -i'
-alias rm          'rm -i'
+alias a       'alias \!*'
 
-alias pwd         'echo $cwd'
+#a mail	     mailx
+a rs          'eval `resize`'
+a cp          'cp -i'
+a mv          'mv -i'
+a rm          'rm -i'
 
+a pwd         'echo $cwd'
 
 # YOUR CUSTOMIZATIONS:
  
@@ -44,28 +44,28 @@ alias pwd         'echo $cwd'
 # that you want on THIS system.
 
 if ( $OSTYPE == darwin ) then
-  alias d ls -sFG
-  alias la ls -alG
-  alias lt ls -ltG
-  alias ph lph
+  a d ls -asFG
+  a la ls -alG
+  a lt ls -ltG
+  a ph lph
 else
-  alias d ls -sF --color
-  alias la ls -al --color
-  alias lt ls -lt --color
+  a d ls -asF --color
+  a la ls -al --color
+  a lt ls -lt --color
 endif
 
-alias a       'alias \!*'
-alias C       clear
-alias cd      'cd \!*;pwd;d'
-alias f       'pushd \!*;pwd;d'
-alias b       'popd \!*;pwd;d'
-alias h       'history'
-alias J       'jobs -l'
-alias vi      vim
-alias jbash1  "lalloc 1 -W `dc -e '1 60 * p'`"
-alias jbash4  "lalloc 1 -W `dc -e '4 60 * p'`"
-alias jbash8  "lalloc 1 -W `dc -e '8 60 * p'`"
-alias less    less -X
-alias dirs    dirs -p
-alias project 'source $HOME/.mydotfiles/tcsh/sources/project'
-alias precmd  "source ~/.mydotfiles/tcsh/sources/gitprompt.csh"
+a C       clear
+a cd      'cd \!*;pwd;d'
+a f       'pushd \!*;pwd;d'
+a b       'popd \!*;pwd;d'
+a h       'history'
+a J       'jobs -l'
+a vi      vim
+a jbash1  "lalloc 1 -W `dc -e '1 60 * p'`"
+a jbash4  "lalloc 1 -W `dc -e '4 60 * p'`"
+a jbash8  "lalloc 1 -W `dc -e '8 60 * p'`"
+a less    less -X
+a man     'man \!* | less'
+a dirs    dirs -p
+a project 'source $HOME/.mydotfiles/tcsh/sources/project'
+a precmd  "source ~/.mydotfiles/tcsh/sources/gitprompt.csh"
