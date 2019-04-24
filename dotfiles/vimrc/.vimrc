@@ -68,6 +68,10 @@ let c_comment_strings=1
 set history=50 " keep 50 lines of command line history
 set showcmd     " display incomplete commands
 
+set laststatus=2
+set statusline=
+set statusline+=%{FugitiveStatusline()}
+
 if has('mouse')
   set mouse=a
 endif
