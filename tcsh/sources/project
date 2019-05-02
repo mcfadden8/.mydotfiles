@@ -14,6 +14,7 @@ switch ( $#argv )
     spack load cmake arch=$X
     spack load git arch=$X
     spack load ncdu arch=$X
+    spack load tmux arch=$X
     module load clang
     module list
 
