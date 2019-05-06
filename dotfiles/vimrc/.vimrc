@@ -140,6 +140,6 @@ nnoremap ,gs :Gstatus<CR>
 nnoremap ,gt :Gcommit -v -q %:p<CR>
 nnoremap ,gm :Gmove<Space>
 nnoremap ,gp :Ggrep<Space>
-nnoremap ,gpl :Dispatch! git pull<CR>
-nnoremap ,gps :Dispatch! git push<CR>
+nnoremap ,gpl :Git pull<CR>
+nnoremap ,gps :Git push<CR>
 nnoremap ,gw :Gwrite<CR><CR>
