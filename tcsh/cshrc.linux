@@ -38,6 +38,7 @@ a rm          'rm -i'
 
 a pwd         'echo $cwd'
 
+a tmux        'tmux -u'
 # YOUR CUSTOMIZATIONS:
  
 # Add here any additional aliases or other .cshrc customizations 

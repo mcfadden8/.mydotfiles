@@ -125,3 +125,21 @@ nmap <silent> ,pw :call DoWindowSwap()<CR>
 "     Type \pw
 " 
 " Voila! Swapped buffers without screwing up your window layout!
+
+" fugitive git bindings
+nnoremap ,ga :Git add %:p<CR><CR>
+nnoremap ,gb :Git branch<Space>
+nnoremap ,gci :Gcommit -v -q<CR>
+nnoremap ,gco :Git checkout<Space>
+nnoremap ,gd :Gdiff<CR>
+nnoremap ,ge :Gedit<CR>
+nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
+nnoremap ,gr :Gread<CR>
+nnoremap ,grm :Gremove<CR>
+nnoremap ,gs :Gstatus<CR>
+nnoremap ,gt :Gcommit -v -q %:p<CR>
+nnoremap ,gm :Gmove<Space>
+nnoremap ,gp :Ggrep<Space>
+nnoremap ,gpl :Dispatch! git pull<CR>
+nnoremap ,gps :Dispatch! git push<CR>
+nnoremap ,gw :Gwrite<CR><CR>
