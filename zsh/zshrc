@@ -112,11 +112,14 @@ source $ZSH/oh-my-zsh.sh
 
 alias a=alias
 a D="ls -sF"
-
 a f="pushd"
 a b="popd"
 a h="history"
 a C="clear"
+a J="jobs -l"
+a less="less -X"
+a tmux="tmux -u"
+a vi=vim
 
 HISTSIZE=100000000
 SAVEHIST=100000000
