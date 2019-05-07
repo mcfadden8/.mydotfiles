@@ -118,6 +118,8 @@ a D="ls -sF"
 
 a f="pushd"
 a b="popd"
+a h="history"
+a C="clear"
 
 HISTSIZE=100000000
 SAVEHIST=100000000
