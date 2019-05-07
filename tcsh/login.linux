@@ -101,3 +101,14 @@ else
 endif
 
 set path=($HOME/.mydotfiles/tcsh/bin $path .)
+
+set X=`spack arch`
+spack load ninja arch=$X
+spack load vim arch=$X
+spack load cmake arch=$X
+spack load git arch=$X
+spack load ncdu arch=$X
+spack load tmux arch=$X
+spack load zsh arch=$X
+module load clang
+module list
