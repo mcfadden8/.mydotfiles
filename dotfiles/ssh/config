@@ -1,31 +1,54 @@
 Host *
   ForwardX11 yes
+  ForwardX11Timeout 12h
   ControlMaster auto
   ControlPath /tmp/%r@%h:%p
-  ControlPersist 12h
+  ControlPersist 0
 
-Host github* cz-bitbucket* rz-bitbucket*
+Host github*
   ForwardX11 no
 
 Host rzgw 
+  ForwardX11 yes
+  ForwardX11Timeout 12h
   User     martymcf
   HostName %h.llnl.gov
 
 Host czgw oslic
+  ForwardX11 yes
+  ForwardX11Timeout 12h
   User     martymcf
   HostName oslic.llnl.gov
 
-Host rzgenie rzhasgpu rztopaz rztrona
+Host cz-bitbucket.llnl.gov
+    ForwardAgent    no
+    ForwardX11      no
+    ProxyCommand    ssh martymcf@catalyst.llnl.gov 'nc %h 7999'
+
+Host rz-bitbucket.llnl.gov
+    ForwardAgent    no
+    ForwardX11      no
+    ProxyCommand    ssh martymcf@rzgw.llnl.gov 'nc %h 7999'
+
+Host rzgenie rzhasgpu rztopaz rztrona rzansel rzuseq rzmanta
+  ForwardX11 yes
+  ForwardX11Timeout 12h
   User         martymcf
   HostName     %h.llnl.gov
   ProxyCommand ssh -Y rzgw nc %h 622
+
+Host maya6
+  User         martymcf
+  HostName     %h.llnl.gov
 
 Host tt-fey
   User         martymcf
   HostName     %h.lanl.gov
   ProxyCommand ssh -Y czgw nc %h 622
 
-Host borax cab catalyst opal pascal quartz ray surface syrah tbgw1 tossdev ulna vulcan
+Host borax butte catalyst crayz lassen pascal quartz ray storage surface syrah tbgw1 ulna vulcan
+  ForwardX11 yes
+  ForwardX11Timeout 12h
   User     martymcf
   #HostName %h.llnl.gov
   ProxyCommand ssh -Y czgw nc %h 622

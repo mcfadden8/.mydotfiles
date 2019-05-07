@@ -68,6 +68,21 @@ let c_comment_strings=1
 set history=50 " keep 50 lines of command line history
 set showcmd     " display incomplete commands
 
+" set statusline=
+" set statusline+=%#PmenuSel#
+" set statusline+=%{FugitiveStatusline()}
+" set statusline+=%#LineNr#
+" set statusline+=\ %f
+" set statusline+=%m\
+" set statusline+=%=
+" set statusline+=%#CursorColumn#
+" set statusline+=\ %y
+" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+" set statusline+=\[%{&fileformat}\]
+" set statusline+=\ %p%%
+" set statusline+=\ %l:%c
+" set statusline+=\ 
+
 if has('mouse')
   set mouse=a
 endif
@@ -110,3 +125,21 @@ nmap <silent> ,pw :call DoWindowSwap()<CR>
 "     Type \pw
 " 
 " Voila! Swapped buffers without screwing up your window layout!
+
+" fugitive git bindings
+nnoremap ,ga :Git add %:p<CR><CR>
+nnoremap ,gb :Git branch<Space>
+nnoremap ,gci :Gcommit -v -q<CR>
+nnoremap ,gco :Git checkout<Space>
+nnoremap ,gd :Gdiff<CR>
+nnoremap ,ge :Gedit<CR>
+nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
+nnoremap ,gr :Gread<CR>
+nnoremap ,grm :Gremove<CR>
+nnoremap ,gs :Gstatus<CR>
+nnoremap ,gt :Gcommit -v -q %:p<CR>
+nnoremap ,gm :Gmove<Space>
+nnoremap ,gp :Ggrep<Space>
+nnoremap ,gpl :Git pull<CR>
+nnoremap ,gps :Git push<CR>
+nnoremap ,gw :Gwrite<CR><CR>
