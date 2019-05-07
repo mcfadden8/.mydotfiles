@@ -30,19 +30,6 @@ setopt autocd extendedglob nomatch notify
 unsetopt beep
 # End of lines configured by zsh-newuser-install
 
-alias a='alias'
-
-case `uname` in
-  Darwin)
-    a d='ls -AsFG'
-    ;;
-  Linux)
-    a d='ls -AsF --color=always'
-    ;;
-esac
-
-a h='history -af'
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
