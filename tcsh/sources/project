@@ -45,6 +45,9 @@ switch ( $#argv )
     endif
 
     setenv INSTALLDIR $HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install
+    setenv INSTALLDIR2 $HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install.2
+    set path = ( $INSTALLDIR2/bin $path )
+    set path = ( $INSTALLDIR/bin $path )
     setenv BUILDDIR $HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
     setenv SRCDIR $HOME/.sessions/$MJM_HOST/src
 
