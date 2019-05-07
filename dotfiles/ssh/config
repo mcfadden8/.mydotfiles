@@ -46,7 +46,7 @@ Host tt-fey
   HostName     %h.lanl.gov
   ProxyCommand ssh -Y czgw nc %h 622
 
-Host borax butte catalyst crayz lassen pascal quartz ray storage surface syrah tbgw1 ulna vulcan
+Host borax butte catalyst crayz flash lassen pascal quartz ray storage surface syrah tbgw1 ulna vulcan
   ForwardX11 yes
   ForwardX11Timeout 12h
   User     martymcf
