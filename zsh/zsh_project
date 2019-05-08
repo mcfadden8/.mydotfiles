@@ -7,7 +7,7 @@ case "$ARGC" in
     fi
 
     export MJM_PROJECT=$1
-    for i in $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install; do
+    for i in $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install.2; do
       mkdir -p $i
     done
 
