@@ -1,0 +1,68 @@
+#!/bin/zsh
+# Run for login shells
+# after: /etc/zshenv ~/.zshenv /etc/zprofile ~/.zprofile /etc/zshrc ~/.zshrc /etc/zlogin
+# (http://zsh.sourceforge.net/Guide/zshguide02.html#l9)
+
+typeset -U path
+
+export EDITOR=vim
+export MJM_HOST=`hostname -s | sed -e 's/[0-9]*$//'`
+
+case "$MJM_HOST" in
+  rz*)
+    export MJM_WS=/usr/workspace/wsrzd/martymcf
+    ;;
+  cztb)
+    export MJM_WS=/home/martymcf
+    ;;
+  *)
+    if [[ -d /usr/workspace/wsb/martymcf ]]; then
+      export MJM_WS=/usr/workspace/wsb/martymcf
+    else
+      export MJM_WS=$HOME
+    fi
+    ;;
+esac
+
+export MJM_SCRATCH=$MJM_WS    # Default value
+
+if [[ $MJM_HOST != cztb ]]; then
+  for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1; do
+    if [[ -d /p/$scratchdir/martymcf ]]; then
+      export MJM_SCRATCH=/p/$scratchdir/martymcf
+      break
+    fi
+  done
+fi
+
+echo "Setting up spack environment"
+export SPACK_ROOT=$MJM_WS/spack
+if [[ -d $SPACK_ROOT/bin ]]; then
+  . $SPACK_ROOT/share/spack/setup-env.sh
+  path=( $SPACK_ROOT/bin $path )
+fi
+
+if (( ${+SYS_TYPE} )); then 
+  export MJM_ARCH=$SYS_TYPE
+else
+  if [[ -f $HOME/.mydotfiles/.arch_cache/$MJM_HOST ]]; then
+    export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+  else
+    if [[ -d $SPACK_ROOT/bin ]]; then
+      $SPACK_ROOT/bin/spack arch > $HOME/.mydotfiles/.arch_cache/$MJM_HOST
+      export MJM_ARCH=`cat $HOME/.mydotfiles/.arch_cache/$MJM_HOST`
+    else
+      export MJM_ARCH=`uname -m`
+    fi
+  fi
+fi
+
+if [[ -d $SPACK_ROOT/bin ]]; then
+  X=`spack arch`
+  for m in ninja vim cmake git ncdu tmux zsh; do
+    echo "spack load $m arch=$X ..."
+    spack load $m arch=$X
+  done
+  module load clang
+  module list
+fi

@@ -1,3 +1,8 @@
+#!/bin/zsh
+# Run for interactive shells
+# after: /etc/zshenv ~/.zshenv /etc/zprofile ~/.zprofile /etc/zshrc
+# (http://zsh.sourceforge.net/Guide/zshguide02.html#l9)
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -137,4 +142,6 @@ setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt NO_BEEP
+setopt AUTO_CD
 

@@ -1,0 +1,5 @@
+#!/bin/zsh
+# Usually run for every zsh 
+# Run after: /etc/zshenv
+# (http://zsh.sourceforge.net/Guide/zshguide02.html#l9)
+

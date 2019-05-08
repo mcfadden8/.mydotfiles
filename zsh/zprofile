@@ -1,0 +1,5 @@
+#!/bin/zsh
+# Run for login shells
+# after: /etc/zshenv ~/.zshenv /etc/zprofile
+# (http://zsh.sourceforge.net/Guide/zshguide02.html#l9)
+
