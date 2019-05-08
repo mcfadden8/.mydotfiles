@@ -1,0 +1,43 @@
+#!/bin/zsh
+
+case "$ARGC" in
+  1)
+    if [[ ! -d $HOME/.sessions ]] then
+      mkdir -p $HOME/.sessions
+    fi
+
+    export MJM_PROJECT=$1
+    for i in $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install; do
+      mkdir -p $i
+    done
+
+    if [[ $MJM_WS != $MJM_SCRATCH ]] then
+      /bin/rm -f $MJM_WS/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/build
+      ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/build $MJM_WS/projects/$MJM_HOST/$1/build
+      ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/install
+    fi
+
+    /bin/rm -f $MJM_WS/projects/$MJM_HOST/$1/src 
+    ln -s $MJM_WS/projects/src/$1 $MJM_WS/projects/$MJM_HOST/$1/src 
+    /bin/rm -f $HOME/.sessions/$MJM_HOST
+    ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
+
+    export INSTALLDIR=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install
+    export INSTALLDIR2=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install.2
+    path=( $INSTALLDIR2/bin $path )
+    path=( $INSTALLDIR/bin $path )
+    export BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
+    export SRCDIR=$HOME/.sessions/$MJM_HOST/src
+    ;;
+
+  0)
+    if (( ${+MJM_PROJECT} )); then 
+      echo "$MJM_PROJECT"
+    else
+      echo "Not Set"
+    fi
+    ;;
+  *)
+    echo "Invalid number of arguments"
+    ;;
+esac

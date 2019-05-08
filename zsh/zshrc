@@ -125,6 +125,7 @@ a J="jobs -l"
 a less="less -X"
 a tmux="tmux -u"
 a vi=vim
+a project="source ~/.mydotfiles/zsh/zsh_project"
 
 HISTSIZE=100000000
 SAVEHIST=100000000
