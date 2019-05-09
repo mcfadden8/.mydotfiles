@@ -8,6 +8,7 @@ set nocompatible                    " Run in true vim mode (no vi, too old)
 " colorscheme solarized
 " colorscheme burnttoast256
 " colorscheme gruvbox
+colorscheme dichromatic
 
 execute pathogen#infect()
 execute pathogen#helptags()
