@@ -52,3 +52,5 @@ Mkfile.old
 dkms.conf
 
 .arch_cache/
+
+*.swp
