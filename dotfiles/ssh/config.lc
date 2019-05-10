@@ -1,0 +1,20 @@
+# Default for all hosts
+# Config file meant to be included on LC machines that do not use gateways
+Host *
+    ControlMaster       auto
+    ControlPath         /tmp/%r@%h:%p
+    ControlPersist      120h
+    IdentityFile        ~/.ssh/id_rsa
+    User                martymcf
+    # macOS Only, option not supported on auk*
+    # UseKeychain         yes
+    # AddKeysToAgent      yes
+
+Host *github.com *bitbucket.org *gitlab.com *bitbucket.llnl.gov *stash.llnl.gov nst-code.llnl.gov
+    # Don't forward for Git servers
+    # Doing so can cause strange, though benign, warning messages on connection
+    ForwardAgent        no
+    ForwardX11          no
+    ForwardX11Trusted   no
+    ControlPersist      no
+
