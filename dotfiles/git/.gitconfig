@@ -7,6 +7,7 @@
 	email = mcfadden8@llnl.gov
 [core]
 	editor = vim
+  pager = less -X
 [sendemail]
 	smtpserver = smtp.llnl.gov
 	smtpserverport = 25
@@ -17,3 +18,5 @@
   conflictstyle = diff3
 [mergetool]
   prompt = false
+[submodule]
+	recurse = true

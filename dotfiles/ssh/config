@@ -1,55 +1,57 @@
+# Default for all hosts
 Host *
-  ForwardX11 yes
-  ForwardX11Timeout 12h
-  ControlMaster auto
-  ControlPath /tmp/%r@%h:%p
-  ControlPersist 0
+    ControlMaster       auto
+    ControlPath         /tmp/%r@%h:%p
+    ControlPersist      120h
+    IdentityFile        ~/.ssh/id_rsa
+    User                martymcf
+    # macOS Only, option not supported on auk*
+    # UseKeychain         yes
+    # AddKeysToAgent      yes
 
-Host github*
-  ForwardX11 no
+Host *github.com *bitbucket.org *gitlab.com *bitbucket.llnl.gov *stash.llnl.gov nst-code.llnl.gov
+    # Don't forward for Git servers
+    # Doing so can cause strange, though benign, warning messages on connection
+    ForwardAgent        no
+    ForwardX11          no
+    ForwardX11Trusted   no
+    ControlPersist      no
 
-Host rzgw 
-  ForwardX11 yes
-  ForwardX11Timeout 12h
-  User     martymcf
-  HostName %h.llnl.gov
+Host czgw
+    ForwardAgent        yes
+    ForwardX11          yes
+    ForwardX11Trusted   yes
+    # HostName     oslic.llnl.gov
+    HostName     catalyst.llnl.gov
 
-Host czgw oslic
-  ForwardX11 yes
-  ForwardX11Timeout 12h
-  User     martymcf
-  HostName oslic.llnl.gov
+Host rzgw czgw
+    ForwardAgent        yes
+    ForwardX11          yes
+    ForwardX11Trusted   yes
+    HostName     %h.llnl.gov
 
-Host cz-bitbucket.llnl.gov
-    ForwardAgent    no
-    ForwardX11      no
-    ProxyCommand    ssh martymcf@catalyst.llnl.gov 'nc %h 7999'
-
-Host rz-bitbucket.llnl.gov
-    ForwardAgent    no
-    ForwardX11      no
-    ProxyCommand    ssh martymcf@rzgw.llnl.gov 'nc %h 7999'
-
-Host rzgenie rzhasgpu rztopaz rztrona rzansel rzuseq rzmanta
-  ForwardX11 yes
-  ForwardX11Timeout 12h
-  User         martymcf
-  HostName     %h.llnl.gov
-  ProxyCommand ssh -Y rzgw nc %h 622
-
-Host maya6
-  User         martymcf
-  HostName     %h.llnl.gov
+# Host rzalastor rzansel rzgenie rzhasgpu rzmanta rztopaz rztrona rzuseq
+Host rzalastor rzansel rzgenie rzhasgpu rzmanta rztopaz rztrona rzuseq
+    ForwardAgent        yes
+    ForwardX11          yes
+    ForwardX11Trusted   yes
+    HostName     %h.llnl.gov
+    ProxyCommand ssh rzgw nc %h 622
 
 Host tt-fey
-  User         martymcf
-  HostName     %h.lanl.gov
-  ProxyCommand ssh -Y czgw nc %h 622
+    ForwardAgent        yes
+    ForwardX11          yes
+    ForwardX11Trusted   yes
+    ProxyCommand ssh czgw nc %h 622
 
-Host borax butte catalyst crayz flash lassen pascal quartz ray storage surface syrah tbgw1 ulna vulcan
-  ForwardX11 yes
-  ForwardX11Timeout 12h
-  User     martymcf
-  #HostName %h.llnl.gov
-  ProxyCommand ssh -Y czgw nc %h 622
+# B453 - borax pascal quartz ray rzmanta rztopaz rztrona
+# Host borax cab catalyst lassen opal pascal quartz ray surface syrah tbgw1 tossdev ulna vulcan
+
+# Host borax catalyst lassen pascal quartz ray surface syrah tbgw1
+Host borax lassen pascal quartz ray surface syrah tbgw1
+    ForwardAgent        yes
+    ForwardX11          yes
+    ForwardX11Trusted   yes
+    HostName     %h.llnl.gov
+    ProxyCommand ssh czgw nc %h 622
 
