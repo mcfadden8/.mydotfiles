@@ -37,7 +37,6 @@ fi
 
 export SPACK_ROOT=$MJM_WS/spack
 if [[ -d $SPACK_ROOT/bin ]]; then
-  echo "Setting up spack environment"
   . $SPACK_ROOT/share/spack/setup-env.sh
   path=( $SPACK_ROOT/bin $path )
 fi
@@ -58,11 +57,18 @@ else
 fi
 
 if [[ -d $SPACK_ROOT/bin ]]; then
-  X=`spack arch`
-  for m in ninja vim cmake git ncdu tmux zsh; do
-    echo "spack load $m arch=$X ..."
-    spack load $m arch=$X
-  done
+  if [[ -f $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST ]]; then
+    . $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST
+  else
+    echo "Loading spack modules..."
+    echo "No module cache found for modules.$MJM_HOST"
+    echo "consider setting one up, it will be faster..."
+    X=`spack arch`
+    for m in ninja vim cmake git ncdu tmux zsh; do
+      echo "spack load $m arch=$X ..."
+      spack load $m arch=$X
+    done
+  fi
   module load clang
   module list
 fi
