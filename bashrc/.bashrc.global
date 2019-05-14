@@ -141,6 +141,12 @@ prompt_command () {
     history -a
     history -r
 }
+
+prompt_command1 () {
+    export PS1="$ "
+    history -a
+    history -r
+}
 PROMPT_COMMAND=prompt_command
 
 pwdtail () { #returns the last 2 fields of the working directory

@@ -114,9 +114,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias a=alias
-a D="ls -sF"
-a f="pushd"
-a b="popd"
 a h="history"
 a C="clear"
 a J="jobs -l"

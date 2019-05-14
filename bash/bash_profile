@@ -139,4 +139,8 @@ if [[ $MJM_EXIT_EARLY == "no" ]]; then
 
   date; echo "Setting my project"
   myproject=`current_project`
+
+  . $HOME/spackload
+  zsh -i
 fi
+
