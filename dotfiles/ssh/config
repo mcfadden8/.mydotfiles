@@ -21,8 +21,8 @@ Host czgw
     ForwardAgent        yes
     ForwardX11          yes
     ForwardX11Trusted   yes
-    # HostName     oslic.llnl.gov
-    HostName     catalyst.llnl.gov
+    HostName     oslic.llnl.gov
+    # HostName     catalyst.llnl.gov
 
 Host rzgw czgw
     ForwardAgent        yes
@@ -47,8 +47,7 @@ Host tt-fey
 # B453 - borax pascal quartz ray rzmanta rztopaz rztrona
 # Host borax cab catalyst lassen opal pascal quartz ray surface syrah tbgw1 tossdev ulna vulcan
 
-# Host borax catalyst lassen pascal quartz ray surface syrah tbgw1
-Host borax lassen pascal quartz ray surface syrah tbgw1
+Host borax catalyst lassen pascal quartz ray surface syrah tbgw1
     ForwardAgent        yes
     ForwardX11          yes
     ForwardX11Trusted   yes
