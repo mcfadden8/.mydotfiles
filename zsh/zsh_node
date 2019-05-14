@@ -1,0 +1,13 @@
+#!/bin/zsh
+if [[ -x "$(command -v nodeattr)" ]]; then
+  nodeattr -Q `hostname -s` compute
+  if [[ "$?" = "1" ]]; then
+    node="LOGIN"
+  else
+    node="COMPUTE"
+  fi
+else
+  node="LOGIN"
+fi
+
+echo "$node"
