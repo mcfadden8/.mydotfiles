@@ -91,7 +91,9 @@ endif
 
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
-highlight ColorColumn ctermbg=10
+" highlight ColorColumn ctermbg=10
+highlight ColorColumn ctermbg=blue
+highlight ColorColumn ctermfg=yellow
 set colorcolumn=80
 
 " Prevent vim from clearing the screen on exit
