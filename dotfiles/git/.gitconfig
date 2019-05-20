@@ -8,6 +8,8 @@
 [core]
 	editor = vim
   pager = less -X
+[credential]
+	helper = cache --timeout=43200
 [sendemail]
 	smtpserver = smtp.llnl.gov
 	smtpserverport = 25
@@ -20,3 +22,7 @@
   prompt = false
 [submodule]
 	recurse = true
+[diff]
+	submodule = log
+[status]
+	submoduleSummary = true
