@@ -1,14 +1,15 @@
 # Changing/making/removing directory
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushdminus
-
 alias d='dirs -v | head -20'
 
 # List directory contents
-alias lsa='ls -lah'
-alias l='ls -sAF'
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias lt='ls -lt'
-alias lrt='ls -lrt'
+alias l='ls -F'
+alias la='ls -aF'
+
+alias ll='ls -lhF'
+alias lla='ls -lhaF'
+
+alias lt='ls -lhFt'
+alias lrt='ls -lhFrt'
+
+alias lta='ls -lahFt'
+alias lrta='ls -lahFrt'
