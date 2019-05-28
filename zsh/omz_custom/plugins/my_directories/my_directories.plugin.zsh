@@ -7,7 +7,7 @@ alias d='dirs -v | head -20'
 
 # List directory contents
 alias lsa='ls -lah'
-alias l='ls -SAF'
+alias l='ls -sAF'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias lt='ls -lt'
