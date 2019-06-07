@@ -1,5 +1,6 @@
 # Default for all hosts
 Host *
+    LogLevel            ERROR
     ControlMaster       auto
     ControlPath         /tmp/%r@%h:%p
     ControlPersist      120h
