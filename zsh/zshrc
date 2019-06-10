@@ -122,6 +122,7 @@ a less="less -X"
 a tmux="tmux -u"
 a vi=vim
 a project="source ~/.mydotfiles/zsh/zsh_project"
+a projects="zsh ~/.mydotfiles/zsh/zsh_projects"
 a node="source ~/.mydotfiles/zsh/zsh_node"
 
 HISTSIZE=100000000
