@@ -1,6 +1,17 @@
 #!/bin/zsh
 
 case "$ARGC" in
+  2)
+    if [[ $1 == "rm" ]] then
+      for i in $MJM_WS/projects/$MJM_HOST/$2 $MJM_WS/projects/src/$2 $MJM_SCRATCH/projects/$MJM_HOST/$2/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$2/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$MJM_HOST/$2/install/$MJM_ARCH/install.2; do
+        echo "Removing $i"
+        /bin/rm -rf $i
+      done
+    else
+      echo "Unknown command"
+    fi
+    ;;
+
   1)
     if [[ ! -d $HOME/.sessions ]] then
       mkdir -p $HOME/.sessions
