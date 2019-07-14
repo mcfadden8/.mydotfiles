@@ -41,6 +41,7 @@ case "$ARGC" in
     export LD_LIBRARY_PATH="$INSTALLDIR/lib:$INSTALLDIR2/lib:$LD_LIBRARY_PATH"
     export BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
     export SRCDIR=$HOME/.sessions/$MJM_HOST/src
+    cd $SRCDIR
     ;;
 
   0)

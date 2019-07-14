@@ -43,7 +43,6 @@ fi
 
 if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
   source $HOME/.mydotfiles/zsh/zsh_project `cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
-  cd $SRCDIR
 fi
 
 if (( ${+SYS_TYPE} )); then 
