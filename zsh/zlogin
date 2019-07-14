@@ -41,6 +41,10 @@ if [[ -d $SPACK_ROOT/bin ]]; then
   path=( $SPACK_ROOT/bin $path )
 fi
 
+if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
+  export MJM_PROJECT=`cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
+fi
+
 if (( ${+SYS_TYPE} )); then 
   export MJM_ARCH=$SYS_TYPE
 else
