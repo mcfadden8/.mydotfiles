@@ -42,7 +42,8 @@ if [[ -d $SPACK_ROOT/bin ]]; then
 fi
 
 if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
-  export MJM_PROJECT=`cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
+  source $HOME/.mydotfiles/zsh/zsh_project `cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
+  cd $SRCDIR
 fi
 
 if (( ${+SYS_TYPE} )); then 
