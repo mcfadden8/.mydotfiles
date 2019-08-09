@@ -41,10 +41,6 @@ if [[ -d $SPACK_ROOT/bin ]]; then
   path=( $SPACK_ROOT/bin $path )
 fi
 
-if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
-  source $HOME/.mydotfiles/zsh/zsh_project `cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
-fi
-
 if (( ${+SYS_TYPE} )); then 
   export MJM_ARCH=$SYS_TYPE
 else
@@ -58,6 +54,10 @@ else
       export MJM_ARCH=`uname -m`
     fi
   fi
+fi
+
+if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
+  source $HOME/.mydotfiles/zsh/zsh_project `cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
 fi
 
 if [[ -d $SPACK_ROOT/bin ]]; then
