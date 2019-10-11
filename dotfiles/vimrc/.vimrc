@@ -1,5 +1,8 @@
 set nocompatible                    " Run in true vim mode (no vi, too old)
 
+nnoremap ,ve :vsplit ~/.vimrc<CR>
+nnoremap ,vr :source ~/.vimrc<CR>
+
 " colorscheme Black
 " colorscheme koehler
 " colorscheme desert
@@ -143,7 +146,11 @@ nnoremap ,grm :Gremove<CR>
 nnoremap ,gs :Gstatus<CR>
 nnoremap ,gt :Gcommit -v -q %:p<CR>
 nnoremap ,gm :Gmove<Space>
-nnoremap ,gp :Ggrep<Space>
 nnoremap ,gpl :Git pull<CR>
 nnoremap ,gps :Git push<CR>
 nnoremap ,gw :Gwrite<CR><CR>
+" grepping and quifkfix list commands
+nnoremap ,gp :vsplit<CR>:Ggrep<Space>
+nnoremap ,gpn :cnext<CR>
+nnoremap ,gpp :cprevious<CR>
+nnoremap ,gpc :cclose<CR>

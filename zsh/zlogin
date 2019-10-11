@@ -68,7 +68,7 @@ if [[ -d $SPACK_ROOT/bin ]]; then
     echo "No module cache found for modules.$MJM_HOST"
     echo "consider setting one up, it will be faster..."
     X=`spack arch`
-    for m in ninja vim cmake git ncdu tmux zsh; do
+    for m in ninja vim ncdu tmux zsh; do
       echo "spack load $m arch=$X ..."
       spack load $m arch=$X
     done
