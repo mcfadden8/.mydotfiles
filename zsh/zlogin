@@ -35,6 +35,10 @@ if [[ $MJM_HOST != cztb ]]; then
   done
 fi
 
+if [[ -d $HOME/.bin ]]; then
+  path=( $HOME/.bin $path )
+fi
+
 export SPACK_ROOT=$MJM_WS/spack
 if [[ -d $SPACK_ROOT/bin ]]; then
   . $SPACK_ROOT/share/spack/setup-env.sh
