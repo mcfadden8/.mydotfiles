@@ -1,5 +1,0 @@
-if [ "$MJM_TOSSVERSION" = "3" ]; then
-    module purge
-    module load cudatoolkit clang
-    module list
-fi

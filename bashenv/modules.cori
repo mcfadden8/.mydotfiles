@@ -1,3 +1,0 @@
-module swap PrgEnv-intel PrgEnv-gnu
-module load python
-module list
