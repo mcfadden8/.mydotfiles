@@ -51,6 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-.arch_cache/
-
 *.swp
+zcomp*
+last_project.*
