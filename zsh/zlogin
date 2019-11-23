@@ -42,10 +42,8 @@ fi
 export SPACK_ROOT=$MJM_WS/spack
 if [[ -d $SPACK_ROOT/bin ]]; then
   if [[ $MJM_HOST != rzcrayz ]]; then
-    if [[ $MJM_HOST != corona ]]; then
-      . $SPACK_ROOT/share/spack/setup-env.sh
-      path=( $SPACK_ROOT/bin $path )
-    fi
+    . $SPACK_ROOT/share/spack/setup-env.sh
+    path=( $SPACK_ROOT/bin $path )
   fi
 fi
 
@@ -73,16 +71,14 @@ if [[ -d $SPACK_ROOT/bin ]]; then
     . $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST
   else
     if [[ $MJM_HOST != rzcrayz ]]; then
-      if [[ $MJM_HOST != corona ]]; then
-        echo "Loading spack modules..."
-        echo "No module cache found for modules.$MJM_HOST"
-        echo "consider setting one up, it will be faster..."
-        X=`spack arch`
-        for m in ninja vim ncdu tmux zsh; do
-          echo "spack load $m arch=$X ..."
-          spack load $m arch=$X
-        done
-      fi
+      echo "Loading spack modules..."
+      echo "No module cache found for modules.$MJM_HOST"
+      echo "consider setting one up, it will be faster..."
+      X=`spack arch`
+      for m in ninja vim ncdu tmux zsh; do
+        echo "spack load $m arch=$X ..."
+        spack load $m arch=$X
+      done
     fi
   fi
   # module load clang
