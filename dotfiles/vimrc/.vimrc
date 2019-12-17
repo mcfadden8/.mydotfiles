@@ -57,7 +57,7 @@ let NERDTreeQuitOnOpen=0
 set noruler                " don't show the cursor position all the time
 set cursorline             " highlight current line
 set wildmenu               " visual autocomplete for command menu
-set showmatch              " highlight matching [{()}]
+" set showmatch              " highlight matching [{()}]
 
 set foldenable             " enable folding
 set foldlevelstart=10      " open most folds by default
