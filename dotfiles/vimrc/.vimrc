@@ -100,7 +100,8 @@ highlight ColorColumn ctermfg=yellow
 set colorcolumn=80
 
 " Prevent vim from clearing the screen on exit
-set t_te=
+" Warning: This will screw up scrolling on konsole and gnome terminal
+" set t_te=
 
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
