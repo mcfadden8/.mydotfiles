@@ -24,13 +24,13 @@ Host rz-bitbucket.llnl.gov
     ControlPersist      no
     ProxyCommand ssh rzgw.llnl.gov nc %h 7999
 
-Host rzalastor rzansel rzgenie rzhasgpu rzmanta rztopaz rztrona rzuseq
+Host rzalastor rzansel rzcrayz rzgenie rzhasgpu rzmanta rztopaz rztrona rzuseq
     ForwardAgent        yes
     ForwardX11          yes
     ForwardX11Trusted   yes
     HostName     %h.llnl.gov
 
-Host borax catalyst crayz lassen pascal quartz ray surface syrah tbgw1
+Host borax catalyst corona lassen pascal quartz ray surface syrah tbgw1
     ForwardAgent        yes
     ForwardX11          yes
     ForwardX11Trusted   yes

@@ -1,9 +1,22 @@
 #!/bin/zsh
 
+function old_src {
+  my_d=`pwd`
+  echo "Old Source Directories and content are here:"
+  for d in `ls $MJM_WS/projects/src`; do
+    cd $MJM_WS/projects/src/$d
+    pwd -L
+    pwd -P
+    ls
+    echo ""
+  done
+  cd $my_d
+}
+
 case "$ARGC" in
   2)
     if [[ $1 == "rm" ]] then
-      for i in $MJM_WS/projects/$MJM_HOST/$2 $MJM_WS/projects/src/$2 $MJM_SCRATCH/projects/$MJM_HOST/$2/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$2/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$MJM_HOST/$2/install/$MJM_ARCH/install.2; do
+      for i in $MJM_WS/projects/$MJM_HOST/$2 $MJM_SCRATCH/projects/$MJM_HOST/$2/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$2/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$MJM_HOST/$2/install/$MJM_ARCH/install.2; do
         echo "Removing $i"
         /bin/rm -rf $i
       done
@@ -13,35 +26,41 @@ case "$ARGC" in
     ;;
 
   1)
-    if [[ ! -d $HOME/.sessions ]] then
-      mkdir -p $HOME/.sessions
+    if [[ $1 == "old" ]] then
+      old_src
+    else
+      if [[ ! -d $HOME/.sessions ]] then
+        mkdir -p $HOME/.sessions
+      fi
+
+      if [[ ! -d $MJM_WS/src ]] then
+        mkdir -p $MJM_WS/src
+      fi
+
+      export MJM_PROJECT=$1
+      echo $MJM_PROJECT > $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST
+      for i in $MJM_WS/projects/$MJM_HOST/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install.2; do
+        mkdir -p $i
+      done
+
+      if [[ $MJM_WS != $MJM_SCRATCH ]] then
+        /bin/rm -f $MJM_WS/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/build
+        ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/build $MJM_WS/projects/$MJM_HOST/$1/build
+        ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/install
+      fi
+
+      /bin/rm -f $HOME/.sessions/$MJM_HOST
+      ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
+
+      export INSTALLDIR=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install
+      export INSTALLDIR2=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install.2
+      path=( $INSTALLDIR2/bin $path )
+      path=( $INSTALLDIR/bin $path )
+      export LD_LIBRARY_PATH="$INSTALLDIR/lib64:$INSTALLDIR/lib:$INSTALLDIR2/lib64:$INSTALLDIR2/lib:$LD_LIBRARY_PATH"
+      export BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
+      export SRCDIR=$MJM_WS/src
+      cd $SRCDIR
     fi
-
-    export MJM_PROJECT=$1
-    echo $MJM_PROJECT > $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST
-    for i in $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/src/$1 $MJM_SCRATCH/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install $MJM_SCRATCH/projects/$MJM_HOST/$1/install/$MJM_ARCH/install.2; do
-      mkdir -p $i
-    done
-
-    if [[ $MJM_WS != $MJM_SCRATCH ]] then
-      /bin/rm -f $MJM_WS/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/build
-      ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/build $MJM_WS/projects/$MJM_HOST/$1/build
-      ln -s $MJM_SCRATCH/projects/$MJM_HOST/$1/install $MJM_WS/projects/$MJM_HOST/$1/install
-    fi
-
-    /bin/rm -f $MJM_WS/projects/$MJM_HOST/$1/src 
-    ln -s $MJM_WS/projects/src/$1 $MJM_WS/projects/$MJM_HOST/$1/src 
-    /bin/rm -f $HOME/.sessions/$MJM_HOST
-    ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
-
-    export INSTALLDIR=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install
-    export INSTALLDIR2=$HOME/.sessions/$MJM_HOST/install/$MJM_ARCH/install.2
-    path=( $INSTALLDIR2/bin $path )
-    path=( $INSTALLDIR/bin $path )
-    export LD_LIBRARY_PATH="$INSTALLDIR/lib64:$INSTALLDIR/lib:$INSTALLDIR2/lib64:$INSTALLDIR2/lib:$LD_LIBRARY_PATH"
-    export BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
-    export SRCDIR=$HOME/.sessions/$MJM_HOST/src
-    cd $SRCDIR
     ;;
 
   0)
