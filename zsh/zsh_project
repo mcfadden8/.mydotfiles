@@ -1,16 +1,18 @@
 #!/bin/zsh
 
 function old_src {
-  my_d=`pwd`
-  echo "Old Source Directories and content are here:"
-  for d in `ls $MJM_WS/projects/src`; do
-    cd $MJM_WS/projects/src/$d
-    pwd -L
-    pwd -P
-    ls
-    echo ""
-  done
-  cd $my_d
+  if [[ -d $MJM_WS/projects/src ]] then
+    my_d=`pwd`
+    echo "Old Source Directories and content are here:"
+    for d in `ls $MJM_WS/projects/src`; do
+      cd $MJM_WS/projects/src/$d
+      pwd -L
+      pwd -P
+      ls
+      echo ""
+    done
+    cd $my_d
+  fi
 }
 
 case "$ARGC" in
