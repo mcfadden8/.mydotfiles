@@ -1,37 +1,52 @@
 # Default for all hosts
 Host *
-    LogLevel            ERROR
-    ControlMaster       auto
-    ControlPath         /tmp/%r@%h:%p
-    ControlPersist      120h
     IdentityFile        ~/.ssh/id_rsa
+    LogLevel            ERROR
     User                martymcf
 
-Host *github.com *bitbucket.org *gitlab.com *stash.llnl.gov nst-code.llnl.gov
-    # Don't forward for Git servers
-    # Doing so can cause strange, though benign, warning messages on connection
+Host rzslicnox
     ForwardAgent        no
     ForwardX11          no
     ForwardX11Trusted   no
-    ControlPersist      no
+    HostName            rzslic.llnl.gov
+
+Host oslicnox
+    ForwardAgent        no
+    ForwardX11          no
+    ForwardX11Trusted   no
+    HostName            oslic.llnl.gov
+
+Host rzslic oslic
+    ControlMaster       auto
+    ControlPath         /tmp/%r@%h:%p
+    ControlPersist      12h
+    ForwardAgent        yes
+    ForwardX11          yes
+    ForwardX11Trusted   yes
+    HostName            %h.llnl.gov
+
+Host *github.com *.gitlab.com
+    ForwardAgent        no
+    ForwardX11          no
+    ForwardX11Trusted   no
+
+Host czgitlab*
+    ForwardAgent        no
+    ForwardX11          no
+    ForwardX11Trusted   no
+    ProxyCommand ssh oslicnox nc %h 7999
 
 Host rz-bitbucket.llnl.gov
-    # Don't forward for Git servers
-    # Doing so can cause strange, though benign, warning messages on connection
     ForwardAgent        no
     ForwardX11          no
     ForwardX11Trusted   no
-    ControlPersist      no
-    ProxyCommand ssh rzgw.llnl.gov nc %h 7999
+    ProxyCommand ssh rzslicnox nc %h 7999
 
-Host rzalastor rzansel rzcrayz rzgenie rzhasgpu rzmanta rztopaz rztrona rzuseq
+Host rzalastor rzansel rzcrayz rzgenie rzhasgpu rzmanta rztopaz rztrona rzuseq borax catalyst corona pascal quartz ray surface syrah lassen
+    ControlMaster       auto
+    ControlPath         /tmp/%r@%h:%p
+    ControlPersist      12h
     ForwardAgent        yes
     ForwardX11          yes
     ForwardX11Trusted   yes
-    HostName     %h.llnl.gov
-
-Host borax catalyst corona lassen pascal quartz ray surface syrah tbgw1
-    ForwardAgent        yes
-    ForwardX11          yes
-    ForwardX11Trusted   yes
-    HostName     %h.llnl.gov
+    ProxyCommand ssh rzslic nc %h 622
