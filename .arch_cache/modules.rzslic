@@ -1,2 +1,2 @@
 #!/bin/zsh
-module load ninja-1.8.2-gcc-4.9.3-ttjyjrx vim-8.1.0338-gcc-4.9.3-vkbreh2 ncdu-1.13-gcc-4.9.3-pzujsqn tmux-2.7-gcc-4.9.3-sspy75c zsh-5.4.2-gcc-4.9.3-itgxgal
+# module load ninja-1.8.2-gcc-4.9.3-ttjyjrx vim-8.1.0338-gcc-4.9.3-vkbreh2 ncdu-1.13-gcc-4.9.3-pzujsqn tmux-2.7-gcc-4.9.3-sspy75c zsh-5.4.2-gcc-4.9.3-itgxgal

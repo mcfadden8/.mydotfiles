@@ -42,12 +42,13 @@ set noincsearch                 " no incremental searching
 nnoremap ,<space> :nohlsearch<CR>
 
 autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " autocmd VimEnter * NERDTree
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Jump to the main window.
 " autocmd VimEnter * wincmd p
 nnoremap ,f :NERDTreeToggle<CR>
+
 nnoremap <silent> ,v :NERDTreeFind<CR>
 " let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
@@ -125,6 +126,7 @@ endfunction
 nmap <silent> ,mw :call MarkWindowSwap()<CR>
 nmap <silent> ,pw :call DoWindowSwap()<CR>
 
+
 " To use (assuming your mapleader is set to \) you would:
 " 
 "     Move to the window to mark for the swap via ctrl-w movement
@@ -155,3 +157,8 @@ nnoremap ,gp :vsplit<CR>:Ggrep<Space>
 nnoremap ,gpn :cnext<CR>
 nnoremap ,gpp :cprevious<CR>
 nnoremap ,gpc :cclose<CR>
+
+nnoremap ,mm :set guioptions+=m<CR>
+nnoremap ,mM :set guioptions-=m<CR>
+
+autocmd VimEnter * if has("gui_running") | set guioptions+=m | endif

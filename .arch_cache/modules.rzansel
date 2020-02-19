@@ -1,4 +1,4 @@
 # module load ncdu-1.13-gcc-4.9.3-d6rjjfx tmux-2.8-gcc-4.9.3-r5jwwti ninja-1.9.0-gcc-4.9.3-fbcauqz zsh-5.4.2-gcc-4.9.3-ltbt3qp vim-8.1.0338-gcc-4.9.3-zwrmp2j cmake-3.14.2-gcc-4.9.3-fkeonqu git-2.21.0-gcc-4.9.3-ixalywn
 # module load ncdu-1.13-gcc-4.9.3-d6rjjfx tmux-2.8-gcc-4.9.3-r5jwwti ninja-1.9.0-gcc-4.9.3-fbcauqz zsh-5.4.2-gcc-4.9.3-ltbt3qp vim-8.1.0338-gcc-4.9.3-zwrmp2j git-2.21.0-gcc-4.9.3-ixalywn clang cmake
-module load cmake git vim-8.1.0338-gcc-4.9.3-sqfkrqx ncdu-1.13-gcc-4.9.3-d6rjjfx tmux-2.7-gcc-4.9.3-umpt2fu zsh-5.4.2-gcc-4.9.3-ssg6hdm ninja-1.8.2-gcc-4.9.3-z6z2745
+# module load cmake git vim-8.1.0338-gcc-4.9.3-sqfkrqx ncdu-1.13-gcc-4.9.3-d6rjjfx tmux-2.7-gcc-4.9.3-umpt2fu zsh-5.4.2-gcc-4.9.3-ssg6hdm ninja-1.8.2-gcc-4.9.3-z6z2745
 
