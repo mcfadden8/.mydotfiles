@@ -1,52 +1,47 @@
-# Default for all hosts
+################################################################################
+# LC SSH Config
+#
+# Created by Ian Lee <lee1001@llnl.gov>
+#
+# For more information, see: https://dev.llnl.gov/about/ssh/
+################################################################################
+
+# Notes:
+# - From the ssh_config manual:
+#     "Since the first obtained value for each parameter is used, more host-specific declarations should be given near the beginning of the file, and general defaults at the end."
+
+CanonicalDomains        llnl.gov
+CanonicalizeHostname    always
+
+# Proxy connections to LC Bitbuckets and Gitlabs through jump host
+Host cz-bitbucket* czgitlab* rz-bitbucket* rzgitlab*
+    ProxyCommand        ssh rzslic -W %h:7999
+
+# Jump host: rzslic
+Host rzslic*
+    PreferredAuthentications password
+
+# CZ+RZ Hosts
+Host borax* catalyst* corona* flash* lassen* oslic* pascal* quartz* ray* surface* syrah* rzalastor* rzansel* rzgenie* rzhasgpu* rzmanta* rztopaz* rztrona*
+    ForwardX11          yes
+    ForwardX11Trusted   yes
+    ProxyCommand        sh -c 'g=rzslic.llnl.gov; ms=~/.ssh/%r@$g:%p; if [ ! -e $ms ]; then echo Connecting to $g so use your RZ RSA Pin+Token>&2; ssh -fNMS $ms $g; fi; echo Connecting to %h so use corresponding RSA Pin+Token if prompted >&2; exec ssh -S $ms $g "if nc -w 3 -z %h 622; then p=622; else p=22; fi; nc %h \$p"'
+
+# Default values for all hosts, if not overridden above
 Host *
+    ControlMaster       auto
+    ControlPath         ~/.ssh/%r@%h:%p
+    ControlPersist      120h
+    IdentitiesOnly      yes
     IdentityFile        ~/.ssh/id_rsa
+    ForwardAgent        no
+    ForwardX11          no
+    ForwardX11Trusted   no
     LogLevel            ERROR
+
+    # macOS Only, options not supported on Linux (tested on RHEL 7)
+    AddKeysToAgent      yes
+    UseKeychain         yes
+
+    # Change the name below to your LC Username
     User                martymcf
-
-Host rzslicnox
-    ForwardAgent        no
-    ForwardX11          no
-    ForwardX11Trusted   no
-    HostName            rzslic.llnl.gov
-
-Host oslicnox
-    ForwardAgent        no
-    ForwardX11          no
-    ForwardX11Trusted   no
-    HostName            oslic.llnl.gov
-
-Host rzslic oslic
-    ControlMaster       auto
-    ControlPath         /tmp/%r@%h:%p
-    ControlPersist      12h
-    ForwardAgent        yes
-    ForwardX11          yes
-    ForwardX11Trusted   yes
-    HostName            %h.llnl.gov
-
-Host *github.com *.gitlab.com
-    ForwardAgent        no
-    ForwardX11          no
-    ForwardX11Trusted   no
-
-Host czgitlab*
-    ForwardAgent        no
-    ForwardX11          no
-    ForwardX11Trusted   no
-    ProxyCommand ssh oslicnox nc %h 7999
-
-Host rz-bitbucket.llnl.gov
-    ForwardAgent        no
-    ForwardX11          no
-    ForwardX11Trusted   no
-    ProxyCommand ssh rzslicnox nc %h 7999
-
-Host rzalastor rzansel rzcrayz rzgenie rzhasgpu rzmanta rztopaz rztrona rzuseq borax catalyst corona pascal quartz ray surface syrah lassen
-    ControlMaster       auto
-    ControlPath         /tmp/%r@%h:%p
-    ControlPersist      12h
-    ForwardAgent        yes
-    ForwardX11          yes
-    ForwardX11Trusted   yes
-    ProxyCommand ssh rzslic nc %h 622
