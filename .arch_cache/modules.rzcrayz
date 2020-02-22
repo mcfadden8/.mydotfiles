@@ -1,7 +1,0 @@
-#!/bin/zsh
-export HCC_AMDGPU_TARGET=gfx900
-module use /opt/modules/modulefiles
-module load dts
-module load rocm
-module load cmake
-
