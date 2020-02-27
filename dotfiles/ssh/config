@@ -15,17 +15,17 @@ CanonicalizeHostname    always
 
 # Proxy connections to LC Bitbuckets and Gitlabs through jump host
 Host cz-bitbucket* czgitlab* rz-bitbucket* rzgitlab*
-    ProxyCommand        ssh rzslic -W %h:7999
+    ProxyCommand        ssh izgw -W %h:7999
 
-# Jump host: rzslic
-Host rzslic*
+# Jump host: izgw
+Host izgw*
     PreferredAuthentications password
 
 # CZ+RZ Hosts
-Host borax* catalyst* corona* flash* lassen* oslic* pascal* quartz* ray* surface* syrah* rzalastor* rzansel* rzgenie* rzhasgpu* rzmanta* rztopaz* rztrona*
+Host borax* catalyst* corona* flash* lassen* oslic* pascal* quartz* ray* surface* syrah* rzalastor* rzansel* rzgenie* rzhasgpu* rzmanta* rzslic* rztopaz* rztrona*
     ForwardX11          yes
     ForwardX11Trusted   yes
-    ProxyCommand        sh -c 'g=rzslic.llnl.gov; ms=~/.ssh/%r@$g:%p; if [ ! -e $ms ]; then echo Connecting to $g so use your RZ RSA Pin+Token>&2; ssh -fNMS $ms $g; fi; echo Connecting to %h so use corresponding RSA Pin+Token if prompted >&2; exec ssh -S $ms $g "if nc -w 3 -z %h 622; then p=622; else p=22; fi; nc %h \$p"'
+    ProxyCommand        sh -c 'g=izgw.llnl.gov; ms=~/.ssh/%r@$g:%p; if [ ! -e $ms ]; then echo Connecting to $g so use your RZ RSA Pin+Token>&2; ssh -fNMS $ms $g; fi; echo Connecting to %h so use corresponding RSA Pin+Token if prompted >&2; exec ssh -S $ms $g "if nc -w 3 -z %h 622; then p=622; else p=22; fi; nc %h \$p"'
 
 # Default values for all hosts, if not overridden above
 Host *
