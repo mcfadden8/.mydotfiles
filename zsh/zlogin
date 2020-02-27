@@ -69,20 +69,5 @@ if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
 fi
 
 if [[ -d $SPACK_ROOT/bin ]]; then
-  if [[ -f $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST ]]; then
-    . $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST
-  else
-    if [[ $MJM_HOST != rzcrayz ]]; then
-      echo "Loading spack modules..."
-      echo "No module cache found for modules.$MJM_HOST"
-      echo "consider setting one up, it will be faster..."
-      X=`spack arch`
-      for m in ninja vim ncdu tmux zsh; do
-        echo "spack load $m arch=$X ..."
-        spack load $m arch=$X
-      done
-    fi
-  fi
-  # module load clang
   module list
 fi
