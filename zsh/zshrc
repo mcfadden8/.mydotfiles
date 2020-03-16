@@ -125,6 +125,7 @@ a project="source ~/.mydotfiles/zsh/zsh_project"
 a projects="zsh ~/.mydotfiles/zsh/zsh_projects"
 a node="source ~/.mydotfiles/zsh/zsh_node"
 a H="tput reset"
+a kdev="module use /usr/dnta/kull/developers/tools/scripts/mods; module add kull-dev ; module list"
 
 HISTSIZE=100000000
 SAVEHIST=100000000
