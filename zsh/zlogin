@@ -25,15 +25,39 @@ case "$MJM_HOST" in
 esac
 
 export MJM_SCRATCH=$MJM_WS    # Default value
-
-if [[ $MJM_HOST != cztb ]]; then
-  for scratchdir in gscratchrzm lscratchh lscratchrza gscratchr lscratch1 lscratch2 gscratch9 gpfs1; do
-    if [[ -d /p/$scratchdir/martymcf ]]; then
-      export MJM_SCRATCH=/p/$scratchdir/martymcf
-      break
+case "$MJM_HOST" in
+  rzalastor)
+    export MJM_SCRATCH=/p/lustre1/martymcf
+    ;;
+  rzansel)
+    export MJM_SCRATCH=/p/gpfs1/martymcf
+    ;;
+  rzgenie)
+    export MJM_SCRATCH=/p/lustre1/martymcf
+    ;;
+  rzmanta)
+    export MJM_SCRATCH=/p/gscratchrzm/martymcf
+    ;;
+  rztopaz)
+    export MJM_SCRATCH=/p/lustre1/martymcf
+    ;;
+  rztrona)
+    export MJM_SCRATCH=/p/lustre1/martymcf
+    ;;
+  rzuseq)
+    export MJM_SCRATCH=/p/lustre1/martymcf
+    ;;
+  cztb)
+    export MJM_WS=/home/martymcf
+    ;;
+  *)
+    if [[ -d /usr/workspace/martymcf ]]; then
+      export MJM_WS=/usr/workspace/martymcf
+    else
+      export MJM_WS=$HOME
     fi
-  done
-fi
+    ;;
+esac
 
 if [[ -d $HOME/.bin ]]; then
   path=( $HOME/.bin $path )
@@ -62,12 +86,12 @@ else
   fi
 fi
 
-project old
-
 if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
   source $HOME/.mydotfiles/zsh/zsh_project `cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
 fi
 
-if [[ -d $SPACK_ROOT/bin ]]; then
-  module list
+if [[ -f $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST ]]; then
+  source $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST
 fi
+
+module list

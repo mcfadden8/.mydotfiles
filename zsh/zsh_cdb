@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+cd $MJM_BUILDDIR/$1; pwd; l

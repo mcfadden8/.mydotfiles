@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+cd $MJM_SOURCEDIR/$1; pwd; l
