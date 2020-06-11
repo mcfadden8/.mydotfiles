@@ -1,0 +1,13 @@
+{
+    "cmake.configureArgs": [
+        "-DENABLE_DEVELOPER_DEFAULTS=On",
+        "-DENABLE_MPI=On"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.includePath": [
+        "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/include",
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/src/tpl",
+        "${workspaceFolder}/src/tpl/camp/include"
+    ],
+}
