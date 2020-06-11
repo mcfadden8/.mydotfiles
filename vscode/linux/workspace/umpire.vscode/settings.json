@@ -1,7 +1,12 @@
 {
     "cmake.configureArgs": [
         "-DENABLE_DEVELOPER_DEFAULTS=On",
-        "-DENABLE_MPI=On"
+        "-DENABLE_MPI=On",
+        "-DCMAKE_CXX_COMPILER=clang++",
+        "-DCMAKE_C_COMPILER=clang",
+        "-DENABLE_BACKTRACE=On",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_INSTALL_PREFIX=${env:MJM_BUILDDIR}/${workspaceFolderBasename}.install"
     ],
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.default.includePath": [
