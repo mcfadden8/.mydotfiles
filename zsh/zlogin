@@ -86,4 +86,6 @@ fi
 
 if (( ${+SYS_TYPE} )); then 
   module list
+else
+  export PMIX_MCA_gds=hash
 fi

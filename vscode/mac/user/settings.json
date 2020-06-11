@@ -1,0 +1,45 @@
+{
+    "cmake.configureOnOpen": true,
+    "extensions.autoUpdate": false,
+    "cmake.configureArgs": [
+        "-DENABLE_DEVELOPER_DEFAULTS=On",
+        "-DENABLE_MPI=On"
+    ],
+    "files.autoSave": "afterDelay",
+    "editor.accessibilitySupport": "off",
+    "cmake.buildDirectory": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}",
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "C_Cpp.default.includePath": [
+        "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/include",
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/src/tpl",
+        "${workspaceFolder}/src/tpl/camp/include"
+    ],
+    "terminal.integrated.automationShell.linux": "",
+    "terminal.integrated.shellArgs.linux": [
+        "-l"
+    ],
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "window.autoDetectColorScheme": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "editor.minimap.enabled": false,
+    "window.restoreWindows": "none",
+    "remote.SSH.showLoginTerminal": true,
+    "window.zoomLevel": 0,
+    "git.enabled": false,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "500",
+    "terminal.external.osxExec": "iTerm2.app",
+    "C_Cpp.inactiveRegionOpacity": null,
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.wordWrap": "on",
+    "editor.columnSelection": true,
+    "cmake.ctestPath": "",
+    "cmake.copyCompileCommands": "",
+    "cmake.buildEnvironment": {
+
+    },
+    "files.autoSaveDelay": 1000,
+}
