@@ -1,20 +1,10 @@
 {
     "cmake.configureOnOpen": true,
     "extensions.autoUpdate": false,
-    "cmake.configureArgs": [
-        "-DENABLE_DEVELOPER_DEFAULTS=On",
-        "-DENABLE_MPI=On"
-    ],
     "files.autoSave": "afterDelay",
     "editor.accessibilitySupport": "off",
     "cmake.buildDirectory": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}",
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
-    "C_Cpp.default.includePath": [
-        "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/include",
-        "${workspaceFolder}/src",
-        "${workspaceFolder}/src/tpl",
-        "${workspaceFolder}/src/tpl/camp/include"
-    ],
     "terminal.integrated.automationShell.linux": "",
     "terminal.integrated.shellArgs.linux": [
         "-l"
@@ -38,8 +28,5 @@
     "editor.columnSelection": true,
     "cmake.ctestPath": "",
     "cmake.copyCompileCommands": "",
-    "cmake.buildEnvironment": {
-
-    },
     "files.autoSaveDelay": 1000,
 }
