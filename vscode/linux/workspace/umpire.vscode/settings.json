@@ -15,4 +15,8 @@
         "${workspaceFolder}/src/tpl",
         "${workspaceFolder}/src/tpl/camp/include"
     ],
+    "debug.allowBreakpointsEverywhere": true,
+    "launch": {
+    
+    },
 }
