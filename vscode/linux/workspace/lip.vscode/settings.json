@@ -1,6 +1,8 @@
 {
+    "cmake.cacheInit": [
+      "cmake/ToolChainFiles/toss3-mvapich2.2-clang6.cmake"
+    ],
     "cmake.configureArgs": [
-        "-C ${workspaceFolder}/cmake/ToolChainFiles/toss3-mvapich2.2-clang6.cmake",
         "-DCMAKE_INSTALL_PREFIX=${env:MJM_BUILDDIR}/${workspaceFolderBasename}.install",
         "-DCMAKE_BUILD_TYPE=Debug",
         "-DBUILD_TESTS=ON",
