@@ -1,0 +1,19 @@
+{
+    "cmake.cacheInit": [
+      "cmake/ToolChainFiles/toss3-mvapich2-clang6.cmake"
+    ],
+    "cmake.configureArgs": [
+        "-DCMAKE_INSTALL_PREFIX=${env:MJM_BUILDDIR}/${workspaceFolderBasename}.install",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DBUILD_TESTING=ON",
+        "-DCHECK_MPI=Off"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "debug.allowBreakpointsEverywhere": true
+}
+
+// cmake
+// -DBOOST_ROOT=/p/lscratchrza/collette/spack_testing/180820_toss_3_x86_64_ib_ares315clangtossbuild/spack/opt/spack/toss_3_x86_64_ib/clang-toss/boost-1.54.0-45zljdytjeemr6uxxvi5e3f3a3k2nbbi
+// -DCMAKE_INSTALL_PREFIX=/p/lscratchrza/collette/spack_testing/180820_toss_3_x86_64_ib_ares315clangtossbuild/spack/opt/spack/toss_3_x86_64_ib/clang-toss/ASCMemory-1.0.4-gi5avicsmoobovpj6zoi5nclafstwuw5
+// -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=FALSE
+// -DCMAKE_INSTALL_RPATH=/p/lscratchrza/collette/spack_testing/180820_toss_3_x86_64_ib_ares315clangtossbuild/spack/opt/spack/toss_3_x86_64_ib/clang-toss/ASCMemory-1.0.4-gi5avicsmoobovpj6zoi5nclafstwuw5/lib:/p/lscratchrza/collette/spack_testing/180820_toss_3_x86_64_ib_ares315clangtossbuild/spack/opt/spack/toss_3_x86_64_ib/clang-toss/ASCMemory-1.0.4-gi5avicsmoobovpj6zoi5nclafstwuw5/lib64:/p/lscratchrza/collette/spack_testing/180820_toss_3_x86_64_ib_ares315clangtossbuild/spack/opt/spack/toss_3_x86_64_ib/clang-toss/boost-1.54.0-45zljdytjeemr6uxxvi5e3f3a3k2nbbi/lib
