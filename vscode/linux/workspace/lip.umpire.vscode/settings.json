@@ -1,0 +1,21 @@
+{
+    "cmake.buildArgs": [
+        "-C ${workspaceFolder}/cmake/ToolChainFiles/toss3-mvapich2.2-clang6.cmake",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DBUILD_TESTS=ON",
+        "-DENABLE_C_LIP=OFF",
+        "-DENABLE_CPP_LIP=ON",
+        "-DENABLE_SM_LIP=ON",
+        "-DENABLE_MPI=ON",
+        "-DENABLE_ASCMEMORY=ON",
+        "-DENABLE_CALIPER=OFF",
+        "-DUMPIRE_DIR=${workspaceFolder}/../2.1.0",
+        "-DENABLE_UMPIRE=OFF",
+        "-DENABLE_UMPIRE_IDS=OFF",
+        "-DENABLE_ZFP=OFF",
+        "-DLIP_ZFP_DEFAULT_COMPRESSION=16",
+        "-DLIP_SHARED_MEMORY=ON",
+        "-DBUILD_LIP_PARALLEL_TESTS=ON"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}
