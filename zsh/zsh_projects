@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-PROJECTDIR=$MJM_WS/projects/$MJM_HOST
+PROJECTDIR=$MJM_WS/source
 if [[ ! -d $PROJECTDIR ]] then
   echo "No projects"
 else

@@ -1,63 +1,35 @@
 #!/bin/zsh
 
-function old_src {
-  if [[ -d $MJM_WS/projects/src ]] then
-    my_d=`pwd`
-    echo "Old Source Directories and content are here:"
-    for d in `ls $MJM_WS/projects/src`; do
-      cd $MJM_WS/projects/src/$d
-      pwd -L
-      pwd -P
-      ls
-      echo ""
-    done
-    cd $my_d
-  fi
-}
 
 case "$ARGC" in
-  2)
+  2)  # project rm <project_name>
     if [[ $1 == "rm" ]] then
-      for i in $MJM_WS/projects/$MJM_HOST/$2 $MJM_WS/projects/$MJM_HOST/$2/build/$MJM_ARCH $MJM_WS/projects/$MJM_HOST/$2/install/$MJM_ARCH/install $MJM_WS/projects/$MJM_HOST/$2/install/$MJM_ARCH/install.2; do
-        echo "Removing $i"
-        /bin/rm -rf $i
-      done
+      echo "Removing Project: $2"
+      /bin/rm -rf $MJM_WS/source/$2 $MJM_WS/build/$2
     else
       echo "Unknown command"
     fi
-    ;;
 
-  1)
-    if [[ $1 == "old" ]] then
-      old_src
-    else
-      if [[ ! -d $HOME/.sessions ]] then
-        mkdir -p $HOME/.sessions
-      fi
-
-      if [[ ! -d $MJM_WS/src ]] then
-        mkdir -p $MJM_WS/src
-      fi
-
-      export MJM_PROJECT=$1
-      echo $MJM_PROJECT > $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST
-      for i in $MJM_WS/projects/$MJM_HOST/$1 $MJM_WS/projects/$MJM_HOST/$1/build/$MJM_ARCH $MJM_WS/projects/$MJM_HOST/$1/install/$MJM_ARCH/install $MJM_WS/projects/$MJM_HOST/$1/install/$MJM_ARCH/install.2; do
-        mkdir -p $i
-      done
-
-      /bin/rm -f $HOME/.sessions/$MJM_HOST
-      ln -s $MJM_WS/projects/$MJM_HOST/$1 $HOME/.sessions/$MJM_HOST
-
-      export MJM_BUILDDIR=$HOME/.sessions/$MJM_HOST/build/$MJM_ARCH
-      export MJM_SOURCEDIR=$MJM_WS/src
+    if [[ $2 == $MJM_PROJECT ]] then
+      unset MJM_PROJECT
+      /bin/rm -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST
     fi
     ;;
 
-  0)
+  1) # project <project_name>
+    export MJM_PROJECT=$1
+    export MJM_BUILDDIR=$MJM_WS/build/$MJM_PROJECT/$MJM_HOST
+    export MJM_SOURCEDIR=$MJM_WS/source/$MJM_PROJECT
+
+    mkdir -p $MJM_BUILDDIR $MJM_SOURCEDIR
+    echo $MJM_PROJECT > $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST
+    ;;
+
+  0) # project
     if (( ${+MJM_PROJECT} )); then 
       echo "$MJM_PROJECT"
     else
-      echo "Not Set"
+      echo "NO PROJECT CURRENTLY CONFIGURED"
     fi
     ;;
   *)
