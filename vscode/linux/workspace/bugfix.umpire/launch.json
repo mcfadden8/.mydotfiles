@@ -8,16 +8,13 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/cpp_test/bhtestp/bhtestp-cpp",
-            "args": ["${env:MJM_BUILDDIR}/${workspaceFolderBasename}/cpp_test/bhtestp/aleos1pe"],
-            "stopAtEntry": true,
+            "program": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/bin/hello_pool",
+            "args": [],
+            "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            // "sourceFileMap": {
-                // "*/builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-34vmmvov5ct2riknhkfcmxieffb5pyex/gcc-4.9.3/": "${env:MJM_SOURCEDIR}/libs/gcc/"
-            // },
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

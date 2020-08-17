@@ -20,8 +20,6 @@
   conflictstyle = diff3
 [mergetool]
   prompt = false
-[submodule]
-	recurse = true
 [diff]
 	submodule = log
 [status]
