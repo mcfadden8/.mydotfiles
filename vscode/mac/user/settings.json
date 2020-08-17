@@ -17,7 +17,6 @@
     "window.restoreWindows": "none",
     "remote.SSH.showLoginTerminal": true,
     "window.zoomLevel": 0,
-    "git.enabled": false,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontWeight": "500",
@@ -29,4 +28,17 @@
     "cmake.ctestPath": "",
     "cmake.copyCompileCommands": "",
     "files.autoSaveDelay": 1000,
+    "git.autofetch": true,
+    "git.enabled": false,
+    "editor.rulers": [
+        80,
+        100,
+        130
+    ],
+    "editor.tabSize": 2,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingOvertype": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.defaultFormatter": "vscodevim.vim",
+    "editor.definitionLinkOpensInPeek": true
 }
