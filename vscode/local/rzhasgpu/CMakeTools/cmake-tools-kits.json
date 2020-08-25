@@ -1,0 +1,142 @@
+[
+  {
+    "name": "GCC 4.8.5",
+    "compilers": {
+      "C": "/usr/bin/gcc",
+      "CXX": "/usr/bin/g++"
+    }
+  },
+  {
+    "name": "GCC 4.9.3",
+    "compilers": {
+      "C": "/usr/tce/bin/gcc",
+      "CXX": "/usr/tce/bin/g++"
+    }
+  },
+  {
+    "name": "GCC for x86_64-redhat-linux 4.8.5",
+    "compilers": {
+      "C": "/usr/bin/x86_64-redhat-linux-gcc",
+      "CXX": "/usr/bin/x86_64-redhat-linux-g++"
+    }
+  },
+  {
+    "name": "LLNL - GCC 4.9.3",
+    "compilers": {
+      "C": "/usr/tce/packages/gcc/gcc-4.9.3/bin/gcc",
+      "CXX": "/usr/tce/packages/gcc/gcc-4.9.3/bin/g++"
+    }
+  },
+  {
+    "name": "LLNL - GCC 6.1.0",
+    "compilers": {
+      "C": "/usr/tce/packages/gcc/gcc-6.1.0/bin/gcc",
+      "CXX": "/usr/tce/packages/gcc/gcc-6.1.0/bin/g++"
+    }
+  },
+  {
+    "name": "LLNL - GCC 7.1.0",
+    "compilers": {
+      "C": "/usr/tce/packages/gcc/gcc-7.1.0/bin/gcc",
+      "CXX": "/usr/tce/packages/gcc/gcc-7.1.0/bin/g++"
+    }
+  },
+  {
+    "name": "LLNL - GCC 7.3.0",
+    "compilers": {
+      "C": "/usr/tce/packages/gcc/gcc-7.3.0/bin/gcc",
+      "CXX": "/usr/tce/packages/gcc/gcc-7.3.0/bin/g++"
+    }
+  },
+  {
+    "name": "LLNL - GCC 8.1.0",
+    "compilers": {
+      "C": "/usr/tce/packages/gcc/gcc-8.1.0/bin/gcc",
+      "CXX": "/usr/tce/packages/gcc/gcc-8.1.0/bin/g++"
+    }
+  },
+  {
+    "name": "LLNL - Intel 17.0.2",
+    "compilers": {
+      "C": "/usr/tce/packages/intel/intel-17.0.2/bin/icc",
+      "CXX": "/usr/tce/packages/intel/intel-17.0.2/bin/icpc"
+    }
+  },
+  {
+    "name": "LLNL - Intel 19.0.4",
+    "compilers": {
+      "C": "/usr/tce/packages/intel/intel-19.0.4/bin/icc",
+      "CXX": "/usr/tce/packages/intel/intel-19.0.4/bin/icpc"
+    }
+  },
+  {
+    "name": "LLNL - clang 10",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-10.0.0/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-10.0.0/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 3.9.0",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-3.9.0/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-3.9.0/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 3.9.1",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-3.9.1/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-3.9.1/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 4.0.0",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-4.0.0/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-4.0.0/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 6.0.0",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-6.0.0/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-6.0.0/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 7.0.1",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-7.0.1/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-7.0.1/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 7.1.0",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-7.1.0/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-7.1.0/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 8.0.0",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-8.0.0/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-8.0.0/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 8.0.1",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-8.0.1/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-8.0.1/bin/clang++"
+    }
+  },
+  {
+    "name": "LLNL - clang 9",
+    "compilers": {
+      "C": "/usr/tce/packages/clang/clang-9.0.0/bin/clang",
+      "CXX": "/usr/tce/packages/clang/clang-9.0.0/bin/clang++"
+    }
+  }
+]
