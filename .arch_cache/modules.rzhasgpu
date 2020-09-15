@@ -1,3 +1,3 @@
 #!/bin/zsh
 # module load clang/9.0.0 git/2.25.1 totalview vim ninja
-module load cmake clang/9.0.0 git/2.25.1 totalview vim ninja
+module load cmake/3.18.0 clang/9.0.0 git/2.25.1 totalview vim ninja
