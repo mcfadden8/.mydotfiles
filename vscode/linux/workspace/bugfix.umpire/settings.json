@@ -4,11 +4,11 @@
         "-DENABLE_DEVELOPER_DEFAULTS=On",
         "-DENABLE_C=Off",
         "-DENABLE_BACKTRACE=On",
-        "-DENABLE_BACKTRACE_SYMBOLS=On",
+        "-DENABLE_BACKTRACE_SYMBOLS=Off",
         "-DENABLE_BOOST_RESOURCE=On",
         "-DENABLE_MPI=On",
         "-DCMAKE_BUILD_TYPE=Debug",
-        "-DCMAKE_INSTALL_PREFIX=${workspaceFolder}/build/${env:MJM_PROJECT}.${env:MJM_HOST}/install"
+        "-DCMAKE_INSTALL_PREFIX=${env:MJM_BUILDDIR}/${workspaceFolderBasename}.install"
     ],
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.default.includePath": [
@@ -19,4 +19,5 @@
     ],
     "debug.allowBreakpointsEverywhere": true,
     "cmake.cmakePath": "/usr/tce/packages/cmake/cmake-3.18.0/bin/cmake",
+    "cmake.buildDirectory": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}"
 }

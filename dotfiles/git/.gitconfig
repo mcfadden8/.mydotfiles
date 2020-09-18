@@ -1,3 +1,13 @@
+[alias]
+  c = commit
+  cm = commit -m
+  cma = commit -a -m
+  s = status
+  d = diff
+  a = add
+  co = checkout
+  b = branch
+  l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f

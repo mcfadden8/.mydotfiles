@@ -1,5 +1,12 @@
 [
   {
+    "name": "LLNL - MPI/clang 6.0.0",
+    "compilers": {
+      "C": "/usr/tce/packages/mvapich2/mvapich2-2.3-clang-9.0.0/bin/mpicc",
+      "CXX": "/usr/tce/packages/mvapich2/mvapich2-2.3-clang-9.0.0/bin/mpic++",
+    }
+  },
+  {
     "name": "LLNL - clang 6.0.0",
     "compilers": {
       "C": "/usr/tce/packages/clang/clang-6.0.0/bin/clang",

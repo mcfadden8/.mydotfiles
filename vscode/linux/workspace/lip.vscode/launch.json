@@ -15,9 +15,6 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            // "sourceFileMap": {
-                // "*/builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-34vmmvov5ct2riknhkfcmxieffb5pyex/gcc-4.9.3/": "${env:MJM_SOURCEDIR}/libs/gcc/"
-            // },
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

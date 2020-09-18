@@ -1,19 +1,18 @@
 {
-    "cmake.cacheInit": [
-      "cmake/ToolChainFiles/toss3-mvapich2.2-clang6.cmake"
-    ],
     "cmake.configureArgs": [
         "-DCMAKE_INSTALL_PREFIX=${env:MJM_BUILDDIR}/${workspaceFolderBasename}.install",
         "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_EXE_LINKER_FLAGS='-lrt -lpthread'",
         "-DBUILD_TESTS=ON",
         "-DENABLE_C_LIP=OFF",
         "-DENABLE_CPP_LIP=ON",
         "-DENABLE_SM_LIP=ON",
         "-DENABLE_MPI=ON",
-        "-DENABLE_ASCMEMORY=ON",
+        "-DENABLE_ASCMEMORY=On",
         "-DASCMemory_DIR=${env:MJM_BUILDDIR}/ascmemory.install",
+        "-DUMPIRE_DIR=${env:MJM_BUILDDIR}/umpire/4.0.1",
         "-DENABLE_CALIPER=OFF",
-        "-DENABLE_UMPIRE=OFF",
+        "-DENABLE_UMPIRE=On",
         "-DENABLE_UMPIRE_IDS=OFF",
         "-DENABLE_ZFP=OFF",
         "-DLIP_ZFP_DEFAULT_COMPRESSION=16",
@@ -21,5 +20,6 @@
         "-DBUILD_LIP_PARALLEL_TESTS=ON"
     ],
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "debug.allowBreakpointsEverywhere": true
+    "debug.allowBreakpointsEverywhere": true,
+    "cmake.buildDirectory": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}"
 }

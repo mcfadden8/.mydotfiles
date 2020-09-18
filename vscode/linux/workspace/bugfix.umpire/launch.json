@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/${env:MJM_PROJECT}.${env:MJM_HOST}/b/bin/recipe_shared_memory",
+            "program": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/bin/recipe_shared_memory",
             "args": [],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
