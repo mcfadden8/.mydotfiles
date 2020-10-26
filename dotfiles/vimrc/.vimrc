@@ -141,7 +141,9 @@ nnoremap ,ga :Git add %:p<CR><CR>
 nnoremap ,gb :Git branch<Space>
 nnoremap ,gci :Gcommit -v -q<CR>
 nnoremap ,gco :Git checkout<Space>
-nnoremap ,gd :Gdiff<CR>
+nnoremap ,gd :Gdiffsplit!<CR>
+nnoremap ,gdl :diffget //2<CR>
+nnoremap ,gdr :diffget //3<CR>
 nnoremap ,ge :Gedit<CR>
 nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
 nnoremap ,gr :Gread<CR>
