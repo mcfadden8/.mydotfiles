@@ -8,8 +8,8 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/bin/primary_pool_tests",
-            "args": [],
+            "program": "${workspaceFolder}/build/bin/replay",
+            "args": ["--stats-on-release", "-i", "${workspaceFolder}/tests/integration/replay/output.replay"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -19,7 +19,7 @@
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
+                    "ignoreFailures": false
                 }
             ]
         }
