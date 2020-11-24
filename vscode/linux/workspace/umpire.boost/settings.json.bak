@@ -1,0 +1,22 @@
+{
+    "cmake.configureArgs": [
+        "-Wno-dev",
+        "-DCLANGFORMAT_EXECUTABLE=/usr/tce/packages/clang/clang-10.0.0/bin/clang-format",
+        "-DENABLE_DEVELOPER_DEFAULTS=On",
+        "-DENABLE_C=Off",
+        "-DENABLE_BACKTRACE=On",
+        "-DENABLE_BACKTRACE_SYMBOLS=On",
+        "-DENABLE_MPI=On",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_INSTALL_PREFIX=${env:MJM_BUILDDIR}/${workspaceFolderBasename}.install"
+    ],
+    "C_Cpp.default.includePath": [
+        "${env:MJM_BUILDDIR}/${workspaceFolderBasename}/include",
+        "${workspaceFolder}/src/umpire",
+        "${workspaceFolder}/src/umpire/tpl",
+        "${workspaceFolder}/src/umpire/tpl/camp/include"
+    ],
+    "debug.allowBreakpointsEverywhere": true,
+    "cmake.cmakePath": "/usr/tce/packages/cmake/cmake-3.18.0/bin/cmake",
+    "cmake.buildDirectory": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}"
+}

@@ -1,0 +1,2 @@
+#!/bin/zsh
+module load cmake clang git totalview vim ninja
