@@ -1,0 +1,22 @@
+{
+    "cmake.configureArgs": [
+        "-DENABLE_DEVELOPER_DEFAULTS=On",
+        "-DENABLE_SANITIZERS=On",
+        "-DENABLE_BACKTRACE=On",
+        "-DENABLE_BACKTRACE_SYMBOLS=On",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_INSTALL_PREFIX=${workspaceFolder}/build/${env:MJM_PROJECT}.${env:MJM_HOST}/install",
+        "-DCMAKE_CXX_FLAGS=\"-fsanitize=address\""
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/build/include",
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/src/tpl",
+        "${workspaceFolder}/src/tpl/camp/include"
+    ],
+    "debug.allowBreakpointsEverywhere": true,
+    "launch": {
+
+    },
+}
