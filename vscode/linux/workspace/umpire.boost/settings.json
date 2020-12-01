@@ -4,10 +4,10 @@
         "-DCLANGFORMAT_EXECUTABLE=/usr/tce/packages/clang/clang-10.0.0/bin/clang-format",
         "-DENABLE_DEVELOPER_DEFAULTS=On",
         "-DENABLE_MPI=On",
-        "-DENABLE_HOST_SHARED_MEMORY=On",
+        "-DENABLE_BOOST_RESOURCE=On",
         "-DENABLE_C=Off",
         "-DENABLE_BACKTRACE=On",
-        "-DENABLE_BACKTRACE_SYMBOLS=On",
+        "-DENABLE_BACKTRACE_SYMBOLS=On"
     ],
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.watcherExclude": {
