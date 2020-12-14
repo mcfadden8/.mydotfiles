@@ -1,5 +1,4 @@
 {
-    "cmake.configureOnOpen": true,
     "extensions.autoUpdate": false,
     "files.autoSave": "afterDelay",
     "editor.accessibilitySupport": "off",
@@ -7,7 +6,7 @@
     "terminal.integrated.shellArgs.linux": [
         "-l"
     ],
-    "terminal.integrated.shell.linux": "/bin/zsh",
+    "terminal.integrated.shell.linux": "/bin/bash",
     "window.autoDetectColorScheme": true,
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
@@ -21,8 +20,6 @@
     "terminal.external.osxExec": "iTerm2.app",
     "editor.wordWrap": "on",
     "editor.columnSelection": true,
-    "cmake.ctestPath": "",
-    "cmake.copyCompileCommands": "",
     "files.autoSaveDelay": 1000,
     "git.autofetch": true,
     "git.enabled": false,
@@ -42,39 +39,6 @@
     "vim.textwidth": 200,
     "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": true,
-    "yaml.schemas": {
-        "file:///Users/mcfadden8/.vscode/extensions/atlassian.atlascode-2.8.0/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-    },
-    "atlascode.jira.enabled": true,
-    "atlascode.bitbucket.enabled": false,
-    "atlascode.jira.jqlList": [
-        {
-            "id": "74c4b2b3-9d66-4770-8697-ba264cb24454",
-            "enabled": true,
-            "name": "My rzlc.llnl.gov Issues",
-            "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
-            "siteId": "rzlc.llnl.gov",
-            "monitor": true
-        }
-    ],
-    "atlascode.bitbucket.contextMenus.enabled": false,
-    "atlascode.bitbucket.explorer.enabled": false,
-    "atlascode.bitbucket.explorer.nestFilesEnabled": false,
-    "atlascode.bitbucket.explorer.notifications.pullRequestCreated": false,
-    "atlascode.bitbucket.explorer.refreshInterval": 0,
-    "atlascode.bitbucket.explorer.relatedBitbucketIssues.enabled": false,
-    "atlascode.bitbucket.explorer.relatedJiraIssues.enabled": false,
-    "atlascode.bitbucket.issues.explorerEnabled": false,
-    "atlascode.bitbucket.issues.monitorEnabled": false,
-    "atlascode.bitbucket.pipelines.explorerEnabled": false,
-    "atlascode.bitbucket.pipelines.hideEmpty": false,
-    "atlascode.bitbucket.pipelines.monitorEnabled": false,
-    "atlascode.bitbucket.statusbar.enabled": false,
-    "atlascode.bitbucket.statusbar.showLogin": false,
-    "atlascode.bitbucket.statusbar.showProduct": false,
-    "atlascode.bitbucket.statusbar.showUser": false,
-    "cmake.cmakePath": "/usr/tce/packages/cmake/cmake-3.18.0/bin/cmake",
-    "cmake.buildDirectory": "${env:MJM_BUILDDIR}/${workspaceFolderBasename}",
     "editor.codeActionsOnSave": null,
     // Controls if quick suggestions should show up while typing
     "editor.quickSuggestions": {
@@ -82,6 +46,47 @@
         "comments": false,
         "strings": false
     },
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.console.closeOnEnd": true,
+    "debug.inlineValues": true,
+    "debug.openExplorerOnEnd": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "debug.toolBarLocation": "docked",
+    "cmake.configureOnOpen": true,
+    "cmake.configureSettings": {
+    },
+    "cmake.ctestPath": "",
+    "cmake.copyCompileCommands": "",
+    "cmake.debugConfig": {
+    },
+    "cmake.generator": "Ninja",
     "cmake.preferredGenerators": [],
-    "cmake.generator": "Unix Makefiles"
+    "cmake.defaultVariants": {
+        "buildType": {
+            "default": "debug",
+            "description": "The build type.",
+            "choices": {
+                "debug": {
+                    "short": "Debug",
+                    "long": "Disable optimizations - include debug information.",
+                    "buildType": "Debug"
+                },
+                "release": {
+                    "short": "Release",
+                    "long": "Optimize for speed - exclude debug information.",
+                    "buildType": "Release"
+                },
+                "minsize": {
+                    "short": "MinSizeRel",
+                    "long": "Optimize for smallest binary size - exclude debug information.",
+                    "buildType": "MinSizeRel"
+                },
+                "reldeb": {
+                    "short": "RelWithDebInfo",
+                    "long": "Optimize for speed - include debug information.",
+                    "buildType": "RelWithDebInfo"
+                }
+            }
+        }
+    }
 }
