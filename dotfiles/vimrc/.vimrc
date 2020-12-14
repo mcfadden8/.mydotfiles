@@ -26,6 +26,8 @@ set expandtab ts=2 sw=2 ai
 nnoremap ,2 :set expandtab ts=2 sw=2 ai<CR>
 nnoremap ,3 :set expandtab ts=3 sw=3 ai<CR>
 nnoremap ,4 :set expandtab ts=4 sw=4 ai<CR>
+nnoremap ,5 :set expandtab ts=5 sw=5 ai<CR>
+nnoremap ,6 :set expandtab ts=6 sw=6 ai<CR>
 nnoremap ,8 :set expandtab ts=8 sw=8 ai<CR>
 
 set nowrap                      " No wrapping of lines, let them go across
