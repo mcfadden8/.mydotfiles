@@ -1,5 +1,4 @@
 {
-    "extensions.autoUpdate": false,
     "files.autoSave": "afterDelay",
     "editor.accessibilitySupport": "off",
     "terminal.integrated.automationShell.linux": "",
@@ -13,7 +12,7 @@
     "editor.minimap.enabled": false,
     "window.restoreWindows": "none",
     "remote.SSH.showLoginTerminal": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontWeight": "500",
@@ -22,7 +21,6 @@
     "editor.columnSelection": true,
     "files.autoSaveDelay": 1000,
     "git.autofetch": true,
-    "git.enabled": false,
     "editor.rulers": [
         80,
         100,
@@ -88,5 +86,11 @@
                 }
             }
         }
-    }
+    },
+    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+    "dotfiles.repository": "git@github.com:mcfadden8/.mydotfiles.git",
+    "remote.containers.copyGitConfig": false,
+    "dotfiles.installCommand": "~/.mydotfiles/install.sh",
+    "dotfiles.targetPath": "~/.mydotfiles",
+    "remote.containers.workspaceMountConsistency": "delegated"
 }

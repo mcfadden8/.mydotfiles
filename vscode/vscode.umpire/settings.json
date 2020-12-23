@@ -1,0 +1,21 @@
+{
+    "cmake.configureArgs": [
+        "-DENABLE_DEVELOPER_DEFAULTS=On",
+        "-DENABLE_HOST_SHARED_MEMORY=On",
+        "-DENABLE_BENCHMARKS=Off",
+        "-DENABLE_C=Off",
+        "-DENABLE_MPI=On",
+        "-DENABLE_BACKTRACE=On",
+        "-DENABLE_BACKTRACE_SYMBOLS=On"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/build/*/**": true
+    },
+    "files.associations": {
+        "thread": "cpp"
+    },
+    "git.ignoreLimitWarning": true
+}
