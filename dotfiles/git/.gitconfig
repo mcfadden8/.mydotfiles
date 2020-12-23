@@ -34,3 +34,5 @@
 	submodule = log
 [status]
 	submoduleSummary = true
+[pull]
+	rebase = false
