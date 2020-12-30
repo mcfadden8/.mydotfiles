@@ -83,8 +83,9 @@ ZSH_CUSTOM=~/.mydotfiles/zsh/omz_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export ZSH_TMUX_ITERM2=true
-plugins=(git colored-man-pages colorize dirpersist vi-mode battery iterm2 man themes tmux zsh_reload my_directories)
+# export ZSH_TMUX_ITERM2=true
+# plugins=(git colored-man-pages colorize dirpersist vi-mode battery iterm2 man themes tmux zsh_reload my_directories)
+plugins=(git colored-man-pages colorize dirpersist vi-mode battery iterm2 man themes zsh_reload my_directories)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,7 +120,6 @@ a h="history"
 a C="clear"
 a J="jobs -l"
 a less="less -X"
-a tmux="tmux -u"
 a vi=vim
 a project="source ~/.mydotfiles/zsh/zsh_project"
 a projects="zsh ~/.mydotfiles/zsh/zsh_projects"
