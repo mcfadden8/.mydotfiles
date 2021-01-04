@@ -1,0 +1,48 @@
+#
+# Notes:
+#
+# docker build -f Dockerfile.dev -t mcfadden8/centos:dev .
+# docker push mcfadden8/centos:dev
+#
+FROM centos
+
+MAINTAINER Marty McFadden <mcfadden8@llnl.gov>
+
+RUN yum -y update
+RUN dnf -y install 'dnf-command(config-manager)'
+RUN yum config-manager --set-enabled powertools
+RUN yum -y update
+RUN yum -y install epel-release
+RUN yum -y install wget man-db less git sudo munge ccache lua mpich \
+           valgrind jq which file vim patch diffutils pkgconfig \
+           libtool autoconf automake gcc gcc-c++ make cmake \
+           python36 python3-devel python3-cffi python3-six \
+           python3-yaml python3-jsonschema python3-sphinx \
+           libsodium-devel zeromq-devel czmq-devel jansson-devel \
+           munge-devel lz4-devel sqlite-devel libuuid-devel \
+           hwloc-devel mpich-devel lua-devel valgrind-devel \
+           libs3-devel perl-Time-HiRes lua-posix libfaketime \
+           cppcheck enchant aspell aspell-en glibc-langpack-en \
+           zsh ninja-build gdb tmux
+
+RUN yum -y update
+RUN yum -y install yum-utils
+RUN yum-config-manager --enable extras
+RUN yum -y install clang lldb
+
+RUN yum clean all
+
+RUN alternatives --set python /usr/bin/python3
+RUN alternatives --install /usr/bin/mpicc mpicc /usr/lib64/mpich/bin/mpicc 100
+ENV LANG=C.UTF-8
+RUN printf "LANG=C.UTF-8" > /etc/locale.conf
+
+RUN cd /home && wget http://downloads.sourceforge.net/project/boost/boost/1.75.0/boost_1_75_0.tar.gz \
+  && tar xfz boost_1_75_0.tar.gz \
+  && rm boost_1_75_0.tar.gz \
+  && cd boost_1_75_0 \
+  && ./bootstrap.sh --prefix=/usr/local --with-libraries=program_options \
+  && ./b2 install \
+  && chmod -R a-w /usr/local/include/boost \
+  && cd /home \
+  && rm -rf boost_1_75_0
