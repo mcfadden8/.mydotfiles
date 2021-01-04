@@ -1,0 +1,14 @@
+{
+    "cmake.configureArgs": [
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/build/*/**": true
+    },
+    "files.associations": {
+        "thread": "cpp"
+    },
+    "git.ignoreLimitWarning": true
+}
