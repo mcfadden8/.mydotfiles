@@ -1,1 +1,1 @@
-FROM mcfadden8/gccmpi:1.0
+FROM mcfadden8/centos:dev
