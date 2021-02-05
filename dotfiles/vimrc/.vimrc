@@ -11,7 +11,7 @@ nnoremap ,vr :source ~/.vimrc<CR>
 " colorscheme solarized
 " colorscheme burnttoast256
 " colorscheme gruvbox
-colorscheme dichromatic
+" colorscheme dichromatic
 
 execute pathogen#infect()
 execute pathogen#helptags()
