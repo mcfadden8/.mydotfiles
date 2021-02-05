@@ -13,3 +13,7 @@ alias lrt='ls -lhFrt'
 
 alias lta='ls -lahFt'
 alias lrta='ls -lahFrt'
+
+function chpwd() {
+  ls -aF
+}
