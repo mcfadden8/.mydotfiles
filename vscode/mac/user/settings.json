@@ -1,5 +1,4 @@
 {
-    "files.autoSave": "afterDelay",
     "editor.accessibilitySupport": "off",
     "terminal.integrated.automationShell.linux": "",
     "terminal.integrated.shellArgs.linux": [
@@ -7,21 +6,23 @@
     ],
     "terminal.integrated.shell.linux": "/bin/bash",
     "window.autoDetectColorScheme": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
     "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
     "editor.minimap.enabled": false,
     "window.restoreWindows": "none",
     "remote.SSH.showLoginTerminal": true,
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontWeight": "500",
     "terminal.external.osxExec": "iTerm2.app",
     "editor.wordWrap": "on",
     "editor.columnSelection": true,
-    "files.autoSaveDelay": 1000,
     "git.autofetch": true,
     "editor.rulers": [
+    {},
         80,
         100,
         130
@@ -89,8 +90,10 @@
     },
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "dotfiles.repository": "git@github.com:mcfadden8/.mydotfiles.git",
-    "remote.containers.copyGitConfig": false,
     "dotfiles.installCommand": "~/.mydotfiles/install.sh",
     "dotfiles.targetPath": "~/.mydotfiles",
-    "remote.containers.workspaceMountConsistency": "delegated"
+    "remote.containers.copyGitConfig": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "workbench.colorTheme": "Default Light+"
 }

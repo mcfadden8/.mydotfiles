@@ -29,6 +29,8 @@ RUN yum -y update
 RUN yum -y install yum-utils
 RUN yum-config-manager --enable extras
 RUN yum -y install clang lldb
+RUN yum -y install man-pages
+RUN yum -y install man
 
 RUN yum clean all
 
