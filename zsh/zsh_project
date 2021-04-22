@@ -1,38 +1,3 @@
 #!/bin/zsh
 
 
-case "$ARGC" in
-  2)  # project rm <project_name>
-    if [[ $1 == "rm" ]] then
-      echo "Removing Project: $2"
-      /bin/rm -rf $MJM_WS/source/$2 $MJM_WS/build/$2
-    else
-      echo "Unknown command"
-    fi
-
-    if [[ $2 == $MJM_PROJECT ]] then
-      unset MJM_PROJECT
-      /bin/rm -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST
-    fi
-    ;;
-
-  1) # project <project_name>
-    export MJM_PROJECT=$1
-    export MJM_BUILDDIR=$MJM_WS/build/$MJM_PROJECT/$MJM_HOST
-    export MJM_SOURCEDIR=$MJM_WS/source/$MJM_PROJECT
-
-    mkdir -p $MJM_BUILDDIR $MJM_SOURCEDIR
-    echo $MJM_PROJECT > $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST
-    ;;
-
-  0) # project
-    if (( ${+MJM_PROJECT} )); then 
-      echo "$MJM_PROJECT"
-    else
-      echo "NO PROJECT CURRENTLY CONFIGURED"
-    fi
-    ;;
-  *)
-    echo "Invalid number of arguments"
-    ;;
-esac

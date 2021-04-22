@@ -38,16 +38,19 @@ case "$MJM_HOST" in
     export MJM_SCRATCH=/p/lustre1/martymcf
     ;;
   cztb)
-    export MJM_WS=/home/martymcf
+    export MJM_SCRATCH=/home/martymcf
     ;;
   *)
     if [[ -d /usr/workspace/martymcf ]]; then
-      export MJM_WS=/usr/workspace/martymcf
+      export MJM_SCRATCH=/usr/workspace/martymcf
     else
-      export MJM_WS=$HOME
+      export MJM_SCRATCH=$HOME
     fi
     ;;
 esac
+
+export MJM_SOURCEDIR=$MJM_WS/src
+mkdir -p $MJM_SOURCEDIR
 
 if [[ -d $HOME/.bin ]]; then
   path=( $HOME/.bin $path )
@@ -76,10 +79,6 @@ else
   fi
 fi
 
-if [[ -f $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST ]]; then
-  source $HOME/.mydotfiles/zsh/zsh_project `cat $HOME/.mydotfiles/.arch_cache/last_project.$MJM_HOST`
-fi
-
 if [[ -f $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST ]]; then
   source $HOME/.mydotfiles/.arch_cache/modules.$MJM_HOST
 fi
@@ -89,3 +88,5 @@ if (( ${+SYS_TYPE} )); then
 else
   export PMIX_MCA_gds=hash
 fi
+
+cds
