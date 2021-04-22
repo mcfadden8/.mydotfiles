@@ -128,6 +128,8 @@ a H="tput reset"
 a kdev="module use /usr/dnta/kull/developers/tools/scripts/mods; module add kull-dev ; module list"
 a cds="source ~/.mydotfiles/zsh/zsh_cds"
 a cdb="source ~/.mydotfiles/zsh/zsh_cdb"
+a vnchome="xrandr -s 3840x2160; xrandr"
+a vncwork="xrandr -s 2560x1600; xrandr"
 
 HISTSIZE=100000000
 SAVEHIST=100000000

@@ -5,15 +5,13 @@
         "-l"
     ],
     "terminal.integrated.shell.linux": "/bin/bash",
-    "window.autoDetectColorScheme": true,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "editor.minimap.enabled": false,
     "window.restoreWindows": "none",
     "remote.SSH.showLoginTerminal": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 2,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontWeight": "500",
@@ -34,7 +32,6 @@
     "editor.defaultFormatter": "vscodevim.vim",
     "editor.definitionLinkOpensInPeek": true,
     "sync.autoUpload": true,
-    "workbench.sideBar.location": "left",
     "vim.textwidth": 200,
     "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": true,
@@ -58,7 +55,7 @@
     "cmake.copyCompileCommands": "",
     "cmake.debugConfig": {
     },
-    "cmake.generator": "Ninja",
+    "cmake.generator": "",
     "cmake.preferredGenerators": [],
     "cmake.defaultVariants": {
         "buildType": {
@@ -95,5 +92,8 @@
     "remote.containers.copyGitConfig": false,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.enabled": false,
-    "workbench.colorTheme": "Default Light+"
+    "window.autoDetectColorScheme": true,
+    "cmake.statusbar.advanced": {
+    
+    }
 }
