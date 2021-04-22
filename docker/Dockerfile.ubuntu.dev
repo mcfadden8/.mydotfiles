@@ -1,0 +1,89 @@
+#
+# Notes:
+#
+# docker build -f Dockerfile.ubuntu.dev -t mcfadden8/ubuntu:dev .
+# docker push mcfadden8/ubuntu:dev
+#
+
+FROM ubuntu:20.04
+MAINTAINER Marty McFadden <mcfadden8@llnl.gov>
+
+RUN set -xe \
+    && apt-get update \
+    && apt-get install -y apt-utils tzdata locales
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+     && echo $TZ > /etc/timezone
+RUN set -xe &&\
+    dpkg-reconfigure --frontend=noninteractive tzdata && \
+    sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    echo 'LANG="en_US.UTF-8"'>/etc/default/locale && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
+
+# # Unminimize
+RUN yes | unminimize
+
+RUN set -xe \
+    && apt-get install -y vim perl wget tar man sudo adduser netstat-nat net-tools curl w3m  \
+    && useradd -m -p "\$6\$AyOAQ1vh\$CcIXBW4cJopgUVKsTcxlGplUZ382K4yIxIAHhqmEewzJdc6x0MmbSDDQJ1DR.4eueGlYTf2ZbUl9oAQaUQEoi1" -s /bin/bash user \
+    && usermod -aG sudo user \
+    && echo "user ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/user \
+    && chmod 0440 /etc/sudoers.d/user 
+
+RUN \
+  apt update \
+    && \
+      apt install -y \
+        aspell \
+        aspell-en \
+        autoconf \
+        automake \
+        ccache \
+        clang \
+        cmake \
+        cppcheck \
+        diffutils \
+        enchant \
+        file \
+        gcc \
+        gdb \
+        git \
+        jq \
+        less \
+        libfaketime \
+        libtool \
+        lldb \
+        lsb-release \
+        make \
+        mpich \
+        munge \
+        ninja-build \
+        patch \
+        python-is-python3 \
+        python3 \
+        python3-cffi \
+        python3-jsonschema \
+        python3-six \
+        python3-sphinx \
+        python3-yaml \
+        tmux \
+        valgrind \
+        zsh \
+    && \
+      apt clean all
+
+RUN cd /home && wget http://downloads.sourceforge.net/project/boost/boost/1.75.0/boost_1_75_0.tar.gz \
+  && tar xfz boost_1_75_0.tar.gz \
+  && rm boost_1_75_0.tar.gz \
+  && cd boost_1_75_0 \
+  && ./bootstrap.sh --prefix=/usr/local --with-libraries=program_options \
+  && ./b2 install \
+  && chmod -R a-w /usr/local/include/boost \
+  && cd /home \
+  && rm -rf boost_1_75_0
