@@ -3,6 +3,7 @@ cd ~/.mydotfiles
 git submodule update --init --recursive
 cd ~
 rm -f .gitconfig ; ln -s .mydotfiles/dotfiles/git/.gitconfig
+rm -f .vimrc; ln -s .mydotfiles/dotfiles/vimrc/.vimrc
 rm -rf .vim ; ln -s .mydotfiles/vim .vim
 rm -rf .zlogin; ln -s .mydotfiles/zsh/zlogin .zlogin
 rm -rf .zprofile; ln -s .mydotfiles/zsh/zprofile .zprofile

@@ -1,1 +1,1 @@
-FROM mcfadden8/centos:dev
+FROM mcfadden8/ubuntu:dev

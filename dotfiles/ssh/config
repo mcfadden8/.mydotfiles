@@ -22,7 +22,7 @@ Host izgw*
     PreferredAuthentications password
 
 # CZ+RZ Hosts
-Host ruby* borax* catalyst* corona* flash* lassen* oslic* pascal* quartz* ray* surface* syrah* rzalastor* rzansel* rzgenie* rzhasgpu* rzmanta* rzslic* rztopaz* rztrona*
+Host ruby* borax* catalyst* corona* flash* lassen* oslic* pascal* quartz* ray* surface* syrah* rzalastor* rzansel* rzgenie* rzhasgpu* rzmanta* rznevada* rzslic* rztopaz* rztrona*
     ForwardX11          yes
     ForwardX11Trusted   yes
     ProxyCommand        sh -c 'g=izgw.llnl.gov; ms=~/.ssh/%r@$g:%p; if [ ! -e $ms ]; then echo Connecting to $g so use your RZ RSA Pin+Token>&2; ssh -fNMS $ms $g; fi; echo Connecting to %h so use your CZ RSA Pin+Token if prompted >&2; exec ssh -S $ms $g "if nc -w 3 -z %h 622; then p=622; else p=22; fi; nc %h \$p"'
